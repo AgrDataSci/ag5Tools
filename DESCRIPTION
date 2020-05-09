@@ -1,15 +1,19 @@
 Package: agera5
-Title: What the Package Does (One Line, Title Case)
+Title: Data extraction from AgERA5 data
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+Authors@R:
+          c(person(given = "David",
+          family = "Brown",
+          role = c("aut", "cre"),
+          email = "d.brown@cgiar.org",
+          comment = c(ORCID = "YOUR-ORCID-ID")),
+          person("Kaue", "de Sousa", 
+          email = "kaue.desousa@inn.no", role = c("aut"),
+          comment = c(ORCID = "0000-0002-7571-7845")))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports:  raster
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
