@@ -33,14 +33,8 @@
 #'rel_hum
 #'
 #'
-#'
-#'
-#'
 #'@references
 #'https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview
-#'
-#'
-#'
 #'
 #'
 
@@ -79,10 +73,12 @@ extract_period <- function(.agera5_folder,
                            .start_date,
                            .end_date,
                            .location_xy,
-                           .var,.statistic){
+                           .var,
+                           .statistic){
   time_span <- seq.Date(from = .start_date,
                         to = .end_date,
                         by = "days")
+
   data_out_period <- array(dim = c(1, length(time_span)))
   for(i in 1:length(time_span)){
     data_out_period[, i] <- extract_single_date(.agera5_folder,
@@ -132,7 +128,7 @@ get_filepath <- function(.agera5_folder,
 
   month_to_search <- format(.date_to_search, "%m")
 
-  date_pattern <- paste0(year_to_search,month_to_search)
+  date_pattern <- paste0(year_to_search, month_to_search)
 
   agera5_file_pattern <- paste0(temp_prefix, date_pattern)
 
