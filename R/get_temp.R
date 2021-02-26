@@ -63,7 +63,7 @@ extract_period <- function(.start_date,
   return(data_out_period)
 }
 
-get_filepath <- function(.var,.statistic,.date_to_search, .agera5_folder){
+get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
   # Available temperature statistics
   #Max-24h
   #Max-Day-Time
@@ -86,8 +86,8 @@ get_filepath <- function(.var,.statistic,.date_to_search, .agera5_folder){
 
   year_to_search <- format(.date_to_search, "%Y")
   month_to_search <- format(.date_to_search, "%m")
-  date_pattern <- paste0(year_to_search,month_to_search)
-  agera5_file_pattern <- paste0(temp_prefix,date_pattern)
+  date_pattern <- paste0(year_to_search, month_to_search)
+  agera5_file_pattern <- paste0(temp_prefix, date_pattern)
   files_ <- list.files(paste(.agera5_folder, var_to_search, year_to_search, sep = "/"))
   file_name <- files_[str_detect(files_, agera5_file_pattern)]
   agera5_file_path <- paste(.agera5_folder, var_to_search, year_to_search, file_name, sep="/")
@@ -106,7 +106,7 @@ extract_temp_dataset <- function(.trial_dataset,
 
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
-  for(i in 1:nrow(trial_dataset)){
+  for(i in 1:nrow(.trial_dataset)){
     extracted_dataset[[i]] <- extract_period(.trial_dataset[i, ]$pdate,
                                              .trial_dataset[i, ]$hdate,
                                              data.frame(lon = .trial_dataset[i, ]$lon, lat = .trial_dataset[i, ]$lat),
