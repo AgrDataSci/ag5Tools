@@ -20,7 +20,7 @@ rel_hum}
 }
 \description{
 Extracts data from locally stored AgERA5 data for a given location
-and time period.
+and time.
 }
 \details{
 Extract data from locally stored AgERA5 data
@@ -36,9 +36,6 @@ Min-Night-Time
 }
 \references{
 https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview
-
-set AgERA5 data folder
-example "F:/environmental_data/AgERA5"
 
 extracts data for a given location and date
 }

@@ -4,7 +4,7 @@
 #'
 #'@description
 #'Extracts data from locally stored AgERA5 data for a given location
-#'and time period.
+#'and time.
 #'
 #'@details
 #'Available temperature statistics
@@ -51,11 +51,13 @@
 
 #'extracts data for a given location and date
 extract_single_date <- function(.agera5_folder,
-                                .date,.location_xy,
+                                .date,
+                                .location_xy,
                                 .var,.statistic){
 
   file_path <- get_filepath(.agera5_folder,
-                            .var,.statistic,
+                            .var,
+                            .statistic,
                             .date)
 
   agera5_brick <- raster::brick(file_path)

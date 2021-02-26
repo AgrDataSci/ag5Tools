@@ -5,12 +5,12 @@
 \title{extracts data for a given location and time period}
 \usage{
 extract_period(
-  .agera5_folder,
   .start_date,
   .end_date,
   .location_xy,
   .var,
-  .statistic
+  .statistic,
+  .agera5_folder
 )
 }
 \description{
