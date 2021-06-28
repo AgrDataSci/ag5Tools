@@ -2,9 +2,12 @@
 #'@name get_prec
 
 #'@param .date a date or character representing the date of the point data to be extracted
-#'@param .location_xy a data.frame or an object to be coerced, with longitud and latitude
+#'@param .location_xy a data.frame or an object to be coerced, with longitude and latitude
 #'@param .var a character of the variable of interest
 #'@param .statistic an integer for the statistic to extract, options are:
+#'
+#'@import stringr
+
 
 
 #'@export
@@ -15,12 +18,20 @@ agera5_prec_extract <- function(.date,
   file_path <- get_prec_filepath(.date,
                                  .agera5_folder)
 
-  agera5_brick <- brick(file_path)
+  #agera5_brick <- raster::brick(file_path)
 
-  data_out <- raster::extract(agera5_brick, .location_xy)
-  date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
-  date_to_extract <- paste0("X", date_to_extract)
-  extracted_data <- data_out[1, date_to_extract]
+  agera5_spat_rast <- terra::rast(file_path)
+
+  #agera5_brick <- raster::brick("D:/Dropbox (Bioversity CR)/dbrown_files/AgERA5/prec/2015/Precipitation-Flux_C3S-glob-agric_AgERA5_daily_20150101-20150131_final-v1.0.nc")
+  #data_out <- raster::extract(agera5_brick, .location_xy)
+  data_out <- terra::extract(agera5_spat_rast, .location_xy, factors = F)
+
+
+  # date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
+  # date_to_extract <- paste0("X", date_to_extract)
+
+  day_to_extract <- lubridate::day(.date)
+  extracted_data <- data_out[1, paste0("Precipitation_Flux_", day_to_extract)]
 
   return(extracted_data)
 }
@@ -55,7 +66,7 @@ get_prec_filepath <- function(.date_to_search, .agera5_folder){
   agera5_file_pattern <- paste0(prec_prefix, date_pattern)
 
   files_ <- list.files(paste(.agera5_folder, "prec", year_to_search, sep = "/"))
-  file_name <- files_[str_detect(files_, agera5_file_pattern)]
+  file_name <- files_[stringr::str_detect(files_, agera5_file_pattern)]
   agera5_file_path <- paste(.agera5_folder, "prec", year_to_search, file_name, sep="/")
 
 
