@@ -6,7 +6,7 @@
 #'@param .var a character of the variable of interest
 #'@param .statistic an integer for the statistic to extract, options are:
 #'
-#'@import stringr
+
 
 
 

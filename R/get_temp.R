@@ -89,7 +89,7 @@ get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
   date_pattern <- paste0(year_to_search, month_to_search)
   agera5_file_pattern <- paste0(temp_prefix, date_pattern)
   files_ <- list.files(paste(.agera5_folder, var_to_search, year_to_search, sep = "/"))
-  file_name <- files_[str_detect(files_, agera5_file_pattern)]
+  file_name <- files_[stringr::str_detect(files_, agera5_file_pattern)]
   agera5_file_path <- paste(.agera5_folder, var_to_search, year_to_search, file_name, sep="/")
 
   return(agera5_file_path)
