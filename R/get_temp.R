@@ -26,15 +26,21 @@ agera5_temp_extract <- function(.date,
 
   file_path <- get_filepath(.var, .statistic, .date,.agera5_folder)
 
-  agera5_brick <- brick(file_path)
+  #agera5_brick <- brick(file_path)
+  agera5_spat_rast <- terra::rast(file_path)
 
-  data_out <- raster::extract(agera5_brick, .location_xy)
+  #data_out <- raster::extract(agera5_brick, .location_xy)
+  data_out <- terra::extract(agera5_spat_rast, .location_xy, factors = F)
 
-  date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
+  # date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
+  #
+  # date_to_extract <- paste0("X", date_to_extract)
 
-  date_to_extract <- paste0("X", date_to_extract)
+  day_to_extract <- lubridate::day(.date)
+  extracted_data <- data_out[1, paste0("Temperature_Air_2m_", sub("-", "_",get_stat_code(1)), "_", day_to_extract)]
 
-  extracted_data <- data_out[1, date_to_extract]
+
+  #extracted_data <- data_out[1, date_to_extract]
 
   return(extracted_data)
 
@@ -63,7 +69,8 @@ extract_period <- function(.start_date,
   return(data_out_period)
 }
 
-get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
+
+get_stat_code <- function(.statistic){
   # Available temperature statistics
   #Max-24h
   #Max-Day-Time
@@ -80,9 +87,18 @@ get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
   if(.statistic == 6)stat_code <- "Min-24h"
   if(.statistic == 7)stat_code <- "Min-Night-Time"
 
+  return(stat_code)
+
+}
+
+
+
+get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
+  .statistic <- 2
+
   var_to_search <- .var
 
-  temp_prefix <- paste0("Temperature-Air-2m-", stat_code, "_C3S-glob-agric_AgERA5_daily_")
+  temp_prefix <- paste0("Temperature-Air-2m-", get_stat_code(.statistic), "_C3S-glob-agric_AgERA5_daily_")
 
   year_to_search <- format(.date_to_search, "%Y")
   month_to_search <- format(.date_to_search, "%m")
