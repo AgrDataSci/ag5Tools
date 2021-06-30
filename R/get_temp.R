@@ -19,12 +19,12 @@
 
 #'@export
 agera5_temp_extract <- function(.date,
-                           .location_xy,
-                           .var,
-                           .statistic,
-                           .agera5_folder){
+                                .location_xy,
+                                .var,
+                                .statistic,
+                                .agera5_folder){
 
-  file_path <- get_filepath(.var, .statistic, .date,.agera5_folder)
+  file_path <- get_filepath(.var, .statistic, .date, .agera5_folder)
 
   #agera5_brick <- brick(file_path)
   agera5_spat_rast <- terra::rast(file_path)
@@ -50,7 +50,8 @@ agera5_temp_extract <- function(.date,
 extract_period <- function(.start_date,
                            .end_date,
                            .location_xy,
-                           .var,.statistic,
+                           .var,
+                           .statistic,
                            .agera5_folder){
 
   .start_date <- as.Date(.start_date,format = "%m/%d/%Y")
@@ -94,7 +95,6 @@ get_stat_code <- function(.statistic){
 
 
 get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
-  .statistic <- 2
 
   var_to_search <- .var
 
