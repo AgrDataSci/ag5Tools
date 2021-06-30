@@ -37,7 +37,12 @@ agera5_temp_extract <- function(.date,
   # date_to_extract <- paste0("X", date_to_extract)
 
   day_to_extract <- lubridate::day(.date)
-  extracted_data <- data_out[1, paste0("Temperature_Air_2m_", sub("-", "_",get_stat_code(1)), "_", day_to_extract)]
+
+  extracted_data <- data_out[1,  paste0("Temperature_Air_2m_", gsub(pattern = "-",
+                                                                    replacement = "_",
+                                                                    get_stat_code(.statistic)),
+                                                                    "_",
+                                                                    day_to_extract)]
 
 
   #extracted_data <- data_out[1, date_to_extract]
