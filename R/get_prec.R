@@ -8,12 +8,10 @@
 #'
 
 
-
-
 #'@export
-agera5_prec_extract <- function(.date,
-                                .location_xy,
-                                .agera5_folder){
+get_prec.data_point <- function(.date,
+                               .location_xy,
+                               .agera5_folder){
 
   file_path <- get_prec_filepath(.date,
                                  .agera5_folder)
@@ -36,8 +34,10 @@ agera5_prec_extract <- function(.date,
   return(extracted_data)
 }
 
+#'@describeIn get_prec
+
 #'@export
-extract_prec_period <- function(.start_date,
+get_prec.period <- function(.start_date,
                                 .end_date,
                                 .location_xy,
                                 .agera5_folder){
@@ -48,12 +48,46 @@ extract_prec_period <- function(.start_date,
   data_out_period <- array(dim = c(1, length(time_span)))
 
   for(i in 1:length(time_span)){
-    data_out_period[, i] <- agera5_prec_extract(time_span[i], .location_xy, .agera5_folder)
+    data_out_period[, i] <- get_prec.data_point(time_span[i], .location_xy, .agera5_folder)
   }
   colnames(data_out_period) <- as.character(time_span)
 
   return(data_out_period)
 }
+
+#'@describeIn get_prec
+
+#'@export
+get_prec.dataset <- function(.trial_dataset = NULL,
+                             .start_date = "pdate",
+                             .end_date = "hdate",
+                             .lon = "lon",
+                             .lat = "lat",
+                             .agera5_folder){
+
+  #initialize output variable
+  extracted_dataset <- NULL
+
+  #set progress bar
+  progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
+
+  #loop to get the data
+  for(i in 1:nrow(.trial_dataset)){
+    extracted_dataset[[i]] <- get_prec.period(.trial_dataset[i, .start_date],
+                                              .trial_dataset[i, .end_date],
+                                              data.frame(lon = .trial_dataset[i, .lon],
+                                                         lat = .trial_dataset[i, .lat]),
+                                                  .agera5_folder)
+    Sys.sleep(0.1)
+    setTxtProgressBar(progress_bar, i)
+
+  }
+
+  return(extracted_dataset)
+  close(progress_bar)
+
+}
+
 
 get_prec_filepath <- function(.date_to_search, .agera5_folder){
 
@@ -72,33 +106,4 @@ get_prec_filepath <- function(.date_to_search, .agera5_folder){
 
   return(agera5_file_path)
 }
-
-#'@export
-extract_prec_dataset <- function(.trial_dataset, .agera5_folder){
-
-  #initialize output variable
-  extracted_dataset <- NULL
-
-  #set progress bar
-  progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
-
-  #loop to get the data
-  for(i in 1:nrow(.trial_dataset)){
-    extracted_dataset[[i]] <- extract_prec_period(.trial_dataset[i, ]$pdate,
-                                                  .trial_dataset[i, ]$hdate,
-                                                  data.frame(lon = .trial_dataset[i, ]$lon,
-                                                             lat = .trial_dataset[i, ]$lat),
-                                                  .agera5_folder)
-    Sys.sleep(0.1)
-    setTxtProgressBar(progress_bar, i)
-
-  }
-
-  return(extracted_dataset)
-  close(progress_bar)
-
-}
-
-
-
 

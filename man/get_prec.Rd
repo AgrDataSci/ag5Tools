@@ -2,10 +2,10 @@
 % Please edit documentation in R/get_prec.R
 \name{get_prec}
 \alias{get_prec}
-\alias{agera5_prec_extract}
+\alias{get_prec.data_point}
 \title{This set of functions extract precipitation data from locally stored AgERA5 data}
 \usage{
-agera5_prec_extract(.date, .location_xy, .agera5_folder)
+get_prec.data_point(.date, .location_xy, .agera5_folder)
 }
 \arguments{
 \item{.date}{a date or character representing the date of the point data to be extracted}
