@@ -13,12 +13,17 @@
 #'6 = Min-24h
 #'7 = Min-Night-Time
 #'
-#'@param .agera5_folder a character with folder location
+#'@param .trial_dataset Data containing the required data, usually the trial data points
+#'@param .start_date Character Name of the column that holds the start date of the time period to extract
+#'@param .end_date Character Name of the column that holds the end date of the time period to extract
+#'@param .lon Character Name of the column that holds the longitude
+#'@param .lat Character Name of the column that holds the latitude
+#'@param .agera5_folder a character with agera5 data folder location
 #'
 
 
 #'@export
-agera5_temp_extract <- function(.date,
+get_temp.data_point <- function(.date,
                                 .location_xy,
                                 .var,
                                 .statistic,
@@ -51,8 +56,10 @@ agera5_temp_extract <- function(.date,
 
 }
 
+#'@describeIn get_temp Get temperature data for one location for a provided time period
+
 #'@export
-extract_temp_period <- function(.start_date,
+get_temp.period <- function(.start_date,
                                 .end_date,
                                 .location_xy,
                                 .var,
@@ -74,6 +81,39 @@ extract_temp_period <- function(.start_date,
   data_out_period <- data_out_period - 273.15
 
   return(data_out_period)
+}
+
+
+#'@describeIn get_temp Iterates across a data set to extract all required data points
+
+#'@export
+get_temp.dataset <- function(.trial_dataset = NULL,
+                             .stat = NULL,
+                             .start_date = "pdate",
+                             .end_date = "hdate",
+                             .lon = "lon",
+                             .lat = "lat",
+                             .agera5_folder){
+
+  extracted_dataset <- NULL
+
+  progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
+
+  for(i in 1:nrow(.trial_dataset)){
+    extracted_dataset[[i]] <- extract_temp_period(.trial_dataset[i, .start_date],
+                                             .trial_dataset[i, .end_date],
+                                             data.frame(lon = .trial_dataset[i, .lon], lat = .trial_dataset[i, .lat]),
+                                             "temp",
+                                             .stat,
+                                             .agera5_folder)
+
+    Sys.sleep(0.1)
+    setTxtProgressBar(progress_bar, i)
+
+}
+  return(extracted_dataset)
+
+  close(progress_bar)
 }
 
 
@@ -118,43 +158,4 @@ get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
 
 }
 
-
-#'@param .trial_dataset Data containing the required data, usually the trial data points
-#'@param .stat Temperature stat to extract
-#'@param .start_date Name of the column that holds the start date of the time period to extract
-#'@param .end_date
-#'@param .lon Name of the column that holds the longitude
-#'@param .lat Name of the column that holds the latitude
-#'@param .agera5_folder Location of the agera5 data folder
-
-
-#'@export
-extract_temp_dataset <- function(.trial_dataset = NULL,
-                                 .stat = NULL,
-                                 .start_date = "pdate",
-                                 .end_date = "hdate",
-                                 .lon = "lon",
-                                 .lat = "lat",
-                                 .agera5_folder){
-
-  extracted_dataset <- NULL
-
-  progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
-
-  for(i in 1:nrow(.trial_dataset)){
-    extracted_dataset[[i]] <- extract_temp_period(.trial_dataset[i, .start_date],
-                                             .trial_dataset[i, .end_date],
-                                             data.frame(lon = .trial_dataset[i, .lon], lat = .trial_dataset[i, .lat]),
-                                             "temp",
-                                             .stat,
-                                             .agera5_folder)
-
-    Sys.sleep(0.1)
-    setTxtProgressBar(progress_bar, i)
-
-}
-  return(extracted_dataset)
-
-  close(progress_bar)
-}
 

@@ -10,7 +10,7 @@ agera5_prec_extract(.date, .location_xy, .agera5_folder)
 \arguments{
 \item{.date}{a date or character representing the date of the point data to be extracted}
 
-\item{.location_xy}{a data.frame or an object to be coerced, with longitud and latitude}
+\item{.location_xy}{a data.frame or an object to be coerced, with longitude and latitude}
 
 \item{.var}{a character of the variable of interest}
 

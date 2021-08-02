@@ -2,15 +2,36 @@
 % Please edit documentation in R/get_temp.R
 \name{get_temp}
 \alias{get_temp}
-\alias{agera5_temp_extract}
+\alias{get_temp.data_point}
+\alias{get_temp.period}
+\alias{get_temp.dataset}
 \title{This set of functions extract temperature data from locally stored AgERA5 data}
 \usage{
-agera5_temp_extract(.date, .location_xy, .var, .statistic, .agera5_folder)
+get_temp.data_point(.date, .location_xy, .var, .statistic, .agera5_folder)
+
+get_temp.period(
+  .start_date,
+  .end_date,
+  .location_xy,
+  .var,
+  .statistic,
+  .agera5_folder
+)
+
+get_temp.dataset(
+  .trial_dataset = NULL,
+  .stat = NULL,
+  .start_date = "pdate",
+  .end_date = "hdate",
+  .lon = "lon",
+  .lat = "lat",
+  .agera5_folder
+)
 }
 \arguments{
 \item{.date}{a date or character representing the date of the point data to be extracted}
 
-\item{.location_xy}{a data.frame or an object to be coerced, with longitud and latitude}
+\item{.location_xy}{a data.frame or an object to be coerced, with longitude and latitude}
 
 \item{.var}{a character of the variable of interest}
 
@@ -23,8 +44,25 @@ agera5_temp_extract(.date, .location_xy, .var, .statistic, .agera5_folder)
 6 = Min-24h
 7 = Min-Night-Time}
 
-\item{.agera5_folder}{a character with folder location}
+\item{.agera5_folder}{a character with agera5 data folder location}
+
+\item{.start_date}{Character Name of the column that holds the start date of the time period to extract}
+
+\item{.end_date}{Character Name of the column that holds the end date of the time period to extract}
+
+\item{.trial_dataset}{Data containing the required data, usually the trial data points}
+
+\item{.lon}{Character Name of the column that holds the longitude}
+
+\item{.lat}{Character Name of the column that holds the latitude}
 }
 \description{
 This set of functions extract temperature data from locally stored AgERA5 data
 }
+\section{Functions}{
+\itemize{
+\item \code{get_temp.period}: Get temperature data for one location for a provided time period
+
+\item \code{get_temp.dataset}: Iterates across a data set to extract all required data points
+}}
+
