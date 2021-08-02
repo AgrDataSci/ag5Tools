@@ -129,12 +129,12 @@ get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
 
 
 #'@export
-extract_temp_dataset <- function(.trial_dataset,
-                                 .stat,
-                                 .start_date,
-                                 .end_date,
-                                 .lon,
-                                 .lat,
+extract_temp_dataset <- function(.trial_dataset = NULL,
+                                 .stat = NULL,
+                                 .start_date = "pdate",
+                                 .end_date = "hdate",
+                                 .lon = "lon",
+                                 .lat = "lat",
                                  .agera5_folder){
 
   extracted_dataset <- NULL
@@ -142,7 +142,7 @@ extract_temp_dataset <- function(.trial_dataset,
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
   for(i in 1:nrow(.trial_dataset)){
-    extracted_dataset[[i]] <- extract_period(.trial_dataset[i, .start_date],
+    extracted_dataset[[i]] <- extract_temp_period(.trial_dataset[i, .start_date],
                                              .trial_dataset[i, .end_date],
                                              data.frame(lon = .trial_dataset[i, .lon], lat = .trial_dataset[i, .lat]),
                                              "temp",
