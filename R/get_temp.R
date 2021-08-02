@@ -2,7 +2,7 @@
 #'@name get_temp
 
 #'@param .date a date or character representing the date of the point data to be extracted
-#'@param .location_xy a data.frame or an object to be coerced, with longitud and latitude
+#'@param .location_xy a data.frame or an object to be coerced, with longitude and latitude
 #'@param .var a character of the variable of interest
 #'@param .statistic an integer for the statistic to extract, options are:
 #'1 = Max-24h,
@@ -52,20 +52,21 @@ agera5_temp_extract <- function(.date,
 }
 
 #'@export
-extract_period <- function(.start_date,
-                           .end_date,
-                           .location_xy,
-                           .var,
-                           .statistic,
-                           .agera5_folder){
+extract_temp_period <- function(.start_date,
+                                .end_date,
+                                .location_xy,
+                                .var,
+                                .statistic,
+                                .agera5_folder){
 
-  .start_date <- as.Date(.start_date,format = "%m/%d/%Y")
-  .end_date <- as.Date(.end_date,format = "%m/%d/%Y")
+  .start_date <- as.Date(.start_date, format = "%m/%d/%Y")
+  .end_date <- as.Date(.end_date, format = "%m/%d/%Y")
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
   data_out_period <- array(dim = c(1, length(time_span)))
 
   for(i in 1:length(time_span)){
     data_out_period[, i] <- agera5_temp_extract(time_span[i], .location_xy, .var, .statistic, .agera5_folder)
+
   }
 
   colnames(data_out_period) <- as.character(time_span)
@@ -118,9 +119,22 @@ get_filepath <- function(.var, .statistic, .date_to_search, .agera5_folder){
 }
 
 
+#'@param .trial_dataset Data containing the required data, usually the trial data points
+#'@param .stat Temperature stat to extract
+#'@param .start_date Name of the column that holds the start date of the time period to extract
+#'@param .end_date
+#'@param .lon Name of the column that holds the longitude
+#'@param .lat Name of the column that holds the latitude
+#'@param .agera5_folder Location of the agera5 data folder
+
+
 #'@export
 extract_temp_dataset <- function(.trial_dataset,
                                  .stat,
+                                 .start_date,
+                                 .end_date,
+                                 .lon,
+                                 .lat,
                                  .agera5_folder){
 
   extracted_dataset <- NULL
@@ -128,9 +142,9 @@ extract_temp_dataset <- function(.trial_dataset,
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
   for(i in 1:nrow(.trial_dataset)){
-    extracted_dataset[[i]] <- extract_period(.trial_dataset[i, ]$pdate,
-                                             .trial_dataset[i, ]$hdate,
-                                             data.frame(lon = .trial_dataset[i, ]$lon, lat = .trial_dataset[i, ]$lat),
+    extracted_dataset[[i]] <- extract_period(.trial_dataset[i, .start_date],
+                                             .trial_dataset[i, .end_date],
+                                             data.frame(lon = .trial_dataset[i, .lon], lat = .trial_dataset[i, .lat]),
                                              "temp",
                                              .stat,
                                              .agera5_folder)
