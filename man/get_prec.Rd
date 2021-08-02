@@ -3,9 +3,22 @@
 \name{get_prec}
 \alias{get_prec}
 \alias{get_prec.data_point}
+\alias{get_prec.period}
+\alias{get_prec.dataset}
 \title{This set of functions extract precipitation data from locally stored AgERA5 data}
 \usage{
 get_prec.data_point(.date, .location_xy, .agera5_folder)
+
+get_prec.period(.start_date, .end_date, .location_xy, .agera5_folder)
+
+get_prec.dataset(
+  .trial_dataset = NULL,
+  .start_date = "pdate",
+  .end_date = "hdate",
+  .lon = "lon",
+  .lat = "lat",
+  .agera5_folder
+)
 }
 \arguments{
 \item{.date}{a date or character representing the date of the point data to be extracted}
@@ -19,3 +32,10 @@ get_prec.data_point(.date, .location_xy, .agera5_folder)
 \description{
 This set of functions extract precipitation data from locally stored AgERA5 data
 }
+\section{Functions}{
+\itemize{
+\item \code{get_prec.period}: Get precipitation data for one location for a provided time period
+
+\item \code{get_prec.dataset}: Iterates across a data set to extract all required data points
+}}
+

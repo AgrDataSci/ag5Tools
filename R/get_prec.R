@@ -34,7 +34,7 @@ get_prec.data_point <- function(.date,
   return(extracted_data)
 }
 
-#'@describeIn get_prec
+#'@describeIn get_prec Get precipitation data for one location for a provided time period
 
 #'@export
 get_prec.period <- function(.start_date,
@@ -55,7 +55,7 @@ get_prec.period <- function(.start_date,
   return(data_out_period)
 }
 
-#'@describeIn get_prec
+#'@describeIn get_prec Iterates across a data set to extract all required data points
 
 #'@export
 get_prec.dataset <- function(.trial_dataset = NULL,
@@ -88,7 +88,7 @@ get_prec.dataset <- function(.trial_dataset = NULL,
 
 }
 
-
+#internal function to get the file path
 get_prec_filepath <- function(.date_to_search, .agera5_folder){
 
   date_to_search <- as.Date(.date_to_search)
