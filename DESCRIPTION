@@ -1,6 +1,6 @@
 Package: agera5
 Title: Data extraction from AgERA5 data
-Version: 0.0.0.9005
+Version: 0.0.0.9006
 Authors@R:
           c(person(given = "David",
           family = "Brown",
