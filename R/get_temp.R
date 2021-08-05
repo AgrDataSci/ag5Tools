@@ -102,12 +102,12 @@ get_temp.dataset <- function(.trial_dataset = NULL,
                              .lat = "lat",
                              .agera5_folder){
 
-  extracted_dataset <- NULL
+  output_list <- vector(mode = "list", length = nrow(.trial_dataset))
 
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
   for(i in 1:nrow(.trial_dataset)){
-    extracted_dataset[[i]] <- get_temp.period(.start_date = .trial_dataset[i, .start_date],
+    output_list[[i]] <- get_temp.period(.start_date = .trial_dataset[i, .start_date],
                                               .end_date =  .trial_dataset[i, .end_date],
                                               .lon = .trial_dataset[i, .lon],
                                               .lat = .trial_dataset[i, .lat],
@@ -119,7 +119,7 @@ get_temp.dataset <- function(.trial_dataset = NULL,
     setTxtProgressBar(progress_bar, i)
 
 }
-  return(extracted_dataset)
+  return(output_list)
 
   close(progress_bar)
 
