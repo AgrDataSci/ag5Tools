@@ -69,24 +69,24 @@ get_prec.dataset <- function(.trial_dataset = NULL,
                              .agera5_folder){
 
   #initialize output variable
-  extracted_dataset <- vector(mode = "list", length = nrow(.trial_dataset))
+  output_list <- vector(mode = "list", length = nrow(.trial_dataset))
 
   #set progress bar
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
   #loop to get the data
   for(i in 1:nrow(.trial_dataset)){
-    extracted_dataset[[i]] <- get_prec.period(.trial_dataset[i, .start_date],
+    output_list[[i]] <- get_prec.period(.trial_dataset[i, .start_date],
                                               .trial_dataset[i, .end_date],
-                                              data.frame(lon = .trial_dataset[i, .lon],
-                                                         lat = .trial_dataset[i, .lat]),
-                                                  .agera5_folder)
+                                              .lon = .trial_dataset[i, .lon],
+                                              .lat = .trial_dataset[i, .lat],
+                                              .agera5_folder)
     Sys.sleep(0.1)
     setTxtProgressBar(progress_bar, i)
 
   }
 
-  return(extracted_dataset)
+  return(output_list)
   close(progress_bar)
 
 }
