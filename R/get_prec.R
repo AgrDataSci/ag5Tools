@@ -10,7 +10,8 @@
 
 #'@export
 get_prec.data_point <- function(.date,
-                               .location_xy,
+                               .lon,
+                               .lat,
                                .agera5_folder){
 
   file_path <- get_prec_filepath(.date,
@@ -22,7 +23,7 @@ get_prec.data_point <- function(.date,
 
   #agera5_brick <- raster::brick("D:/Dropbox (Bioversity CR)/dbrown_files/AgERA5/prec/2015/Precipitation-Flux_C3S-glob-agric_AgERA5_daily_20150101-20150131_final-v1.0.nc")
   #data_out <- raster::extract(agera5_brick, .location_xy)
-  data_out <- terra::extract(agera5_spat_rast, .location_xy, factors = F)
+  data_out <- terra::extract(x = agera5_spat_rast, y = cbind(.lon, .lat), factors = F)
 
 
   # date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
@@ -38,19 +39,21 @@ get_prec.data_point <- function(.date,
 
 #'@export
 get_prec.period <- function(.start_date,
-                                .end_date,
-                                .location_xy,
-                                .agera5_folder){
+                            .end_date,
+                            .lon,
+                            .lat,
+                            .agera5_folder){
 
   start_date <- as.Date(.start_date, format = "%m/%d/%Y")
   end_date <- as.Date(.end_date, format = "%m/%d/%Y")
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
-  data_out_period <- array(dim = c(1, length(time_span)))
+
+  data_out_period <- vector(mode = "numeric", length = length(time_span))
 
   for(i in 1:length(time_span)){
-    data_out_period[, i] <- get_prec.data_point(time_span[i], .location_xy, .agera5_folder)
+    data_out_period[i] <- get_prec.data_point(time_span[i], .lon, .lat, .agera5_folder)
   }
-  colnames(data_out_period) <- as.character(time_span)
+  names(data_out_period) <- as.character(time_span)
 
   return(data_out_period)
 }
@@ -66,7 +69,7 @@ get_prec.dataset <- function(.trial_dataset = NULL,
                              .agera5_folder){
 
   #initialize output variable
-  extracted_dataset <- NULL
+  extracted_dataset <- vector(mode = "list", length = nrow(.trial_dataset))
 
   #set progress bar
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)

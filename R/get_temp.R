@@ -36,7 +36,7 @@ get_temp.data_point <- function(.date,
   agera5_spat_rast <- terra::rast(file_path)
 
   #data_out <- raster::extract(agera5_brick, .location_xy)
-  data_out <- terra::extract(agera5_spat_rast, cbind(.lon, .lat), factors = F)
+  data_out <- terra::extract(x = agera5_spat_rast, y = cbind(.lon, .lat), factors = F)
 
   # date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
   #
