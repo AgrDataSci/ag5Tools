@@ -9,14 +9,15 @@
 
 #'@export
 get_srf.data_point <- function(.date,
-                               .location_xy,
+                               .lon,
+                               .lat,
                                .agera5_folder){
 
   file_path <- get_srf_filepath(.date, .agera5_folder)
 
   agera5_spat_rast <- terra::rast(file_path)
 
-  data_out <- terra::extract(agera5_spat_rast, .location_xy, factors = F)
+  data_out <- terra::extract(x = agera5_spat_rast, y = cbind(.lon, .lat), factors = F)
 
   day_to_extract <- lubridate::day(.date)
 
@@ -34,19 +35,21 @@ get_srf.data_point <- function(.date,
 
 #'@export
 get_srf.period <- function(.start_date,
-                               .end_date,
-                               .location_xy,
-                               .agera5_folder){
+                           .end_date,
+                           .lon,
+                           .lat,
+                           .agera5_folder){
 
   .start_date <- as.Date(.start_date, format = "%m/%d/%Y")
   .end_date <- as.Date(.end_date,format = "%m/%d/%Y")
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
-  data_out_period <- array(dim=c(1, length(time_span)))
+
+  data_out_period <- vector(mode = "numeric", length = length(time_span))
 
   for(i in 1:length(time_span)){
-    data_out_period[, i] <- get_srf.data_point(time_span[i], .location_xy, .agera5_folder)
+    data_out_period[i] <- get_srf.data_point(time_span[i], .lon, .lat, .agera5_folder)
   }
-  colnames(data_out_period) <- as.character(time_span)
+  names(data_out_period) <- as.character(time_span)
 
   return(data_out_period)
 }
@@ -61,21 +64,24 @@ get_srf.dataset <- function(.trial_dataset = NULL,
                             .lon = "lon",
                             .lat = "lat",
                             .agera5_folder){
-  extracted_dataset <- NULL
+
+  output_list <- vector(mode = "list", length = nrow(.trial_dataset))
+
   progress_bar <- txtProgressBar(min = 0, max = nrow(trial_dataset), style = 3)
 
   for(i in 1:nrow(trial_dataset)){
 
-    extracted_dataset[[i]] <- get_srf.period(trial_dataset[i, .start_date],
-                                             trial_dataset[i, .end_date],
-                                             data.frame(lon = trial_dataset[i, .lon], lat = trial_dataset[i, .lat]),
+    output_list[[i]] <- get_srf.period(.start_date = trial_dataset[i, .start_date],
+                                             .end_date = trial_dataset[i, .end_date],
+                                             .lon = trial_dataset[i, .lon],
+                                             .lat = trial_dataset[i, .lat],
                                              .agera5_folder)
 
     Sys.sleep(0.1)
     setTxtProgressBar(progress_bar, i)
 
   }
-  return(extracted_dataset)
+  return(output_list)
   close(progress_bar)
 }
 
@@ -98,7 +104,7 @@ get_srf_filepath <- function(.date_to_search, .agera5_folder){
 
   files_ <- list.files(paste(.agera5_folder, "srf", year_to_search, sep = "/"))
 
-  file_name <- files_[str_detect(files_, agera5_file_pattern)]
+  file_name <- files_[stringr::str_detect(files_, agera5_file_pattern)]
 
   agera5_file_path <- paste(.agera5_folder, "srf", year_to_search, file_name, sep = "/")
 
