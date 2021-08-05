@@ -24,7 +24,8 @@
 
 #'@export
 get_temp.data_point <- function(.date,
-                                .location_xy,
+                                .lon,
+                                .lat,
                                 .var,
                                 .statistic,
                                 .agera5_folder){
@@ -35,7 +36,7 @@ get_temp.data_point <- function(.date,
   agera5_spat_rast <- terra::rast(file_path)
 
   #data_out <- raster::extract(agera5_brick, .location_xy)
-  data_out <- terra::extract(agera5_spat_rast, .location_xy, factors = F)
+  data_out <- terra::extract(agera5_spat_rast, cbind(.lon, .lat), factors = F)
 
   # date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
   #
@@ -61,7 +62,8 @@ get_temp.data_point <- function(.date,
 #'@export
 get_temp.period <- function(.start_date,
                             .end_date,
-                            .location_xy,
+                            .lon,
+                            .lat,
                             .var,
                             .statistic,
                             .agera5_folder){
@@ -72,10 +74,10 @@ get_temp.period <- function(.start_date,
 
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
-  data_out_period <- array(dim = c(1, length(time_span)))
+  data_out_period <- vector(mode = numeric, length = length(time_span))
 
   for(i in 1:length(time_span)){
-    data_out_period[, i] <- get_temp.data_point(time_span[i], .location_xy, .var, .statistic, .agera5_folder)
+    data_out_period[i] <- get_temp.data_point(time_span[i], .lon, .lat, .var, .statistic, .agera5_folder)
 
   }
 
@@ -103,12 +105,13 @@ get_temp.dataset <- function(.trial_dataset = NULL,
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
   for(i in 1:nrow(.trial_dataset)){
-    extracted_dataset[[i]] <- get_temp.period(.trial_dataset[i, .start_date],
-                                              .trial_dataset[i, .end_date],
-                                              data.frame(lon = .trial_dataset[i, .lon], lat = .trial_dataset[i, .lat]),
-                                              "temp",
-                                              .stat,
-                                              .agera5_folder)
+    extracted_dataset[[i]] <- get_temp.period(.start_date = .trial_dataset[i, .start_date],
+                                              .end_date =  .trial_dataset[i, .end_date],
+                                              .lon = .trial_dataset[i, .lon],
+                                              .lat = .trial_dataset[i, .lat],
+                                              .var = "temp",
+                                              .statistic = .stat,
+                                              .agera5_folder = .agera5_folder)
 
     Sys.sleep(0.1)
     setTxtProgressBar(progress_bar, i)
