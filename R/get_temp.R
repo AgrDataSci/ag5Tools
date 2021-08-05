@@ -53,6 +53,8 @@ get_temp.data_point <- function(.date,
 
   #extracted_data <- data_out[1, date_to_extract]
 
+  extracted_data <- extracted_data - 273.15
+
   return(extracted_data)
 
 }
@@ -74,16 +76,16 @@ get_temp.period <- function(.start_date,
 
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
-  data_out_period <- vector(mode = numeric, length = length(time_span))
+  data_out_period <- vector(mode = "numeric", length = length(time_span))
 
   for(i in 1:length(time_span)){
     data_out_period[i] <- get_temp.data_point(time_span[i], .lon, .lat, .var, .statistic, .agera5_folder)
 
   }
 
-  colnames(data_out_period) <- as.character(time_span)
+  names(data_out_period) <- as.character(time_span)
 
-  data_out_period <- data_out_period - 273.15
+  #data_out_period <- data_out_period - 273.15
 
   return(data_out_period)
 }
