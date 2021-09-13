@@ -1,7 +1,12 @@
 ## agera5 package
 
-Utility functions to extract data by time and location from locally stored data downloaded from the
-"Agrometeorological indicators from 1979 to present derived from reanalysis".  
+R toolbox to download and extract data from the "Agrometeorological indicators from 1979 to present derived from reanalysis" dataset.
+We only provide a programatic access to the dataset.  
+
+For specific details about the license agreenment on downloading and using the data please check the dataset license at: 
+https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf
+
+Download functionality is made using the Python cdsapi. Please also consider using it directly.
 
 ### Installation  
 ``` r
