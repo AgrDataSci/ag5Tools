@@ -7,9 +7,9 @@
 \alias{get_prec.dataset}
 \title{This set of functions extract precipitation data from locally stored AgERA5 data}
 \usage{
-get_prec.data_point(.date, .location_xy, .agera5_folder)
+get_prec.data_point(.date, .lon, .lat, .agera5_folder)
 
-get_prec.period(.start_date, .end_date, .location_xy, .agera5_folder)
+get_prec.period(.start_date, .end_date, .lon, .lat, .agera5_folder)
 
 get_prec.dataset(
   .trial_dataset = NULL,

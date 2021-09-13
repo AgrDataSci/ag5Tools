@@ -7,12 +7,13 @@
 \alias{get_temp.dataset}
 \title{This set of functions extract temperature data from locally stored AgERA5 data}
 \usage{
-get_temp.data_point(.date, .location_xy, .var, .statistic, .agera5_folder)
+get_temp.data_point(.date, .lon, .lat, .var, .statistic, .agera5_folder)
 
 get_temp.period(
   .start_date,
   .end_date,
-  .location_xy,
+  .lon,
+  .lat,
   .var,
   .statistic,
   .agera5_folder
@@ -31,7 +32,9 @@ get_temp.dataset(
 \arguments{
 \item{.date}{a date or character representing the date of the point data to be extracted}
 
-\item{.location_xy}{a data.frame or an object to be coerced, with longitude and latitude}
+\item{.lon}{Character Name of the column that holds the longitude}
+
+\item{.lat}{Character Name of the column that holds the latitude}
 
 \item{.var}{a character of the variable of interest}
 
@@ -52,16 +55,15 @@ get_temp.dataset(
 
 \item{.trial_dataset}{Data containing the required data, usually the trial data points}
 
-\item{.lon}{Character Name of the column that holds the longitude}
-
-\item{.lat}{Character Name of the column that holds the latitude}
+\item{.location_xy}{a data.frame or an object to be coerced, with longitude and latitude}
 }
 \description{
 This set of functions extract temperature data from locally stored AgERA5 data
 }
 \section{Functions}{
 \itemize{
-\item \code{get_temp.period}: Get temperature data for one location for a provided time period
+\item \code{get_temp.period}: Get temperature data for one location using example code from :
+https://cran.r-project.org/web/packages/futureheatwaves/vignettes/starting_from_netcdf.html
 
 \item \code{get_temp.dataset}: Iterates across a data set to extract all required data points
 }}

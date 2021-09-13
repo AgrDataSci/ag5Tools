@@ -7,9 +7,9 @@
 \alias{get_srf.dataset}
 \title{This set of functions extract solar radiatio flux data from locally stored AgERA5 data}
 \usage{
-get_srf.data_point(.date, .location_xy, .agera5_folder)
+get_srf.data_point(.date, .lon, .lat, .agera5_folder)
 
-get_srf.period(.start_date, .end_date, .location_xy, .agera5_folder)
+get_srf.period(.start_date, .end_date, .lon, .lat, .agera5_folder)
 
 get_srf.dataset(
   .trial_dataset = NULL,
