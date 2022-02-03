@@ -1,41 +1,55 @@
 #'This set of functions extract precipitation data from locally stored AgERA5 data
 #'@name get_prec
-
-#'@param .date a date or character representing the date of the point data to be extracted
-#'@param .location_xy a data.frame or an object to be coerced, with longitude and latitude
-#'@param .var a character of the variable of interest
-#'@param .statistic an integer for the statistic to extract, options are:
 #'
 
+#'@param .date a date or character representing the date of the data point to be extracted
+#'@param .lon numeric Longitude for the point of interest
+#'@param .lat numeric Latitude for the point of interest
+#'@param .agera5_folder Folder in the local system where the agera5 data is stored. Usually the root folder will work as the function will
+#'search recursively
 
 #'@export
 get_prec.data_point <- function(.date,
-                               .lon,
-                               .lat,
-                               .agera5_folder){
+                                .lon,
+                                .lat,
+                                .agera5_folder){
 
-  file_path <- get_prec_filepath(.date,
+  file_path <- get_prec_file_path(.date,
                                  .agera5_folder)
-
-  #agera5_brick <- raster::brick(file_path)
 
   agera5_spat_rast <- terra::rast(file_path)
 
-  #agera5_brick <- raster::brick("D:/Dropbox (Bioversity CR)/dbrown_files/AgERA5/prec/2015/Precipitation-Flux_C3S-glob-agric_AgERA5_daily_20150101-20150131_final-v1.0.nc")
-  #data_out <- raster::extract(agera5_brick, .location_xy)
   data_out <- terra::extract(x = agera5_spat_rast, y = cbind(.lon, .lat), factors = F)
 
-
-  # date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
-  # date_to_extract <- paste0("X", date_to_extract)
-
-  # day_to_extract <- lubridate::day(.date)
-  # extracted_data <- data_out[1, paste0("Precipitation_Flux_", day_to_extract)]
-
-  return(data_out)
+  return(data_out[1])
 }
 
 #'@describeIn get_prec Get precipitation data for one location for a provided time period
+#'@param .start_date Date or character to be coerced as Date The starting date for the period to extract
+#'@param .end_date Date or character to be coerced as Date The end date for the period to extract
+#'
+
+#@export
+# get_prec.period <- function(.start_date,
+#                             .end_date,
+#                             .lon,
+#                             .lat,
+#                             .agera5_folder){
+#
+#   start_date <- as.Date(.start_date)#, format = "%m/%d/%Y")
+#   end_date <- as.Date(.end_date)#, format = "%m/%d/%Y")
+#
+#   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
+#
+#   data_out_period <- vector(mode = "numeric", length = length(time_span))
+#
+#   for(i in 1:length(time_span)){
+#     data_out_period[i] <- get_prec.data_point(time_span[i], .lon, .lat, .agera5_folder)
+#   }
+#   names(data_out_period) <- as.character(time_span)
+#
+#   return(data_out_period)
+# }
 
 #'@export
 get_prec.period <- function(.start_date,
@@ -46,17 +60,28 @@ get_prec.period <- function(.start_date,
 
   start_date <- as.Date(.start_date)#, format = "%m/%d/%Y")
   end_date <- as.Date(.end_date)#, format = "%m/%d/%Y")
+
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
   data_out_period <- vector(mode = "numeric", length = length(time_span))
 
-  for(i in 1:length(time_span)){
-    data_out_period[i] <- get_prec.data_point(time_span[i], .lon, .lat, .agera5_folder)
-  }
+  # nc_files_list <- vapply(X = time_span,
+  #                         FUN.VALUE = vector(mode = "character", length = 1),
+  #                         function(X) get_prec_file_path(.date_to_search = X,
+  #                                                        .agera5_folder = .agera5_folder))
+
+  nc_files_list <- get_prec_file_path(time_span,
+                                      .agera5_folder)
+
+  prec_stack <- terra::rast(nc_files_list)
+
+  data_out_period <- terra::extract(prec_stack, cbind(.lon, .lat),)
+
   names(data_out_period) <- as.character(time_span)
 
   return(data_out_period)
 }
+
 
 #'@describeIn get_prec Iterates across a data set to extract all required data points
 
@@ -91,8 +116,9 @@ get_prec.dataset <- function(.trial_dataset = NULL,
 
 }
 
+
 #internal function to get the file path
-get_prec_filepath <- function(.date_to_search, .agera5_folder){
+get_prec_file_path <- function(.date_to_search, .agera5_folder){
 
   date_pattern <- gsub("-", "", .date_to_search)
 
@@ -100,21 +126,17 @@ get_prec_filepath <- function(.date_to_search, .agera5_folder){
 
   agera5_file_pattern <- paste0(file_prefix, date_pattern)
 
-  target_file_path <- list.files(path = .agera5_folder, pattern = agera5_file_pattern, full.names = TRUE)
+  target_file_path <- vector(mode = "character", length = length(.date_to_search))
 
-  # date_to_search <- as.Date(.date_to_search)
-  # prec_prefix <- "Precipitation-Flux_C3S-glob-agric_AgERA5_daily_"
-  # prec_sufix <- "_final-v1.0.nc"
-  # year_to_search <- format(date_to_search, "%Y")
-  # month_to_search <- format(date_to_search, "%m")
-  # date_pattern <- paste0(year_to_search, month_to_search)
-  # agera5_file_pattern <- paste0(prec_prefix, date_pattern)
-  #
-  # files_ <- list.files(paste(.agera5_folder, "prec", year_to_search, sep = "/"))
-  # file_name <- files_[stringr::str_detect(files_, agera5_file_pattern)]
-  # agera5_file_path <- paste(.agera5_folder, "prec", year_to_search, file_name, sep="/")
-
+  target_file_path <- as.character(sapply(agera5_file_pattern,
+                             function(X){
+                               fs::dir_ls(path = .agera5_folder,
+                                          regexp = X,
+                                          recurse = TRUE)
+                             }
+                             ))
 
   return(target_file_path)
+
 }
 

@@ -21,13 +21,18 @@ get_prec.dataset(
 )
 }
 \arguments{
-\item{.date}{a date or character representing the date of the point data to be extracted}
+\item{.date}{a date or character representing the date of the data point to be extracted}
 
-\item{.location_xy}{a data.frame or an object to be coerced, with longitude and latitude}
+\item{.lon}{numeric Longitude for the point of interest}
 
-\item{.var}{a character of the variable of interest}
+\item{.lat}{numeric Latitude for the point of interest}
 
-\item{.statistic}{an integer for the statistic to extract, options are:}
+\item{.agera5_folder}{Folder in the local system where the agera5 data is stored. Usually the root folder will work as the function will
+search recursively}
+
+\item{.start_date}{Date or character to be coerced as Date The starting date for the period to extract}
+
+\item{.end_date}{Date or character to be coerced as Date The end date for the period to extract}
 }
 \description{
 This set of functions extract precipitation data from locally stored AgERA5 data

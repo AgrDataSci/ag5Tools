@@ -53,17 +53,27 @@ get_temp.dataset(
 
 \item{.end_date}{Character Name of the column that holds the end date of the time period to extract}
 
-\item{.trial_dataset}{Data containing the required data, usually the trial data points}
+\item{.trial_dataset}{Data containing the required parameters, usually the trial data points}
 
 \item{.location_xy}{a data.frame or an object to be coerced, with longitude and latitude}
 }
 \description{
 This set of functions extract temperature data from locally stored AgERA5 data
 }
+\details{
+*.static
+\itemize{
+\item 24_hour_maximum
+\item 24_hour_mean
+\item 24_hour_minimum
+\item day_time_maximum
+\item day_time_mean
+\item night_time_mean
+\item night_time_minimum}
+}
 \section{Functions}{
 \itemize{
-\item \code{get_temp.period}: Get temperature data for one location using example code from :
-https://cran.r-project.org/web/packages/futureheatwaves/vignettes/starting_from_netcdf.html
+\item \code{get_temp.period}: Get temperature data for one location for a provided time period
 
 \item \code{get_temp.dataset}: Iterates across a data set to extract all required data points
 }}

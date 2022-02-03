@@ -13,22 +13,25 @@ get_srf.data_point <- function(.date,
                                .lat,
                                .agera5_folder){
 
-  file_path <- get_srf_filepath(.date, .agera5_folder)
+  file_path <- get_srf_filepath(.date,
+                                .agera5_folder)
 
   agera5_spat_rast <- terra::rast(file_path)
 
   data_out <- terra::extract(x = agera5_spat_rast, y = cbind(.lon, .lat), factors = F)
 
-  day_to_extract <- lubridate::day(.date)
+  #day_to_extract <- lubridate::day(.date)
 
-  extracted_data <- data_out[1, paste0("Solar-Radiation-Flux_", day_to_extract)]
+  #extracted_data <- data_out[1, paste0("Solar-Radiation-Flux_", day_to_extract)]
 
 
   # date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
   # date_to_extract <- paste0("X", date_to_extract)
   # extracted_data <- data_out[1, date_to_extract]
 
-  return(extracted_data)
+  #return(extracted_data)
+
+  return(data_out[1])
 }
 
 #'@describeIn get_srf Get solar radiation flux data for one location for a provided time period
@@ -39,7 +42,6 @@ get_srf.period <- function(.start_date,
                            .lon,
                            .lat,
                            .agera5_folder){
-
   .start_date <- as.Date(.start_date, format = "%m/%d/%Y")
   .end_date <- as.Date(.end_date,format = "%m/%d/%Y")
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
@@ -67,14 +69,14 @@ get_srf.dataset <- function(.trial_dataset = NULL,
 
   output_list <- vector(mode = "list", length = nrow(.trial_dataset))
 
-  progress_bar <- txtProgressBar(min = 0, max = nrow(trial_dataset), style = 3)
+  progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
-  for(i in 1:nrow(trial_dataset)){
+  for(i in 1:nrow(.trial_dataset)){
 
-    output_list[[i]] <- get_srf.period(.start_date = trial_dataset[i, .start_date],
-                                             .end_date = trial_dataset[i, .end_date],
-                                             .lon = trial_dataset[i, .lon],
-                                             .lat = trial_dataset[i, .lat],
+    output_list[[i]] <- get_srf.period(.start_date = .trial_dataset[i, .start_date],
+                                             .end_date = .trial_dataset[i, .end_date],
+                                             .lon = .trial_dataset[i, .lon],
+                                             .lat = .trial_dataset[i, .lat],
                                              .agera5_folder)
 
     Sys.sleep(0.1)
@@ -89,27 +91,57 @@ get_srf.dataset <- function(.trial_dataset = NULL,
 #internal function to get the file path
 get_srf_filepath <- function(.date_to_search, .agera5_folder){
 
-  date_to_search <- as.Date(.date_to_search)
+  date_pattern <- gsub("-", "", .date_to_search)
 
-  prec_prefix <- "Solar-Radiation-Flux_C3S-glob-agric_AgERA5_daily_"
-  prec_sufix <- "_final-v1.0.nc"
-
-  year_to_search <- format(date_to_search, "%Y")
-
-  month_to_search <- format(date_to_search, "%m")
-
-  date_pattern <- paste0(year_to_search, month_to_search)
-
-  agera5_file_pattern <- paste0(prec_prefix, date_pattern)
-
-  files_ <- list.files(paste(.agera5_folder, "srf", year_to_search, sep = "/"))
-
-  file_name <- files_[stringr::str_detect(files_, agera5_file_pattern)]
-
-  agera5_file_path <- paste(.agera5_folder, "srf", year_to_search, file_name, sep = "/")
+  file_prefix <- "Solar-Radiation-Flux_C3S-glob-agric_AgERA5_"
 
 
-  return(agera5_file_path)
+
+  agera5_file_pattern <- paste0(file_prefix, date_pattern)
+
+  # target_file_path <- list.files(path = .agera5_folder,
+  #                                pattern = agera5_file_pattern,
+  #                                full.names = TRUE,
+  #                                recursive = TRUE)
+
+  target_file_path <- vector(mode = "character", length = length(.date_to_search))
+
+  target_file_path <- as.character(sapply(agera5_file_pattern,
+                                          function(X){
+                                            fs::dir_ls(path = .agera5_folder,
+                                                       regexp = X,
+                                                       recurse = TRUE)
+                                          }
+  ))
+
+
+
+
+  return(target_file_path)
+  ################################# OLD code
+
+
+  # date_to_search <- as.Date(.date_to_search)
+  #
+  # prec_prefix <- "Solar-Radiation-Flux_C3S-glob-agric_AgERA5_daily_"
+  # prec_sufix <- "_final-v1.0.nc"
+  #
+  # year_to_search <- format(date_to_search, "%Y")
+  #
+  # month_to_search <- format(date_to_search, "%m")
+  #
+  # date_pattern <- paste0(year_to_search, month_to_search)
+  #
+  # agera5_file_pattern <- paste0(prec_prefix, date_pattern)
+  #
+  # files_ <- list.files(paste(.agera5_folder, "srf", year_to_search, sep = "/"))
+  #
+  # file_name <- files_[stringr::str_detect(files_, agera5_file_pattern)]
+  #
+  # agera5_file_path <- paste(.agera5_folder, "srf", year_to_search, file_name, sep = "/")
+  #
+  #
+  # return(agera5_file_path)
 }
 
 
