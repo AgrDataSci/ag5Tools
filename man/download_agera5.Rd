@@ -4,7 +4,14 @@
 \alias{download_agera5}
 \title{Downloads AgERA5 data from the Copernicus Climate Change Service}
 \usage{
-download_agera5(agera5_var, agera5_stat, day = NULL, month = NULL, year, path)
+download_agera5(
+  agera5_var,
+  agera5_stat = NULL,
+  day = NULL,
+  month = NULL,
+  year,
+  path
+)
 }
 \arguments{
 \item{agera5_var}{Character The variable to be downloaded. See details}

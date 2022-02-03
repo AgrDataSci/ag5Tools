@@ -58,7 +58,7 @@
 
 #'@export
 download_agera5 <- function(agera5_var,
-                            agera5_stat,
+                            agera5_stat = NULL,
                             day = NULL,
                             month = NULL,
                             year,

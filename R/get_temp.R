@@ -1,5 +1,6 @@
-#'This set of functions extract temperature data from locally stored AgERA5 data
+#' Extract temperature values from locally stored AgERA5 data
 #'@name get_temp
+
 
 #'@param .date a date or character representing the date of the point data to be extracted
 #'@param .location_xy a data.frame or an object to be coerced, with longitude and latitude
@@ -22,7 +23,7 @@
 #'
 #'
 #'@details
-#'*.static
+#'\strong{valid .statistic values}
 #'\itemize{
 #'   \item 24_hour_maximum
 #'   \item 24_hour_mean

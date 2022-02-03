@@ -5,7 +5,7 @@
 \alias{get_temp.data_point}
 \alias{get_temp.period}
 \alias{get_temp.dataset}
-\title{This set of functions extract temperature data from locally stored AgERA5 data}
+\title{Extract temperature values from locally stored AgERA5 data}
 \usage{
 get_temp.data_point(.date, .lon, .lat, .var, .statistic, .agera5_folder)
 
@@ -58,10 +58,10 @@ get_temp.dataset(
 \item{.location_xy}{a data.frame or an object to be coerced, with longitude and latitude}
 }
 \description{
-This set of functions extract temperature data from locally stored AgERA5 data
+Extract temperature values from locally stored AgERA5 data
 }
 \details{
-*.static
+\strong{valid .statistic values}
 \itemize{
 \item 24_hour_maximum
 \item 24_hour_mean
