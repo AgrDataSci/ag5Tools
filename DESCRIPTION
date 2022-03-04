@@ -1,5 +1,5 @@
 Package: agera5
-Title: R tools for AgERA5 data
+Title: An R package for downloading and extracting AgERA5 data
 Version: 0.0.0.9007
 Authors@R:
           c(person(given = "David",
