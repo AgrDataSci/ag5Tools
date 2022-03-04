@@ -37,13 +37,13 @@
     <loc>https://agrdatasci.github.io/agera5/reference/get_prec.html</loc>
   </url>
   <url>
-    <loc>https://agrdatasci.github.io/agera5/reference/get_rhum.html</loc>
+    <loc>https://agrdatasci.github.io/agera5/reference/get_rhum.data_point.html</loc>
   </url>
   <url>
-    <loc>https://agrdatasci.github.io/agera5/reference/get_srf.html</loc>
+    <loc>https://agrdatasci.github.io/agera5/reference/get_srf.data_point.html</loc>
   </url>
   <url>
-    <loc>https://agrdatasci.github.io/agera5/reference/get_temp.html</loc>
+    <loc>https://agrdatasci.github.io/agera5/reference/get_temp.data_point.html</loc>
   </url>
   <url>
     <loc>https://agrdatasci.github.io/agera5/reference/index.html</loc>
