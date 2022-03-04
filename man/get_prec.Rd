@@ -2,16 +2,15 @@
 % Please edit documentation in R/get_prec.R
 \name{get_prec}
 \alias{get_prec}
-\alias{get_prec.data_point}
 \alias{get_prec.period}
 \alias{get_prec.dataset}
 \title{This set of functions extract precipitation data from locally stored AgERA5 data}
 \usage{
-get_prec.data_point(.date, .lon, .lat, .agera5_folder)
+get_prec(...)
 
-get_prec.period(.start_date, .end_date, .lon, .lat, .agera5_folder)
+\method{get_prec}{period}(.start_date, .end_date, .lon, .lat, .agera5_folder)
 
-get_prec.dataset(
+\method{get_prec}{dataset}(
   .trial_dataset = NULL,
   .start_date = "pdate",
   .end_date = "hdate",
@@ -21,7 +20,9 @@ get_prec.dataset(
 )
 }
 \arguments{
-\item{.date}{a date or character representing the date of the data point to be extracted}
+\item{.start_date}{Date or character to be coerced as Date The starting date for the period to extract}
+
+\item{.end_date}{Date or character to be coerced as Date The end date for the period to extract}
 
 \item{.lon}{numeric Longitude for the point of interest}
 
@@ -30,17 +31,15 @@ get_prec.dataset(
 \item{.agera5_folder}{Folder in the local system where the agera5 data is stored. Usually the root folder will work as the function will
 search recursively}
 
-\item{.start_date}{Date or character to be coerced as Date The starting date for the period to extract}
-
-\item{.end_date}{Date or character to be coerced as Date The end date for the period to extract}
+\item{.date}{a date or character representing the date of the data point to be extracted}
 }
 \description{
 This set of functions extract precipitation data from locally stored AgERA5 data
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{get_prec.period}: Get precipitation data for one location for a provided time period
+\item \code{period}: Get precipitation data for one location for a provided time period
 
-\item \code{get_prec.dataset}: Iterates across a data set to extract all required data points
+\item \code{dataset}: Iterates across a data set to extract all required data points
 }}
 

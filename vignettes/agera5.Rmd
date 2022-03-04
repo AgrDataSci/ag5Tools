@@ -1,0 +1,20 @@
+---
+title: "agera5"  
+description: agera5 is an R package to download and extract data from the \\'Agrometeorological indicators from 1979 to present derived from reanalysis\\' dataset (aka AgERA5)."
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{agera5}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(agera5)
+```

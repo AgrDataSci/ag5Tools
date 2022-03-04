@@ -5,21 +5,15 @@
 \alias{get_temp.data_point}
 \alias{get_temp.period}
 \alias{get_temp.dataset}
-\title{Extract temperature values from locally stored AgERA5 data}
+\title{Extracts 2m_temperature}
 \usage{
-get_temp.data_point(.date, .lon, .lat, .var, .statistic, .agera5_folder)
+get_temp(..., .lon, .lat, .statistic, .agera5_folder)
 
-get_temp.period(
-  .start_date,
-  .end_date,
-  .lon,
-  .lat,
-  .var,
-  .statistic,
-  .agera5_folder
-)
+\method{get_temp}{data_point}(.date, .lon, .lat, .statistic, .agera5_folder)
 
-get_temp.dataset(
+\method{get_temp}{period}(.start_date, .end_date, .lon, .lat, .statistic, .agera5_folder)
+
+\method{get_temp}{dataset}(
   .trial_dataset = NULL,
   .stat = NULL,
   .start_date = "pdate",
@@ -30,24 +24,15 @@ get_temp.dataset(
 )
 }
 \arguments{
-\item{.date}{a date or character representing the date of the point data to be extracted}
-
 \item{.lon}{Character Name of the column that holds the longitude}
 
 \item{.lat}{Character Name of the column that holds the latitude}
 
-\item{.var}{a character of the variable of interest}
-
-\item{.statistic}{an integer for the statistic to extract, options are:
-1 = Max-24h,
-2 = Max-Day-Time
-3 = Mean-24h
-4 = Mean-Day-Time
-5 = Mean-Night-Time
-6 = Min-24h
-7 = Min-Night-Time}
+\item{.statistic}{an integer for the statistic to extract, see details for valid options}
 
 \item{.agera5_folder}{a character with agera5 data folder location}
+
+\item{.date}{Date or character representing the date of the point data to be extracted}
 
 \item{.start_date}{Character Name of the column that holds the start date of the time period to extract}
 
@@ -55,26 +40,29 @@ get_temp.dataset(
 
 \item{.trial_dataset}{Data containing the required parameters, usually the trial data points}
 
-\item{.location_xy}{a data.frame or an object to be coerced, with longitude and latitude}
+\item{.var}{character of the variable of interest, currently only Temperature-Air-2m}
 }
 \description{
-Extract temperature values from locally stored AgERA5 data
+\code{get_temp} extracts temperature values of the variable 2m_temperature
+from locally stored AgERA5 files
 }
 \details{
 \strong{valid .statistic values}
 \itemize{
-\item 24_hour_maximum
-\item 24_hour_mean
+\item Max-24h
+\item Mean-24h
 \item 24_hour_minimum
-\item day_time_maximum
-\item day_time_mean
-\item night_time_mean
-\item night_time_minimum}
+\item Max-Day-Time
+\item Mean-Day-Time
+\item Mean-Night-Time
+\item Min-Night-Time}
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{get_temp.period}: Get temperature data for one location for a provided time period
+\item \code{data_point}: Get temperature data for one location and one date
 
-\item \code{get_temp.dataset}: Iterates across a data set to extract all required data points
+\item \code{period}: Get temperature data for one location for a provided time period
+
+\item \code{dataset}: Iterates across a data set to extract all required data points
 }}
 

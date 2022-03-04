@@ -1,4 +1,4 @@
-#'This set of functions extract solar radiatio flux data from locally stored AgERA5 data
+#'This set of functions extract solar radiation flux data from locally stored AgERA5 data
 #'@name get_srf
 
 #'@param .date a date or character representing the date of the point data to be extracted

@@ -7,14 +7,23 @@
 #'@param .lat numeric Latitude for the point of interest
 #'@param .agera5_folder Folder in the local system where the agera5 data is stored. Usually the root folder will work as the function will
 #'search recursively
+#'
 
+get_prec <- function(...){
+
+  UseMethod("get_prec")
+
+}
+
+
+#'
 #'@export
 get_prec.data_point <- function(.date,
                                 .lon,
                                 .lat,
                                 .agera5_folder){
 
-  file_path <- get_prec_file_path(.date,
+  file_path <- get_file_path(.date,
                                  .agera5_folder)
 
   agera5_spat_rast <- terra::rast(file_path)
@@ -51,6 +60,7 @@ get_prec.data_point <- function(.date,
 #   return(data_out_period)
 # }
 
+#'
 #'@export
 get_prec.period <- function(.start_date,
                             .end_date,
@@ -117,26 +127,5 @@ get_prec.dataset <- function(.trial_dataset = NULL,
 }
 
 
-#internal function to get the file path
-get_prec_file_path <- function(.date_to_search, .agera5_folder){
 
-  date_pattern <- gsub("-", "", .date_to_search)
-
-  file_prefix <- "Precipitation-Flux_C3S-glob-agric_AgERA5_"
-
-  agera5_file_pattern <- paste0(file_prefix, date_pattern)
-
-  target_file_path <- vector(mode = "character", length = length(.date_to_search))
-
-  target_file_path <- as.character(sapply(agera5_file_pattern,
-                             function(X){
-                               fs::dir_ls(path = .agera5_folder,
-                                          regexp = X,
-                                          recurse = TRUE)
-                             }
-                             ))
-
-  return(target_file_path)
-
-}
 

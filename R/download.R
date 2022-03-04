@@ -1,10 +1,13 @@
 #'Downloads AgERA5 data from the Copernicus Climate Change Service
 #'
 #'The data is downloaded from Copernicus Climate Change Service (C3) using the cdsapi python library
-#'https://github.com/ecmwf/cdsapi
+#'<https://github.com/ecmwf/cdsapi>
+#'
 #'This function  provides programmatic access to the dataset
 #'For more information about the data license, please visit:
 #'https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf
+#'
+#'To download the data you should have a valid CDS account and CDS API key
 
 
 
@@ -24,6 +27,7 @@
 #'\strong{Allowed combinations of variable and statistic:}
 #'\itemize{
 #'   \item cloud_cover
+#'   \itemize{24_hour_mean}
 #'   \itemize{
 #'   \item 24_hour_mean}
 #'   \item precipitation_flux
@@ -37,7 +41,7 @@
 #'   \item day_time_mean
 #'   \item night_time_mean
 #'   \item night_time_minimum}
-#'   \item 2m relative humidity
+#'   \item 2m_relative_humidity
 #'   \itemize{
 #'   \item 06_00
 #'   \item 09_00
@@ -48,13 +52,42 @@
 #'
 #'
 #'@examples
-#'download_agera5(agera5_var = '2m_temperature',
-#'agera5_stat = 'night_time_minimum',
-#'day = NULL,
-#'month = NULL,
+#'\dontrun{
+#'download_agera5(agera5_var = "2m_temperature",
+#'agera5_stat = "night_time_minimum",
+#'day = "all",
+#'month = "all",
 #'year = 2015,
 #'path = "C:/custom_target_folder/"
 #')
+#'}
+#'
+#for multiple years and months
+#months_list <- formatC(x = seq(1:12), width = 2, flag = 0)
+#
+# years_list <- 1991:1994
+#
+# #download precipitation data
+# for(i in seq_along(years_list)){
+#   for(j in months_list){
+#     agera5:::download_agera5(agera5_var = "precipitation_flux",
+#                              day = "all",
+#                              month = j,
+#                              year = years_list[i],
+#                              path = paste0("D:/Dropbox (Bioversity CR)/env_data/agera5/prec/new/",
+#                                            years_list[i]))
+#   }
+# }
+#'
+#'
+#'
+#'
+#'
+#'
+#'
+#'
+#'
+#'
 
 #'@export
 download_agera5 <- function(agera5_var,
@@ -62,6 +95,7 @@ download_agera5 <- function(agera5_var,
                             day = NULL,
                             month = NULL,
                             year,
+                            time = NULL,
                             path #, unzip_files = TRUE
                             ){
 
@@ -86,7 +120,8 @@ download_agera5 <- function(agera5_var,
                           "statistic" = agera5_stat,
                           "year" = as.integer(year),
                           "month" = month,
-                          "day" = day#,
+                          "day" = day,
+                          "time" = time
                           #CA countries bounding box - Disabled for the moment as it will increase the number of
                           #requests to the server - TODO: make optional later with a warning message.
                           # "area": [5.499027 ,-90.12486,  17.41847, -81.99986],

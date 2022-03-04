@@ -38,3 +38,8 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 .DS_Store
+
+# Data used only for devlopment
+dev_data/
+inst/doc
+docs

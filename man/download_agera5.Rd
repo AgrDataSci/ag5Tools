@@ -10,6 +10,7 @@ download_agera5(
   day = NULL,
   month = NULL,
   year,
+  time = NULL,
   path
 )
 }
@@ -24,23 +25,27 @@ download_agera5(
 
 \item{year}{Numeric (Integer) Year to download. Should be between 1979 - 2020}
 
+\item{time}{Character}
+
 \item{path}{Character Target location e.g. "C:/agera5" without the ending "/"}
 
 \item{unzip}{Logical Downloaded data is provided as zip files. Should the files be uncompressed in the target path?}
-
-\item{time}{Character}
 }
 \description{
 The data is downloaded from Copernicus Climate Change Service (C3) using the cdsapi python library
-https://github.com/ecmwf/cdsapi
+\url{https://github.com/ecmwf/cdsapi}
+}
+\details{
 This function  provides programmatic access to the dataset
 For more information about the data license, please visit:
 https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf
-}
-\details{
+
+To download the data you should have a valid CDS account and CDS API key
+
 \strong{Allowed combinations of variable and statistic:}
 \itemize{
 \item cloud_cover
+\itemize{24_hour_mean}
 \itemize{
 \item 24_hour_mean}
 \item precipitation_flux
@@ -54,7 +59,7 @@ https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-
 \item day_time_mean
 \item night_time_mean
 \item night_time_minimum}
-\item 2m relative humidity
+\item 2m_relative_humidity
 \itemize{
 \item 06_00
 \item 09_00
@@ -64,11 +69,24 @@ https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-
 }
 }
 \examples{
-download_agera5(agera5_var = '2m_temperature',
-agera5_stat = 'night_time_minimum',
-day = NULL,
-month = NULL,
+\dontrun{
+download_agera5(agera5_var = "2m_temperature",
+agera5_stat = "night_time_minimum",
+day = "all",
+month = "all",
 year = 2015,
 path = "C:/custom_target_folder/"
 )
+}
+
+
+
+
+
+
+
+
+
+
+
 }
