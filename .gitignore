@@ -41,5 +41,4 @@ vignettes/*.pdf
 
 # Data used only for devlopment
 dev_data/
-inst/doc
-docs
+
