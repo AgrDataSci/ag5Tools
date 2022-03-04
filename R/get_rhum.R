@@ -1,5 +1,5 @@
 #' Extract relative humidity values from locally stored AgERA5 data
-#'@name get_rhum
+
 
 #'@details
 #'\strong{valid .time values}
@@ -12,17 +12,8 @@
 #'   }
 
 
-#@describeIn get_temp Get temperature data for one location using terra package
 
-
-get_rhum <-function(...){
-
-  UseMethod("get_rhum")
-
-}
-
-
-#'@rdname get_rhum
+#'@name get_rhum.data_point
 #'@param .date a date or character representing the date of the point data to be extracted
 #'@param .lon a data.frame or an object to be coerced, with longitude and latitude
 #'@param .lat a data.frame or an object to be coerced, with longitude and latitude
@@ -49,10 +40,10 @@ get_rhum.data_point <- function(.date,
 }
 
 
-#'@describeIn get_rhum Get temperature data for one location for a provided time period
+#'@name get_rhum.time_series
 
 #'@export
-get_rhum.period <- function(.start_date,
+get_rhum.time_series <- function(.start_date,
                             .end_date,
                             .lon,
                             .lat,
@@ -90,7 +81,7 @@ get_rhum.period <- function(.start_date,
 }
 
 
-#'@describeIn get_rhum Iterates across a data set to extract all required data points
+#'@name get_rhum.dataset
 #'@param .trial_dataset data.frame containing the required parameters, usually the trial data points
 #'@param .start_date character Name of the column that holds the start date of the time period to extract
 #'@param .end_date character Name of the column that holds the end date of the time period to extract

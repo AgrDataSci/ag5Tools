@@ -1,14 +1,7 @@
 #' Extracts 2m_temperature
 #'
-#' \code{get_temp} extracts temperature values of the variable 2m_temperature
-#'  from locally stored AgERA5 files
-
-#'@export
-get_temp <- function(..., .agera5_folder){
-
-  UseMethod("get_temp")
-
-}
+#' extracts temperature values of the variable 2m_temperature
+#' from locally stored AgERA5 files
 
 #'
 #'@details
@@ -23,14 +16,13 @@ get_temp <- function(..., .agera5_folder){
 #'   \item Min-Night-Time}
 
 
-
+#'@name get_temp.data_point
 #'@param .date Date or character representing the date of the point data to be extracted
 #'@param .lon  numeric with longitude and latitude
 #'@param .lat numeric data.frame or an object to be coerced, with longitude and latitude
 #'@param .statistic character of the .statistic of interest, see details
 #'@param .agera5_folder character of the .statistic of interest, see details
 #'
-#'@describeIn get_temp Get temperature data for one location and one date
 
 #'@export
 get_temp.data_point <- function(.date,
@@ -55,32 +47,31 @@ get_temp.data_point <- function(.date,
 }
 
 
-#'@describeIn get_temp Get temperature data for one location for a provided time period
+#'@name get_temp.time_series
+#'@param .start_date Date or character representing the date of the point data to be extracted
+#'@param .lon  numeric with longitude and latitude
+#'@param .lat numeric data.frame or an object to be coerced, with longitude and latitude
+#'@param .statistic character of the .statistic of interest, see details
+#'@param .agera5_folder character of the .statistic of interest, see details
 
 #'@export
-get_temp.period <- function(.start_date,
-                            .end_date,
-                            .lon,
-                            .lat,
-                            .statistic,
-                            .agera5_folder){
+get_temp.time_series <- function(.start_date,
+                                 .end_date,
+                                 .lon,
+                                 .lat,
+                                 .statistic,
+                                 .agera5_folder){
 
-  .start_date <- as.Date(.start_date)#, format = "%m/%d/%Y")
-  #print(.start_date)
+  .start_date <- as.Date(.start_date)
 
-  .end_date <- as.Date(.end_date)#, format = "%m/%d/%Y")
-  #print(.end_date)
+  .end_date <- as.Date(.end_date)
+
 
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
   data_out_period <- vector(mode = "numeric", length = length(time_span))
 
-  # nc_files_list <- vapply(X = time_span,
-  #                         FUN.VALUE = vector(mode = "character", length = 1),
-  #                         function(X) get_file_path(.var = .var,
-  #                                                   .statistic = .statistic,
-  #                                                   .date = X,
-  #                                                   .agera5_folder = .agera5_folder))
+
 
   nc_files_list <- vapply(X = time_span,
                           FUN.VALUE = vector(mode = "character", length = 1),
@@ -100,7 +91,8 @@ get_temp.period <- function(.start_date,
 }
 
 
-#'@rdname get_temp Iterates across a data set to extract all required data points
+#'@name get_temp.dataset
+#'Iterates across a data set to extract all required data points
 #'@param .trial_dataset \code{data.frame} containing the required variables, usually from the trial data points
 #'@param .start_date character Name of the column that holds the start date of the time period to extract
 #'@param .end_date character Name of the column that holds the end date of the time period to extract
@@ -123,12 +115,12 @@ get_temp.dataset <- function(.trial_dataset,
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
   for(i in 1:nrow(.trial_dataset)){
-    output_list[[i]] <- get_temp.period(.start_date = .trial_dataset[i, .start_date],
-                                        .end_date =  .trial_dataset[i, .end_date],
-                                        .lon = .trial_dataset[i, .lon],
-                                        .lat = .trial_dataset[i, .lat],
-                                        .statistic = .stat,
-                                        .agera5_folder = .agera5_folder)
+    output_list[[i]] <- get_temp.time_series(.start_date = .trial_dataset[i, .start_date],
+                                             .end_date =  .trial_dataset[i, .end_date],
+                                             .lon = .trial_dataset[i, .lon],
+                                             .lat = .trial_dataset[i, .lat],
+                                             .statistic = .statistic,
+                                             .agera5_folder = .agera5_folder)
 
     Sys.sleep(0.1)
     setTxtProgressBar(progress_bar, i)

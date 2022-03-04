@@ -2,13 +2,13 @@
 % Please edit documentation in R/get_prec.R
 \name{get_prec}
 \alias{get_prec}
-\alias{get_prec.period}
+\alias{get_prec.time_series}
 \alias{get_prec.dataset}
 \title{This set of functions extract precipitation data from locally stored AgERA5 data}
 \usage{
 get_prec(...)
 
-\method{get_prec}{period}(.start_date, .end_date, .lon, .lat, .agera5_folder)
+\method{get_prec}{time_series}(.start_date, .end_date, .lon, .lat, .agera5_folder)
 
 \method{get_prec}{dataset}(
   .trial_dataset = NULL,
@@ -38,7 +38,7 @@ This set of functions extract precipitation data from locally stored AgERA5 data
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{period}: Get precipitation data for one location for a provided time period
+\item \code{time_series}: Get precipitation data for one location for a provided time period
 
 \item \code{dataset}: Iterates across a data set to extract all required data points
 }}

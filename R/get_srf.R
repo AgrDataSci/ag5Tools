@@ -1,12 +1,14 @@
-#'This set of functions extract solar radiation flux data from locally stored AgERA5 data
-#'@name get_srf
+#'Extracts solar radiation flux data from locally stored AgERA5 data
 
+
+
+
+
+#'@name get_srf.data_point
 #'@param .date a date or character representing the date of the point data to be extracted
-#'@param .location_xy a data.frame or an object to be coerced, with longitude and latitude
-#'@param .var a character of the variable of interest
-#'@param .statistic an integer for the statistic to extract, options are:
-
-
+#'@param .lon character longitude
+#'@param .lat character latitude
+#'@param .agera5_folder character The location the of the folder with agera5 (*.nc) files
 #'@export
 get_srf.data_point <- function(.date,
                                .lon,
@@ -20,47 +22,46 @@ get_srf.data_point <- function(.date,
 
   data_out <- terra::extract(x = agera5_spat_rast, y = cbind(.lon, .lat), factors = F)
 
-  #day_to_extract <- lubridate::day(.date)
-
-  #extracted_data <- data_out[1, paste0("Solar-Radiation-Flux_", day_to_extract)]
-
-
-  # date_to_extract <- gsub(x = .date, pattern = "-", replacement = ".")
-  # date_to_extract <- paste0("X", date_to_extract)
-  # extracted_data <- data_out[1, date_to_extract]
-
-  #return(extracted_data)
-
   return(data_out[1])
 }
 
-#'@describeIn get_srf Get solar radiation flux data for one location for a provided time period
+
+#'@name get_srf.time_series
+#'get_srf Get solar radiation flux data for one location for a provided time period
 
 #'@export
-get_srf.period <- function(.start_date,
-                           .end_date,
-                           .lon,
-                           .lat,
-                           .agera5_folder){
+get_srf.time_series <- function(.start_date,
+                                .end_date,
+                                .lon,
+                                .lat,
+                                .agera5_folder){
+
   .start_date <- as.Date(.start_date, format = "%m/%d/%Y")
+
   .end_date <- as.Date(.end_date,format = "%m/%d/%Y")
+
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
   data_out_period <- vector(mode = "numeric", length = length(time_span))
 
   for(i in 1:length(time_span)){
+
     data_out_period[i] <- get_srf.data_point(time_span[i], .lon, .lat, .agera5_folder)
+
   }
+
   names(data_out_period) <- as.character(time_span)
 
   return(data_out_period)
+
 }
 
 
-#'@describeIn get_srf Iterates across a data set to extract all required data points
+#'@name get_srf.dataset
+#' Iterates across a dataset to extract all required data points
 
 #'@export
-get_srf.dataset <- function(.trial_dataset = NULL,
+get_srf.dataset <- function(.trial_dataset,
                             .start_date = "pdate",
                             .end_date = "hdate",
                             .lon = "lon",
@@ -73,7 +74,7 @@ get_srf.dataset <- function(.trial_dataset = NULL,
 
   for(i in 1:nrow(.trial_dataset)){
 
-    output_list[[i]] <- get_srf.period(.start_date = .trial_dataset[i, .start_date],
+    output_list[[i]] <- get_srf.time_series(.start_date = .trial_dataset[i, .start_date],
                                              .end_date = .trial_dataset[i, .end_date],
                                              .lon = .trial_dataset[i, .lon],
                                              .lat = .trial_dataset[i, .lat],

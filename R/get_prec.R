@@ -62,7 +62,7 @@ get_prec.data_point <- function(.date,
 
 #'
 #'@export
-get_prec.period <- function(.start_date,
+get_prec.time_series <- function(.start_date,
                             .end_date,
                             .lon,
                             .lat,
@@ -111,7 +111,7 @@ get_prec.dataset <- function(.trial_dataset = NULL,
 
   #loop to get the data
   for(i in 1:nrow(.trial_dataset)){
-    output_list[[i]] <- get_prec.period(.trial_dataset[i, .start_date],
+    output_list[[i]] <- get_prec.time_series(.trial_dataset[i, .start_date],
                                               .trial_dataset[i, .end_date],
                                               .lon = .trial_dataset[i, .lon],
                                               .lat = .trial_dataset[i, .lat],
