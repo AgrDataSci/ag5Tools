@@ -69,7 +69,7 @@ get_temp.time_series <- function(.start_date,
 
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
-  data_out_period <- vector(mode = "numeric", length = length(time_span))
+  data_out_ts <- vector(mode = "numeric", length = length(time_span))
 
 
 
@@ -77,17 +77,19 @@ get_temp.time_series <- function(.start_date,
                           FUN.VALUE = vector(mode = "character", length = 1),
                           FUN = function(X){
                             get_file_path.temp(.date_to_search = X,
-                                          .variable = "2m_temperature",
+                                          #.variable = "2m_temperature",
                                           .statistic = .statistic,
                                           .agera5_folder = .agera5_folder)})
 
   temp_stack <- terra::rast(nc_files_list)
 
-  data_out_period <- terra::extract(temp_stack, cbind(.lon, .lat))
+  data_out_ts <- terra::extract(temp_stack, cbind(.lon, .lat))
 
-  names(data_out_period) <- as.character(time_span)
+  names(data_out_ts) <- as.character(time_span)
 
-  return(data_out_period)
+  data_out_ts <- data_out_ts - 273.15
+
+  return(data_out_ts)
 }
 
 

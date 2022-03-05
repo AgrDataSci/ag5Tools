@@ -11,7 +11,7 @@ Authors@R:
           email = "kaue.desousa@inn.no", role = c("aut"),
           comment = c(ORCID = "0000-0002-7571-7845")))
 Description: R tools for download and extract data from "Agrometeorological indicators from 1979 to present derived from reanalysis"
-License: Apache-2.0 + file LICENSE
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: terra, reticulate

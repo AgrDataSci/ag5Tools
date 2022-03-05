@@ -1,26 +1,8 @@
 #internal function to get the file path
 
 
-get_file_path <- function(.date_to_search, .variable, ..., .agera5_folder){
-
-  UseMethod("get_file_path")
-
-}
-
-get_file_path.default <- function(.date_to_search, .variable, ..., .agera5_folder){
-
- message("no method found")
-
-}
-
-
-
 #get file path for precipitation data
-get_file_path.prec <- function(.date_to_search, .variable, .agera5_folder){
-
-  if(.variable != "precipitation_flux"){
-    NextMethod()
-  }
+get_file_path.prec <- function(.date_to_search, .agera5_folder){
 
   date_pattern <- gsub("-", "", .date_to_search)
 
@@ -44,18 +26,14 @@ get_file_path.prec <- function(.date_to_search, .variable, .agera5_folder){
 
 
 #get file path for relative humidity data
-get_file_path.rhum <- function(.date_to_search, .variable, .time, .agera5_folder){
-
-  if(.variable != "2m_relative_humidity"){
-    NextMethod()
-  }
+get_file_path.rhum <- function(.date_to_search, .time, .agera5_folder){
 
   if(!.time %in% c("06h", "09h", "12h", "15h", "18h"))
     stop(".time variable is not valid")
 
   date_pattern <- gsub("-", "", .date_to_search)
 
-  file_prefix <- past("Relative-Humidity-2m-", .time, "_C3S-glob-agric_AgERA5_")
+  file_prefix <- paste0("Relative-Humidity-2m-", .time, "_C3S-glob-agric_AgERA5_")
 
   agera5_file_pattern <- paste0(file_prefix, date_pattern)
 
@@ -75,11 +53,7 @@ get_file_path.rhum <- function(.date_to_search, .variable, .time, .agera5_folder
 
 
 #get file path for temperature data
-get_file_path.temp <- function(.date_to_search, .variable, .statistic, .agera5_folder){
-
-  if(.variable != "2m_temperature"){
-    NextMethod()
-  }
+get_file_path.temp <- function(.date_to_search, .statistic, .agera5_folder){
 
   #temp_prefix <- paste0("Temperature-Air-2m-", get_stat_code(.statistic), "_C3S-glob-agric_AgERA5_daily_")
 

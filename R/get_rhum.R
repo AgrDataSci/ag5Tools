@@ -44,11 +44,11 @@ get_rhum.data_point <- function(.date,
 
 #'@export
 get_rhum.time_series <- function(.start_date,
-                            .end_date,
-                            .lon,
-                            .lat,
-                            .time,
-                            .agera5_folder){
+                                 .end_date,
+                                 .lon,
+                                 .lat,
+                                 .time,
+                                 .agera5_folder){
 
   .start_date <- as.Date(.start_date)#, format = "%m/%d/%Y")
   #print(.start_date)
@@ -60,16 +60,15 @@ get_rhum.time_series <- function(.start_date,
 
   data_out_period <- vector(mode = "numeric", length = length(time_span))
 
-  # nc_files_list <- vapply(X = time_span,
-  #                         FUN.VALUE = vector(mode = "character", length = 1),
-  #                         function(X) get_file_path(.var = .var,
-  #                                                   .statistic = .statistic,
-  #                                                   .date = X,
-  #                                                   .agera5_folder = .agera5_folder))
+  nc_files_list <- vapply(X = time_span,
+                          FUN.VALUE = vector(mode = "character", length = 1),
+                          function(X) get_file_path.rhum(.date_to_search = X,
+                                                         .time = .time,
+                                                         .agera5_folder = .agera5_folder))
 
-  nc_files_list <- get_file_path(.date = time_span,
-                                 .time = .time,
-                                 .agera5_folder = .agera5_folder)
+  # nc_files_list <- get_file_path.rhum(.date = time_span,
+  #                                .time = .time,
+  #                                .agera5_folder = .agera5_folder)
 
   temp_stack <- terra::rast(nc_files_list)
 
@@ -104,12 +103,12 @@ get_rhum.dataset <- function(.trial_dataset = NULL,
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
   for(i in 1:nrow(.trial_dataset)){
-    output_list[[i]] <- get_rhum.period(.start_date = .trial_dataset[i, .start_date],
-                                        .end_date =  .trial_dataset[i, .end_date],
-                                        .lon = .trial_dataset[i, .lon],
-                                        .lat = .trial_dataset[i, .lat],
-                                        .time = .time,
-                                        .agera5_folder = .agera5_folder)
+    output_list[[i]] <- get_rhum.time_series(.start_date = .trial_dataset[i, .start_date],
+                                             .end_date =  .trial_dataset[i, .end_date],
+                                             .lon = .trial_dataset[i, .lon],
+                                             .lat = .trial_dataset[i, .lat],
+                                             .time = .time,
+                                             .agera5_folder = .agera5_folder)
 
     Sys.sleep(0.1)
     setTxtProgressBar(progress_bar, i)

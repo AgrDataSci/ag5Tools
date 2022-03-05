@@ -1,22 +1,10 @@
-#'This set of functions extract precipitation data from locally stored AgERA5 data
-#'@name get_prec
-#'
+#'Extract precipitation data from locally stored AgERA5 data
 
+#'@name get_prec.data_point
 #'@param .date a date or character representing the date of the data point to be extracted
 #'@param .lon numeric Longitude for the point of interest
 #'@param .lat numeric Latitude for the point of interest
-#'@param .agera5_folder Folder in the local system where the agera5 data is stored. Usually the root folder will work as the function will
-#'search recursively
-#'
-
-get_prec <- function(...){
-
-  UseMethod("get_prec")
-
-}
-
-
-#'
+#'@param .agera5_folder Folder in the local system where the agera5 data is stored.
 #'@export
 get_prec.data_point <- function(.date,
                                 .lon,
@@ -33,7 +21,7 @@ get_prec.data_point <- function(.date,
   return(data_out[1])
 }
 
-#'@describeIn get_prec Get precipitation data for one location for a provided time period
+
 #'@param .start_date Date or character to be coerced as Date The starting date for the period to extract
 #'@param .end_date Date or character to be coerced as Date The end date for the period to extract
 #'
@@ -60,7 +48,7 @@ get_prec.data_point <- function(.date,
 #   return(data_out_period)
 # }
 
-#'
+#'@name get_prec.time_series
 #'@export
 get_prec.time_series <- function(.start_date,
                             .end_date,
@@ -73,27 +61,27 @@ get_prec.time_series <- function(.start_date,
 
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
-  data_out_period <- vector(mode = "numeric", length = length(time_span))
+  data_out_ts <- vector(mode = "numeric", length = length(time_span))
 
-  # nc_files_list <- vapply(X = time_span,
-  #                         FUN.VALUE = vector(mode = "character", length = 1),
-  #                         function(X) get_prec_file_path(.date_to_search = X,
-  #                                                        .agera5_folder = .agera5_folder))
+  nc_files_list <- vapply(X = time_span,
+                          FUN.VALUE = vector(mode = "character", length = 1),
+                          function(X) get_file_path.prec(.date_to_search = X,
+                                                         .agera5_folder = .agera5_folder))
 
-  nc_files_list <- get_prec_file_path(time_span,
-                                      .agera5_folder)
+  # nc_files_list <- get_file_path(time_span,
+  #                                     .agera5_folder)
 
   prec_stack <- terra::rast(nc_files_list)
 
-  data_out_period <- terra::extract(prec_stack, cbind(.lon, .lat),)
+  data_out_ts <- terra::extract(prec_stack, cbind(.lon, .lat),)
 
-  names(data_out_period) <- as.character(time_span)
+  names(data_out_ts) <- as.character(time_span)
 
-  return(data_out_period)
+  return(data_out_ts)
 }
 
 
-#'@describeIn get_prec Iterates across a data set to extract all required data points
+#'@name get_prec.dataset
 
 #'@export
 get_prec.dataset <- function(.trial_dataset = NULL,
