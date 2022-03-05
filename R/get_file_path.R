@@ -28,8 +28,9 @@ get_file_path.prec <- function(.date_to_search, .agera5_folder){
 #get file path for relative humidity data
 get_file_path.rhum <- function(.date_to_search, .time, .agera5_folder){
 
-  if(!.time %in% c("06h", "09h", "12h", "15h", "18h"))
-    stop(".time variable is not valid")
+  # try(if(!.time %in% c("06h", "09h", "12h", "15h", "18h")){
+  #   stop(".time variable is not valid")
+  # })
 
   date_pattern <- gsub("-", "", .date_to_search)
 
