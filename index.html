@@ -53,22 +53,25 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="section level2">
-<h2 id="agera5">agera5<a class="anchor" aria-label="anchor" href="#agera5"></a>
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="agera5">agera5<a class="anchor" aria-label="anchor" href="#agera5"></a>
+</h1></div>
+<div class="section level2">
+<h2 id="an-r-package-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset">An R package for downloading and extracting data from the Copernicus AgERA5 dataset<a class="anchor" aria-label="anchor" href="#an-r-package-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset"></a>
 </h2>
 </div>
-<div class="section level1">
-<div class="page-header"><h1 id="agera5-a-toolbox-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset">
-<em>agera5</em>: A toolbox for downloading and extracting data from the Copernicus AgERA5 dataset<a class="anchor" aria-label="anchor" href="#agera5-a-toolbox-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset"></a>
-</h1></div>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
 <p>The R package <em>agera5</em> is a toolbox to download and extract data from the “Agrometeorological indicators from 1979 to present derived from reanalysis” dataset (aka AgERA5).</p>
 <p><a href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview" class="external-link uri">https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview</a></p>
-<p>The download function provides programatic access to Copernicus Climate Data Store where AgERA5 dataset is hosted. For specific details about the license agreenment on downloading and using the data please check the dataset license at: <a href="https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf" class="external-link uri">https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf</a></p>
-<p>The download functionality is made using the Python cdsapi <a href="https://pypi.org/project/cdsapi/" class="external-link uri">https://pypi.org/project/cdsapi/</a>.</p>
-<p>The extracting functions are wrappers of the R package terra.</p>
+<p>The download function provides programmatic access to the Copernicus Climate Data Store to download AgERA5 data.</p>
+</div>
+<div class="section level2">
+<h2 id="data-license">Data license<a class="anchor" aria-label="anchor" href="#data-license"></a>
+</h2>
+<p>The agera5 package does not distribute data, it only provides access to Climate Data Store through the python cdsapi.</p>
+<p>For specific details about the license agreenment on downloading and using the data please check the license at: <a href="https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf" class="external-link uri">https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf</a></p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
@@ -76,13 +79,44 @@
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"agrdatasci/agera5"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level3">
+<h3 id="downloading-agera5-data">Downloading AgERA5 data<a class="anchor" aria-label="anchor" href="#downloading-agera5-data"></a>
+</h3>
+<div class="section level4">
+<h4 id="csdapi-setup">csdapi setup<a class="anchor" aria-label="anchor" href="#csdapi-setup"></a>
+</h4>
+</div>
+<div class="section level4">
+<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h4>
+<p>The following example downloads daily 2m_temperature data for year 2015</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">download_agera5</span><span class="op">(</span>agera5_var <span class="op">=</span> <span class="st">"2m_temperature"</span>,
+                agera5_stat <span class="op">=</span> <span class="st">"night_time_minimum"</span>,
+                day <span class="op">=</span> <span class="st">"all"</span>,
+                month <span class="op">=</span> <span class="st">"all"</span>,
+                year <span class="op">=</span> <span class="fl">2015</span>,
+                path <span class="op">=</span> <span class="st">"C:/custom_target_folder"</span>
+<span class="op">)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h2>
+<p>The <em>agera5</em> package relies on the functionality available from other open source packages.</p>
+<ul>
+<li><p>The Python cdsapi <a href="https://pypi.org/project/cdsapi/" class="external-link uri">https://pypi.org/project/cdsapi/</a></p></li>
+<li><p>The package <em>reticulate</em> is used to access the Python cdsapi functions from R.</p></li>
+<li><p>The R package <em>terra</em> is used to extract data from nc files.</p></li>
+<li><p>The package <em>fs</em> is used for efficiently search and list files.</p></li>
+</ul>
+<div class="section level3">
 <h3 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
 </h3>
 <p>Please be aware that is still a development version of the package. You are free to use it for your own purposes with no warranty.</p>
 </div>
 </div>
 </div>
-
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">

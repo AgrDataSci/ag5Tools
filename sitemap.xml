@@ -22,10 +22,16 @@
     <loc>https://agrdatasci.github.io/agera5/index.html</loc>
   </url>
   <url>
+    <loc>https://agrdatasci.github.io/agera5/reference/agera5_download.html</loc>
+  </url>
+  <url>
     <loc>https://agrdatasci.github.io/agera5/reference/arusha_df.html</loc>
   </url>
   <url>
-    <loc>https://agrdatasci.github.io/agera5/reference/download_agera5.html</loc>
+    <loc>https://agrdatasci.github.io/agera5/reference/extract_period.html</loc>
+  </url>
+  <url>
+    <loc>https://agrdatasci.github.io/agera5/reference/extract_single_date.html</loc>
   </url>
   <url>
     <loc>https://agrdatasci.github.io/agera5/reference/get_prec.data_point.html</loc>
