@@ -5,13 +5,16 @@
 #'@param .lon numeric Longitude for the point of interest
 #'@param .lat numeric Latitude for the point of interest
 #'@param .agera5_folder Folder in the local system where the agera5 data is stored.
+#'
+#'@import utils
+#'
 #'@export
 get_prec.data_point <- function(.date,
                                 .lon,
                                 .lat,
                                 .agera5_folder){
 
-  file_path <- get_file_path(.date,
+  file_path <- get_file_path.prec(.date,
                                  .agera5_folder)
 
   agera5_spat_rast <- terra::rast(file_path)
@@ -68,9 +71,6 @@ get_prec.time_series <- function(.start_date,
                           function(X) get_file_path.prec(.date_to_search = X,
                                                          .agera5_folder = .agera5_folder))
 
-  # nc_files_list <- get_file_path(time_span,
-  #                                     .agera5_folder)
-
   prec_stack <- terra::rast(nc_files_list)
 
   data_out_ts <- terra::extract(prec_stack, cbind(.lon, .lat),)
@@ -82,6 +82,7 @@ get_prec.time_series <- function(.start_date,
 
 
 #'@name get_prec.dataset
+#'
 
 #'@export
 get_prec.dataset <- function(.trial_dataset = NULL,

@@ -27,7 +27,9 @@ get_rhum.data_point <- function(.date,
                                 .time,
                                 .agera5_folder){
 
-  file_path <- get_file_path(.time, .date, .agera5_folder)
+  file_path <- get_file_path.rhum(.date_to_search = .date,
+                                  .time = .time,
+                                  .agera5_folder = .agera5_folder)
 
   agera5_spat_rast <- terra::rast(file_path)
 

@@ -1,6 +1,7 @@
-#'Downloads AgERA5 data from the Copernicus Climate Change Service
+#'Downloads AgERA5 data from the Copernicus Climate Change Service - Copernicus Climate Data Store
 #'
-#'The data is downloaded from Copernicus Climate Change Service (C3) using the cdsapi python library
+#'The data is downloaded from Copernicus Climate Change Service (C3) using the
+#'Copernicus Climate Data Store (CDSAPI) Python library
 #'<https://github.com/ecmwf/cdsapi>
 #'
 #'This function  provides programmatic access to the dataset
@@ -11,15 +12,15 @@
 
 
 
-#'@name download_agera5
-#'@param agera5_var Character The variable to be downloaded. See details
-#'@param agera5_stat Character Requested statistic for the requested variable. See details
-#'@param day Character Day of the week for the requested data. NULL will download all days from requested month
-#'@param month Character Month to be requested. NULL will download all the months for the requested year.
-#'@param year Numeric (Integer) Year to download. Should be between 1979 - 2020
-#'@param path Character Target location e.g. "C:/agera5" without the ending "/"
+#'@name agera5_download
+#'@param agera5_var character The variable to be downloaded. See details
+#'@param agera5_stat character Requested statistic for the selected variable. See details
+#'@param day character Day of the week for the requested data. \.code{day = "all"}  will download all days from requested month
+#'@param month character Month to be requested. \.code{month = "all"} will download all the months for the requested year.
+#'@param year numeric (Integer) Year to download. Should be between 1979 - 2020
+#'@param time Character Only required for some variables. See details
+#'@param path Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist beforehand and the path should be indicated without the ending "/"
 #'@param unzip Logical Downloaded data is provided as zip files. Should the files be uncompressed in the target path?
-#'@param time Character
 #'
 #'@import reticulate
 
@@ -53,14 +54,14 @@
 #'
 #'@examples
 #'\dontrun{
-#'download_agera5(agera5_var = "2m_temperature",
-#'agera5_stat = "night_time_minimum",
-#'day = "all",
-#'month = "all",
-#'year = 2015,
-#'path = "C:/custom_target_folder/"
-#')
-#'}
+#'agera5_download(agera5_var = "2m_temperature",
+#'                agera5_stat = "night_time_minimum",
+#'                'day = "all",
+#'                'month = "all",
+#'                'year = 2015,
+#'                'path = "C:/custom_target_folder/"
+#'                ')
+#'                '}
 #'
 #for multiple years and months
 #months_list <- formatC(x = seq(1:12), width = 2, flag = 0)
@@ -79,54 +80,78 @@
 #   }
 # }
 #'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
 
 #'@export
-download_agera5 <- function(agera5_var,
+agera5_download <- function(agera5_var,
                             agera5_stat = NULL,
-                            day = NULL,
-                            month = NULL,
+                            day,
+                            month,
                             year,
                             time = NULL,
                             path #, unzip_files = TRUE
                             ){
 
+  ifelse(length(day) > 1,
+         days <- day, ifelse(day == "all",
+                             days <- formatC(x = seq(1:31), width = 2, flag = 0),
+                             days <- day))
+
+
+  ifelse(length(month) > 1,
+         months <- month, ifelse(month == "all",
+                                 months <- formatC(x = seq(1:12), width = 2, flag = 0),
+                                 months <- month))
+
+  if(length(year) > 1 | length(months > 1)){
+    years <- year
+
+    for(i in seq_along(years)){
+      for(j in months){
+        agera5_request(agera5_var = agera5_var,
+                       agera5_stat = agera5_stat,
+                       day = days,
+                       month = j,
+                       year = years[i],
+                       path = paste0(path,
+                                    years[i]))
+      }
+    }
+  }
+  else{
+    agera5_request(agera5_var = agera5_var,
+                   agera5_stat = agera5_stat,
+                   day = days,
+                   month = months,
+                   year = year,
+                   path = paste0(path,
+                                 year))
+
+  }
+}
+
+
+agera5_request <- function(agera5_var,
+                           agera5_stat = NULL,
+                           day,
+                           month,
+                           year,
+                           time = NULL,
+                           path){
+
   c <- cdsapi$Client()
 
-  if(is.null(day) || day == "all")
-    day <- formatC(x = seq(1:31), width = 2, flag = 0)
-
-  if(is.null(month) || month == "all")
-    month <- formatC(x = seq(1:12), width = 2, flag = 0)
-
-
-  # if(lenght(year) > 1){
-  #
-  #
-  # }
-
-
   results <- c$retrieve('sis-agrometeorological-indicators',
-                        list(
-                          "variable" = agera5_var,
-                          "statistic" = agera5_stat,
-                          "year" = as.integer(year),
-                          "month" = month,
-                          "day" = day,
-                          "time" = time
+                        list("variable" = agera5_var,
+                             "statistic" = agera5_stat,
+                             "year" = as.integer(year),
+                             "month" = month,
+                             "day" = day,
+                             "time" = time
                           #CA countries bounding box - Disabled for the moment as it will increase the number of
                           #requests to the server - TODO: make optional later with a warning message.
                           # "area": [5.499027 ,-90.12486,  17.41847, -81.99986],
                         )
-  )
+                        )
 
   #expand.grid(year, month, day)
 
@@ -175,9 +200,6 @@ download_agera5 <- function(agera5_var,
     unzip(zipfile = file_name_path, exdir = path)
     file.remove(file_name_path)
   #}
-
-
-
 
   print("Download process completed")
   #return()

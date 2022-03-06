@@ -32,7 +32,6 @@ get_temp.data_point <- function(.date,
                                 .agera5_folder){
 
   file_path <- get_file_path.temp(.date_to_search = .date,
-                                  .variable = "2m_temperature",
                                   .statistic = .statistic,
                                   .agera5_folder = .agera5_folder)
 
