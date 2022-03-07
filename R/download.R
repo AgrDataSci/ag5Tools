@@ -12,9 +12,9 @@
 
 
 
-#'@name agera5_download
-#'@param agera5_var character The variable to be downloaded. See details
-#'@param agera5_stat character Requested statistic for the selected variable. See details
+#'@name ag5_download
+#'@param variable character The variable to be downloaded. See details
+#'@param statistic character Requested statistic for the selected variable. See details
 #'@param day character Day of the week for the requested data. \.code{day = "all"}  will download all days from requested month
 #'@param month character Month to be requested. \.code{month = "all"} will download all the months for the requested year.
 #'@param year numeric (Integer) Year to download. Should be between 1979 - 2020
@@ -54,42 +54,25 @@
 #'
 #'@examples
 #'\dontrun{
-#'agera5_download(agera5_var = "2m_temperature",
-#'                agera5_stat = "night_time_minimum",
-#'                'day = "all",
-#'                'month = "all",
-#'                'year = 2015,
-#'                'path = "C:/custom_target_folder/"
-#'                ')
-#'                '}
-#'
-#for multiple years and months
-#months_list <- formatC(x = seq(1:12), width = 2, flag = 0)
-#
-# years_list <- 1991:1994
-#
-# #download precipitation data
-# for(i in seq_along(years_list)){
-#   for(j in months_list){
-#     agera5:::download_agera5(agera5_var = "precipitation_flux",
-#                              day = "all",
-#                              month = j,
-#                              year = years_list[i],
-#                              path = paste0("D:/Dropbox (Bioversity CR)/env_data/agera5/prec/new/",
-#                                            years_list[i]))
-#   }
-# }
+#'ag5_download(variable = "2m_temperature",
+#'             statistic = "night_time_minimum",
+#'             'day = "all",
+#'             'month = "all",
+#'             'year = 2015,
+#'             'path = "C:/custom_target_folder/"
+#'             )
+#'             }
 #'
 
 #'@export
-agera5_download <- function(agera5_var,
-                            agera5_stat = NULL,
-                            day,
-                            month,
-                            year,
-                            time = NULL,
-                            path #, unzip_files = TRUE
-                            ){
+ag5_download <- function(variable,
+                         statistic = NULL,
+                         day,
+                         month,
+                         year,
+                         time = NULL,
+                         path #, unzip_files = TRUE
+                         ){
 
   ifelse(length(day) > 1,
          days <- day, ifelse(day == "all",
@@ -107,8 +90,8 @@ agera5_download <- function(agera5_var,
 
     for(i in seq_along(years)){
       for(j in months){
-        agera5_request(agera5_var = agera5_var,
-                       agera5_stat = agera5_stat,
+        ag5_request(variable = variable,
+                       statistic = statistic,
                        day = days,
                        month = j,
                        year = years[i],
@@ -118,8 +101,8 @@ agera5_download <- function(agera5_var,
     }
   }
   else{
-    agera5_request(agera5_var = agera5_var,
-                   agera5_stat = agera5_stat,
+    ag5_request(variable = variable,
+                   statistic = statistic,
                    day = days,
                    month = months,
                    year = year,
@@ -130,19 +113,19 @@ agera5_download <- function(agera5_var,
 }
 
 
-agera5_request <- function(agera5_var,
-                           agera5_stat = NULL,
-                           day,
-                           month,
-                           year,
-                           time = NULL,
-                           path){
+ag5_request <- function(variable,
+                        statistic = NULL,
+                        day,
+                        month,
+                        year,
+                        time = NULL,
+                        path){
 
   c <- cdsapi$Client()
 
   results <- c$retrieve('sis-agrometeorological-indicators',
-                        list("variable" = agera5_var,
-                             "statistic" = agera5_stat,
+                        list("variable" = variable,
+                             "statistic" = statistic,
                              "year" = as.integer(year),
                              "month" = month,
                              "day" = day,
@@ -164,16 +147,16 @@ agera5_request <- function(agera5_var,
   #                             output_date <- output_date)
 
 #
-#   if(is.null(agera5_stat))
+#   if(is.null(statistic))
 #     file_name <-paste("agera5",
-#                       agera5_var,
+#                       variable,
 #                       output_date,
 #                       sep = "_")
 #
-#   if(!is.null(agera5_stat))
+#   if(!is.null(statistic))
 #     file_name <-paste("agera5",
-#                       agera5_var,
-#                       agera5_stat,
+#                       variable,
+#                       statistic,
 #                       output_date,
 #                       sep = "_")
 
@@ -195,7 +178,7 @@ agera5_request <- function(agera5_var,
 
   results$download(file_name_path)
 
-  #if(unzip_files == TRUE){
+  #if(unzip_files){
     print(paste("unzipping: ", file_name_path, " to: ", path))
     unzip(zipfile = file_name_path, exdir = path)
     file.remove(file_name_path)

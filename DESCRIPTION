@@ -1,5 +1,5 @@
 Package: agera5
-Title: An R package for downloading and extracting AgERA5 data
+Title: An R Package for Downloading and Extracting AgERA5 Data
 Version: 0.0.0.9007
 Authors@R:
           c(person(given = "David",
@@ -10,11 +10,11 @@ Authors@R:
           person("Kaue", "de Sousa", 
           email = "kaue.desousa@inn.no", role = c("aut"),
           comment = c(ORCID = "0000-0002-7571-7845")))
-Description: R tools for download and extract data from "Agrometeorological indicators from 1979 to present derived from reanalysis"
+Description: R tools for download and extract data from the Copernicus "Agrometeorological indicators from 1979 to present derived from reanalysis" (AgERA5).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: terra, reticulate
+Imports: terra, reticulate, fs
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Suggests: 

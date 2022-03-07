@@ -1,10 +1,12 @@
-#' Extracts 2m_temperature
-#'
-#' extracts temperature values of the variable 2m_temperature
-#' from locally stored AgERA5 files
+#' Extracts 2m_temperature values for one location and one date
 
+#'@param .date Date or character representing the date of the point data to be extracted
+#'@param .lon  numeric with longitude and latitude
+#'@param .lat numeric data.frame or an object to be coerced, with longitude and latitude
+#'@param .statistic character of the .statistic of interest, see details
+#'@param .agera5_folder character of the .statistic of interest, see details
 #'
-#'@details
+#'#'@details
 #'\strong{valid .statistic values}
 #'\itemize{
 #'   \item Max-24h
@@ -14,22 +16,13 @@
 #'   \item Mean-Day-Time
 #'   \item Mean-Night-Time
 #'   \item Min-Night-Time}
-
-
-#'@name get_temp.data_point
-#'@param .date Date or character representing the date of the point data to be extracted
-#'@param .lon  numeric with longitude and latitude
-#'@param .lat numeric data.frame or an object to be coerced, with longitude and latitude
-#'@param .statistic character of the .statistic of interest, see details
-#'@param .agera5_folder character of the .statistic of interest, see details
 #'
-
 #'@export
-get_temp.data_point <- function(.date,
-                                .lon,
-                                .lat,
-                                .statistic,
-                                .agera5_folder){
+get_temp_dp <- function(.date,
+                        .lon,
+                        .lat,
+                        .statistic,
+                        .agera5_folder){
 
   file_path <- get_file_path.temp(.date_to_search = .date,
                                   .statistic = .statistic,
@@ -46,7 +39,7 @@ get_temp.data_point <- function(.date,
 }
 
 
-#'@name get_temp.time_series
+#' Extracts 2m_temperature values for one location for a time series
 #'@param .start_date Date or character representing the date of the point data to be extracted
 #'@param .lon  numeric with longitude and latitude
 #'@param .lat numeric data.frame or an object to be coerced, with longitude and latitude
@@ -54,12 +47,12 @@ get_temp.data_point <- function(.date,
 #'@param .agera5_folder character of the .statistic of interest, see details
 
 #'@export
-get_temp.time_series <- function(.start_date,
-                                 .end_date,
-                                 .lon,
-                                 .lat,
-                                 .statistic,
-                                 .agera5_folder){
+get_temp_ts<- function(.start_date,
+                       .end_date,
+                       .lon,
+                       .lat,
+                       .statistic,
+                       .agera5_folder){
 
   .start_date <- as.Date(.start_date)
 
@@ -92,7 +85,6 @@ get_temp.time_series <- function(.start_date,
 }
 
 
-#'@name get_temp.dataset
 #'Iterates across a data set to extract all required data points
 #'@param .trial_dataset \code{data.frame} containing the required variables, usually from the trial data points
 #'@param .start_date character Name of the column that holds the start date of the time period to extract
@@ -103,25 +95,26 @@ get_temp.time_series <- function(.start_date,
 #'@param .agera5_folder character Location of data folder that contains AgERA5 files
 
 #'@export
-get_temp.dataset <- function(.trial_dataset,
-                             .statistic,
-                             .start_date = "pdate",
-                             .end_date = "hdate",
-                             .lon = "lon",
-                             .lat = "lat",
-                             .agera5_folder){
+get_temp_ds <- function(.trial_dataset,
+                        .statistic,
+                        .start_date = "pdate",
+                        .end_date = "hdate",
+                        .lon = "lon",
+                        .lat = "lat",
+                        .agera5_folder){
 
   output_list <- vector(mode = "list", length = nrow(.trial_dataset))
 
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
+
   for(i in 1:nrow(.trial_dataset)){
-    output_list[[i]] <- get_temp.time_series(.start_date = .trial_dataset[i, .start_date],
-                                             .end_date =  .trial_dataset[i, .end_date],
-                                             .lon = .trial_dataset[i, .lon],
-                                             .lat = .trial_dataset[i, .lat],
-                                             .statistic = .statistic,
-                                             .agera5_folder = .agera5_folder)
+    output_list[[i]] <- get_temp_ts(.start_date = .trial_dataset[i, .start_date],
+                                    .end_date =  .trial_dataset[i, .end_date],
+                                    .lon = .trial_dataset[i, .lon],
+                                    .lat = .trial_dataset[i, .lat],
+                                    .statistic = .statistic,
+                                    .agera5_folder = .agera5_folder)
 
     Sys.sleep(0.1)
     setTxtProgressBar(progress_bar, i)

@@ -1,19 +1,13 @@
-#'Extracts solar radiation flux data from locally stored AgERA5 data
-
-
-
-
-
-#'@name get_srf.data_point
+#'Extracts solar radiation flux data for one location and one date
 #'@param .date a date or character representing the date of the point data to be extracted
 #'@param .lon character longitude
 #'@param .lat character latitude
 #'@param .agera5_folder character The location the of the folder with agera5 (*.nc) files
 #'@export
-get_srf.data_point <- function(.date,
-                               .lon,
-                               .lat,
-                               .agera5_folder){
+get_srf_dp <- function(.date,
+                       .lon,
+                       .lat,
+                       .agera5_folder){
 
   file_path <- get_srf_filepath(.date,
                                 .agera5_folder)
@@ -26,15 +20,17 @@ get_srf.data_point <- function(.date,
 }
 
 
-#'@name get_srf.time_series
-#'get_srf Get solar radiation flux data for one location for a provided time period
 
+#'Extracts solar radiation flux data for one location for a time series
+#'@param .lon character longitude
+#'@param .lat character latitude
+#'@param .agera5_folder character The location the of the folder with agera5 (*.nc) files
 #'@export
-get_srf.time_series <- function(.start_date,
-                                .end_date,
-                                .lon,
-                                .lat,
-                                .agera5_folder){
+get_srf_ts <- function(.start_date,
+                       .end_date,
+                       .lon,
+                       .lat,
+                       .agera5_folder){
 
   .start_date <- as.Date(.start_date, format = "%m/%d/%Y")
 
@@ -42,13 +38,18 @@ get_srf.time_series <- function(.start_date,
 
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
-  data_out_period <- vector(mode = "numeric", length = length(time_span))
+  data_out_ts <- vector(mode = "numeric", length = length(time_span))
 
-  for(i in 1:length(time_span)){
+  nc_files_list <- vapply(X = time_span,
+                          FUN.VALUE = vector(mode = "character", length = 1),
+                          function(X) get_file_path.prec(.date_to_search = X,
+                                                         .agera5_folder = .agera5_folder))
 
-    data_out_period[i] <- get_srf.data_point(time_span[i], .lon, .lat, .agera5_folder)
+  srf_stack <- terra::rast(nc_files_list)
 
-  }
+  data_out_ts <- terra::extract(prec_stack, cbind(.lon, .lat),)
+
+  names(data_out_ts) <- as.character(time_span)
 
   names(data_out_period) <- as.character(time_span)
 
@@ -57,11 +58,13 @@ get_srf.time_series <- function(.start_date,
 }
 
 
-#'@name get_srf.dataset
 #' Iterates across a dataset to extract all required data points
+#'@param .lon character longitude
+#'@param .lat character latitude
+#'@param .agera5_folder character The location the of the folder with agera5 (*.nc) files
 
 #'@export
-get_srf.dataset <- function(.trial_dataset,
+get_srf_ds <- function(.trial_dataset,
                             .start_date = "pdate",
                             .end_date = "hdate",
                             .lon = "lon",
@@ -74,11 +77,11 @@ get_srf.dataset <- function(.trial_dataset,
 
   for(i in 1:nrow(.trial_dataset)){
 
-    output_list[[i]] <- get_srf.time_series(.start_date = .trial_dataset[i, .start_date],
-                                             .end_date = .trial_dataset[i, .end_date],
-                                             .lon = .trial_dataset[i, .lon],
-                                             .lat = .trial_dataset[i, .lat],
-                                             .agera5_folder)
+    output_list[[i]] <- get_srf_ts(.start_date = .trial_dataset[i, .start_date],
+                                   .end_date = .trial_dataset[i, .end_date],
+                                   .lon = .trial_dataset[i, .lon],
+                                   .lat = .trial_dataset[i, .lat],
+                                   .agera5_folder)
 
     Sys.sleep(0.1)
     setTxtProgressBar(progress_bar, i)

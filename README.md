@@ -39,13 +39,13 @@ download_agera5(agera5_var = "2m_temperature",
 ## Acknowledgements
 The *agera5* package relies on the functionality available from other open source packages.
 
-* The Python cdsapi https://pypi.org/project/cdsapi/
+* The Python [*cdsapi*](https://pypi.org/project/cdsapi/)
 
-* The package *reticulate* is used to access the Python cdsapi functions from R.
+* The R package [*reticulate*](https://cran.r-project.org/web/packages/reticulate/index.html) is used to access the Python cdsapi functions from R.
 
-* The R package *terra* is used to extract data from nc files.
+* The R package [*terra*](https://cran.r-project.org/web/packages/terra/index.html) is used to extract data from nc files.
 
-* The package *fs* is used for efficiently search and list files.
+* The R package [*fs*](https://cran.r-project.org/web/packages/fs/index.html) is used for efficiently search and list files.
 
 
 ### Disclaimer

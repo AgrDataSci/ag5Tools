@@ -1,15 +1,13 @@
-#'Extract precipitation data from locally stored AgERA5 data
+#'Extract precipitation data for one location and one date
 
-#'@name get_prec.data_point
+#'@name get_prec_dp
 #'@param .date a date or character representing the date of the data point to be extracted
 #'@param .lon numeric Longitude for the point of interest
 #'@param .lat numeric Latitude for the point of interest
 #'@param .agera5_folder Folder in the local system where the agera5 data is stored.
 #'
-#'@import utils
-#'
 #'@export
-get_prec.data_point <- function(.date,
+get_prec_dp <- function(.date,
                                 .lon,
                                 .lat,
                                 .agera5_folder){
@@ -25,9 +23,9 @@ get_prec.data_point <- function(.date,
 }
 
 
-#'@param .start_date Date or character to be coerced as Date The starting date for the period to extract
-#'@param .end_date Date or character to be coerced as Date The end date for the period to extract
-#'
+
+
+
 
 #@export
 # get_prec.period <- function(.start_date,
@@ -51,9 +49,15 @@ get_prec.data_point <- function(.date,
 #   return(data_out_period)
 # }
 
-#'@name get_prec.time_series
+#'Extract precipitation data for one location and one time series
+#'@param .start_date Date or character to be coerced as Date The starting date for the period to extract
+#'@param .end_date Date or character to be coerced as Date The end date for the period to extract
+#'@param .lon numeric Longitude for the point of interest
+#'@param .lat numeric Latitude for the point of interest
+#'@param .agera5_folder Folder in the local system where the agera5 data is stored.
+
 #'@export
-get_prec.time_series <- function(.start_date,
+get_prec_ts <- function(.start_date,
                             .end_date,
                             .lon,
                             .lat,
@@ -81,11 +85,15 @@ get_prec.time_series <- function(.start_date,
 }
 
 
-#'@name get_prec.dataset
-#'
 
+#'Extract precipitation data for a dataset
+#'@param .start_date character Name of the column in the dataset
+#'@param .end_date character Name of the column in the dataset
+#'@param .lon chracter Name of the column in the dataset
+#'@param .lat chracter Name of the column in the dataset
+#'@param .agera5_folder Folder in the local system where the agera5 data is stored.
 #'@export
-get_prec.dataset <- function(.trial_dataset = NULL,
+get_prec_ds <- function(.trial_dataset = NULL,
                              .start_date = "pdate",
                              .end_date = "hdate",
                              .lon = "lon",
@@ -100,7 +108,7 @@ get_prec.dataset <- function(.trial_dataset = NULL,
 
   #loop to get the data
   for(i in 1:nrow(.trial_dataset)){
-    output_list[[i]] <- get_prec.time_series(.trial_dataset[i, .start_date],
+    output_list[[i]] <- get_prec_ts(.trial_dataset[i, .start_date],
                                               .trial_dataset[i, .end_date],
                                               .lon = .trial_dataset[i, .lon],
                                               .lat = .trial_dataset[i, .lat],

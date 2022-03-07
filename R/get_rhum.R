@@ -1,6 +1,10 @@
-#' Extract relative humidity values from locally stored AgERA5 data
+#' Extract relative humidity data for one location and one date
 
-
+#'@param .date a date or character representing the date of the point data to be extracted
+#'@param .lon a data.frame or an object to be coerced, with longitude and latitude
+#'@param .lat a data.frame or an object to be coerced, with longitude and latitude
+#'@param .time a data.frame or an object to be coerced, with longitude and latitude
+#'@param .agera5_folder character indicating the folder where agera5 nc files are located
 #'@details
 #'\strong{valid .time values}
 #'\itemize{
@@ -10,18 +14,8 @@
 #'   \item 15h
 #'   \item 18h
 #'   }
-
-
-
-#'@name get_rhum.data_point
-#'@param .date a date or character representing the date of the point data to be extracted
-#'@param .lon a data.frame or an object to be coerced, with longitude and latitude
-#'@param .lat a data.frame or an object to be coerced, with longitude and latitude
-#'@param .time a data.frame or an object to be coerced, with longitude and latitude
-#'@param .agera5_folder character indicating the folder where agera5 nc files are located
-#'
 #'@export
-get_rhum.data_point <- function(.date,
+get_rhum_dp <- function(.date,
                                 .lon,
                                 .lat,
                                 .time,
@@ -42,10 +36,10 @@ get_rhum.data_point <- function(.date,
 }
 
 
-#'@name get_rhum.time_series
+#' Extract relative humidity data for one location and one time series
 
 #'@export
-get_rhum.time_series <- function(.start_date,
+get_rhum_ts <- function(.start_date,
                                  .end_date,
                                  .lon,
                                  .lat,
@@ -82,7 +76,8 @@ get_rhum.time_series <- function(.start_date,
 }
 
 
-#'@name get_rhum.dataset
+#' Extract relative humidity data for dataset
+#'
 #'@param .trial_dataset data.frame containing the required parameters, usually the trial data points
 #'@param .start_date character Name of the column that holds the start date of the time period to extract
 #'@param .end_date character Name of the column that holds the end date of the time period to extract
@@ -92,7 +87,7 @@ get_rhum.time_series <- function(.start_date,
 #'@param .agera5_folder a character with agera5 data folder location
 
 #'@export
-get_rhum.dataset <- function(.trial_dataset = NULL,
+get_rhum_ds <- function(.trial_dataset = NULL,
                              .start_date = "pdate",
                              .end_date = "hdate",
                              .lon = "lon",
@@ -105,7 +100,7 @@ get_rhum.dataset <- function(.trial_dataset = NULL,
   progress_bar <- txtProgressBar(min = 0, max = nrow(.trial_dataset), style = 3)
 
   for(i in 1:nrow(.trial_dataset)){
-    output_list[[i]] <- get_rhum.time_series(.start_date = .trial_dataset[i, .start_date],
+    output_list[[i]] <- get_rhum_ts(.start_date = .trial_dataset[i, .start_date],
                                              .end_date =  .trial_dataset[i, .end_date],
                                              .lon = .trial_dataset[i, .lon],
                                              .lat = .trial_dataset[i, .lat],
