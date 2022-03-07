@@ -15,8 +15,10 @@ get_temp_dp(.date, .lon, .lat, .statistic, .agera5_folder)
 
 \item{.statistic}{character of the .statistic of interest, see details}
 
-\item{.agera5_folder}{character of the .statistic of interest, see details
-#'@return numeric temperature value already converted from kelvin to Celsius
+\item{.agera5_folder}{character of the .statistic of interest, see details}
+}
+\value{
+numeric temperature value already converted from kelvin to Celsius
 
 #'@details
 \strong{valid .statistic values}
@@ -27,7 +29,7 @@ get_temp_dp(.date, .lon, .lat, .statistic, .agera5_folder)
 \item Max-Day-Time
 \item Mean-Day-Time
 \item Mean-Night-Time
-\item Min-Night-Time}}
+\item Min-Night-Time}
 }
 \description{
 Extracts 2m_temperature values for one location and one date
