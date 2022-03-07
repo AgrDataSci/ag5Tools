@@ -24,6 +24,8 @@ devtools::install_github("agrdatasci/agera5", build_vignettes = TRUE)
 ```
 ### Downloading AgERA5 data
 #### csdapi setup
+To download AgERA5 data you should first install the Climate Data Store API. Please follow the instructions
+in: https://cds.climate.copernicus.eu/api-how-to
 
 #### Example
 The following example downloads daily 2m_temperature data for year 2015
