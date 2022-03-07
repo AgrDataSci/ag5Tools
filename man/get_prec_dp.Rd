@@ -13,7 +13,10 @@ get_prec_dp(.date, .lon, .lat, .agera5_folder)
 
 \item{.lat}{numeric Latitude for the point of interest}
 
-\item{.agera5_folder}{Folder in the local system where the agera5 data is stored.}
+\item{.agera5_folder}{Folder in the local system where the AgERA5 data is stored.}
+}
+\value{
+numeric
 }
 \description{
 Extract precipitation data for one location and one date

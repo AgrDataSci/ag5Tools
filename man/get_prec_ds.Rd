@@ -14,6 +14,8 @@ get_prec_ds(
 )
 }
 \arguments{
+\item{.trial_dataset}{data.frame with columns required}
+
 \item{.start_date}{character Name of the column in the dataset}
 
 \item{.end_date}{character Name of the column in the dataset}
@@ -23,6 +25,9 @@ get_prec_ds(
 \item{.lat}{chracter Name of the column in the dataset}
 
 \item{.agera5_folder}{Folder in the local system where the agera5 data is stored.}
+}
+\value{
+a list of numeric vectors with requested precipation values
 }
 \description{
 Extract precipitation data for a dataset

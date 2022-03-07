@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_temp.R
 \name{get_temp_ts}
 \alias{get_temp_ts}
-\title{Extracts 2m_temperature values for one location for a time series}
+\title{Extracts 2m_temperature values for one location and one time series}
 \usage{
 get_temp_ts(.start_date, .end_date, .lon, .lat, .statistic, .agera5_folder)
 }
@@ -17,6 +17,9 @@ get_temp_ts(.start_date, .end_date, .lon, .lat, .statistic, .agera5_folder)
 
 \item{.agera5_folder}{character of the .statistic of interest, see details}
 }
+\value{
+a numeric vector of temperature values already converted from kelvin to Celsius
+}
 \description{
-Extracts 2m_temperature values for one location for a time series
+Extracts 2m_temperature values for one location and one time series
 }

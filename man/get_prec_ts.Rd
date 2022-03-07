@@ -15,7 +15,10 @@ get_prec_ts(.start_date, .end_date, .lon, .lat, .agera5_folder)
 
 \item{.lat}{numeric Latitude for the point of interest}
 
-\item{.agera5_folder}{Folder in the local system where the agera5 data is stored.}
+\item{.agera5_folder}{Folder in the local system where the AgERA5 data is stored.}
+}
+\value{
+numeric vector with precipitation values
 }
 \description{
 Extract precipitation data for one location and one time series

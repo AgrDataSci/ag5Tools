@@ -1,10 +1,9 @@
 #'Extract precipitation data for one location and one date
-
-#'@name get_prec_dp
 #'@param .date a date or character representing the date of the data point to be extracted
 #'@param .lon numeric Longitude for the point of interest
 #'@param .lat numeric Latitude for the point of interest
-#'@param .agera5_folder Folder in the local system where the agera5 data is stored.
+#'@param .agera5_folder Folder in the local system where the AgERA5 data is stored.
+#'@return numeric
 #'
 #'@export
 get_prec_dp <- function(.date,
@@ -23,38 +22,13 @@ get_prec_dp <- function(.date,
 }
 
 
-
-
-
-
-#@export
-# get_prec.period <- function(.start_date,
-#                             .end_date,
-#                             .lon,
-#                             .lat,
-#                             .agera5_folder){
-#
-#   start_date <- as.Date(.start_date)#, format = "%m/%d/%Y")
-#   end_date <- as.Date(.end_date)#, format = "%m/%d/%Y")
-#
-#   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
-#
-#   data_out_period <- vector(mode = "numeric", length = length(time_span))
-#
-#   for(i in 1:length(time_span)){
-#     data_out_period[i] <- get_prec.data_point(time_span[i], .lon, .lat, .agera5_folder)
-#   }
-#   names(data_out_period) <- as.character(time_span)
-#
-#   return(data_out_period)
-# }
-
 #'Extract precipitation data for one location and one time series
 #'@param .start_date Date or character to be coerced as Date The starting date for the period to extract
 #'@param .end_date Date or character to be coerced as Date The end date for the period to extract
 #'@param .lon numeric Longitude for the point of interest
 #'@param .lat numeric Latitude for the point of interest
-#'@param .agera5_folder Folder in the local system where the agera5 data is stored.
+#'@param .agera5_folder Folder in the local system where the AgERA5 data is stored.
+#'@return numeric vector with precipitation values
 
 #'@export
 get_prec_ts <- function(.start_date,
@@ -87,11 +61,13 @@ get_prec_ts <- function(.start_date,
 
 
 #'Extract precipitation data for a dataset
+#'@param .trial_dataset data.frame with columns required
 #'@param .start_date character Name of the column in the dataset
 #'@param .end_date character Name of the column in the dataset
 #'@param .lon chracter Name of the column in the dataset
 #'@param .lat chracter Name of the column in the dataset
 #'@param .agera5_folder Folder in the local system where the agera5 data is stored.
+#'@return a list of numeric vectors with requested precipation values
 #'@export
 get_prec_ds <- function(.trial_dataset = NULL,
                              .start_date = "pdate",

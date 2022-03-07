@@ -1,10 +1,10 @@
 #' Extracts 2m_temperature values for one location and one date
-
 #'@param .date Date or character representing the date of the point data to be extracted
 #'@param .lon  numeric with longitude and latitude
 #'@param .lat numeric data.frame or an object to be coerced, with longitude and latitude
 #'@param .statistic character of the .statistic of interest, see details
 #'@param .agera5_folder character of the .statistic of interest, see details
+#'@return numeric temperature value already converted from kelvin to Celsius
 #'
 #'#'@details
 #'\strong{valid .statistic values}
@@ -39,12 +39,13 @@ get_temp_dp <- function(.date,
 }
 
 
-#' Extracts 2m_temperature values for one location for a time series
+#' Extracts 2m_temperature values for one location and one time series
 #'@param .start_date Date or character representing the date of the point data to be extracted
 #'@param .lon  numeric with longitude and latitude
 #'@param .lat numeric data.frame or an object to be coerced, with longitude and latitude
 #'@param .statistic character of the .statistic of interest, see details
 #'@param .agera5_folder character of the .statistic of interest, see details
+#'@return a numeric vector of temperature values already converted from kelvin to Celsius
 
 #'@export
 get_temp_ts<- function(.start_date,
@@ -93,7 +94,7 @@ get_temp_ts<- function(.start_date,
 #'@param .lat character Name of the column that holds the latitude
 #'@param .statistic character Name of the statistic to extract, see details for valid options
 #'@param .agera5_folder character Location of data folder that contains AgERA5 files
-
+#'@return a list of numeric vectors with temperature values already converted from kelvin to Celsius
 #'@export
 get_temp_ds <- function(.trial_dataset,
                         .statistic,

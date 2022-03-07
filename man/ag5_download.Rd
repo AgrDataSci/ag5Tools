@@ -20,8 +20,6 @@ ag5_download(variable, statistic = NULL, day, month, year, time = NULL, path)
 \item{time}{Character Only required for some variables. See details}
 
 \item{path}{Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist beforehand and the path should be indicated without the ending "/"}
-
-\item{unzip}{Logical Downloaded data is provided as zip files. Should the files be uncompressed in the target path?}
 }
 \description{
 The data is downloaded from Copernicus Climate Change Service (C3) using the

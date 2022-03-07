@@ -1,5 +1,4 @@
 #' Extract relative humidity data for one location and one date
-
 #'@param .date a date or character representing the date of the point data to be extracted
 #'@param .lon a data.frame or an object to be coerced, with longitude and latitude
 #'@param .lat a data.frame or an object to be coerced, with longitude and latitude
@@ -37,20 +36,23 @@ get_rhum_dp <- function(.date,
 
 
 #' Extract relative humidity data for one location and one time series
-
+#'@param .start_date Date or character The starting date of the time period to be extracted
+#'@param .end_date Date or character The ending date of the time period to be extracted
+#'@param .lon numeric The longitude of the location of interest
+#'@param .lat numeric The latitude of the location of interest
+#'@param .time character Time of the day to extract
+#'@param .agera5_folder character indicating the folder where agera5 nc files are located
 #'@export
 get_rhum_ts <- function(.start_date,
-                                 .end_date,
-                                 .lon,
-                                 .lat,
-                                 .time,
-                                 .agera5_folder){
+                        .end_date,
+                        .lon,
+                        .lat,
+                        .time,
+                        .agera5_folder){
 
-  .start_date <- as.Date(.start_date)#, format = "%m/%d/%Y")
-  #print(.start_date)
+  .start_date <- as.Date(.start_date)
 
-  .end_date <- as.Date(.end_date)#, format = "%m/%d/%Y")
-  #print(.end_date)
+  .end_date <- as.Date(.end_date)
 
   time_span <- seq.Date(from = .start_date, to = .end_date, by = "days")
 
@@ -61,10 +63,6 @@ get_rhum_ts <- function(.start_date,
                           function(X) get_file_path.rhum(.date_to_search = X,
                                                          .time = .time,
                                                          .agera5_folder = .agera5_folder))
-
-  # nc_files_list <- get_file_path.rhum(.date = time_span,
-  #                                .time = .time,
-  #                                .agera5_folder = .agera5_folder)
 
   temp_stack <- terra::rast(nc_files_list)
 

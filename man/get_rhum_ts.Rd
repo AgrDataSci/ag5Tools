@@ -6,6 +6,19 @@
 \usage{
 get_rhum_ts(.start_date, .end_date, .lon, .lat, .time, .agera5_folder)
 }
+\arguments{
+\item{.start_date}{Date or character The starting date of the time period to be extracted}
+
+\item{.end_date}{Date or character The ending date of the time period to be extracted}
+
+\item{.lon}{numeric The longitude of the location of interest}
+
+\item{.lat}{numeric The latitude of the location of interest}
+
+\item{.time}{character Time of the day to extract}
+
+\item{.agera5_folder}{character indicating the folder where agera5 nc files are located}
+}
 \description{
 Extract relative humidity data for one location and one time series
 }

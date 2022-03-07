@@ -29,6 +29,9 @@ get_temp_ds(
 
 \item{.agera5_folder}{character Location of data folder that contains AgERA5 files}
 }
+\value{
+a list of numeric vectors with temperature values already converted from kelvin to Celsius
+}
 \description{
 Iterates across a data set to extract all required data points
 }

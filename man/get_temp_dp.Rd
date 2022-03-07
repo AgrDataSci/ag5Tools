@@ -16,6 +16,7 @@ get_temp_dp(.date, .lon, .lat, .statistic, .agera5_folder)
 \item{.statistic}{character of the .statistic of interest, see details}
 
 \item{.agera5_folder}{character of the .statistic of interest, see details
+#'@return numeric temperature value already converted from kelvin to Celsius
 
 #'@details
 \strong{valid .statistic values}
