@@ -1,10 +1,10 @@
 # agera5
-## An R package for downloading and extracting data from the Copernicus AgERA5 dataset
+## Toolbox for downloading and extracting data from the Copernicus AgERA5 dataset
 
 
 ## Description 
 
-The R package *agera5r* is a toolbox to download and extract data from the "Agrometeorological indicators from 1979 to present derived from reanalysis" dataset (aka AgERA5).
+The R package *agera5* is a toolbox to download and extract data from the "Agrometeorological indicators from 1979 to present derived from reanalysis" dataset (AgERA5).
 
 https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview
 
@@ -12,7 +12,7 @@ The download function provides programmatic access to the Copernicus Climate Dat
 AgERA5 data.
 
 ## Data license
-The agera5r package does not distribute data, it only provides access to Climate Data Store through the 
+The agera5 package does not distribute data, it only provides access to Climate Data Store through the 
 python cdsapi.
 
 For specific details about the license agreenment on downloading and using the data please check the license at: 
@@ -30,16 +30,17 @@ in: https://cds.climate.copernicus.eu/api-how-to
 #### Example
 The following example downloads daily 2m_temperature data for year 2015
 ``` r
-download_agera5(agera5_var = "2m_temperature",
-                agera5_stat = "night_time_minimum",
-                day = "all",
-                month = "all",
-                year = 2015,
-                path = "C:/custom_target_folder"
+ag5_download(variable = "2m_temperature",
+             statistic = "night_time_minimum",
+             day = "all",
+             month = "all",
+             year = 2015,
+             path = "C:/custom_target_folder"
+             )
 )
 ``` 
 ## Acknowledgements
-The *agera5r* package relies on the functionality available from other open source packages.
+The *agera5* package relies on the functionality available from other open source packages.
 
 * The Python [*cdsapi*](https://pypi.org/project/cdsapi/)
 
