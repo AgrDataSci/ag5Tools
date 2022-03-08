@@ -1,5 +1,5 @@
-Package: agera5
-Title: An R Package for Downloading and Extracting AgERA5 Data
+Package: agera5r
+Title: Toolbox for Downloading and Extracting Copernicus AgERA5 Data
 Version: 0.0.0.9007
 Authors@R:
           c(person(given = "David",
