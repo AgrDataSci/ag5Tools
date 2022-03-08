@@ -10,7 +10,7 @@ Authors@R:
           person("Kaue", "de Sousa", 
           email = "kaue.desousa@inn.no", role = c("aut"),
           comment = c(ORCID = "0000-0002-7571-7845")))
-Description: R tools for download and extract data from the Copernicus "Agrometeorological indicators from 1979 to present derived from reanalysis" (AgERA5).
+Description: Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators from 1979 to present derived from reanalysis" (AgERA5).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
