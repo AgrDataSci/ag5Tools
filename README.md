@@ -37,7 +37,6 @@ ag5_download(variable = "2m_temperature",
              year = 2015,
              path = "C:/custom_target_folder"
              )
-)
 ``` 
 ## Acknowledgements
 The *agera5* package relies on the functionality available from other open source packages.
