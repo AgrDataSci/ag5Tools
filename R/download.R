@@ -13,12 +13,12 @@
 
 #'@name ag5_download
 #'@param variable character The variable to be downloaded. See details
-#'@param statistic character only required for variable "2m_temperature". See details for available options.
+#'@param statistic character Only required for some variables. See details for options.
 #'@param day character Day of the week for the requested data. \code{day = "all"}  will download all days from requested month
 #'@param month character Month to be requested. \code{month = "all"} will download all the months for the requested year.
 #'@param year numeric (Integer) Year to download. Should be between 1979 - 2022
 #'@param time Character Only required for "2m_relative_humidity". See details for available options.
-#'@param path Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the path should be indicated without the ending "/"
+#'@param path Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the user should have write permission.
 #'
 #'@details
 #'# AgERA5 variables available for download:
@@ -62,16 +62,29 @@
 #'\item 15_00
 #'\item 18_00
 #'}
+#'
+#'# Variables that require statistic
+#'For the following variables, only "24_hour_mean" statistic is available, but should
+#'be explicitly indicated.
+#'\itemize{
+#'\item cloud_cover
+#'\item snow_thickness_lwe
+#'\item 2m_dewpoint_temperature
+#'\item snow_thickness
+#'\item vapour_pressure
+#'\item 10m_wind_speed
+
+#'}
 
 
 #'@examples
 #'\dontrun{
 #'ag5_download(variable = "2m_temperature",
 #'             statistic = "night_time_minimum",
-#'             'day = "all",
-#'             'month = "all",
-#'             'year = 2015,
-#'             'path = "C:/custom_target_folder"
+#'             day = "all",
+#'             month = "all",
+#'             year = 2015,
+#'             path = "C:/custom_target_folder"
 #'             )
 #'             }
 #'
