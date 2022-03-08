@@ -86,39 +86,39 @@ ag5_download <- function(variable,
                          time = NULL,
                          path){
 
-  ifelse(length(day) > 1,
-         days <- day, ifelse(day == "all",
-                             days <- formatC(x = seq(1:31), width = 2, flag = 0),
-                             days <- day))
+  if(day == "all"){
+    day <-     formatC(x = seq(1:31), width = 2, flag = 0)
+  }
+
+ if(month == "all"){
+   month <- formatC(x = seq(1:12), width = 2, flag = 0)
+ }
 
 
-  ifelse(length(month) > 1,
-         months <- month, ifelse(month == "all",
-                                 months <- formatC(x = seq(1:12), width = 2, flag = 0),
-                                 months <- month))
-
-  if(length(year) > 1 | length(months > 1)){
+  if(length(year) > 1 | length(month > 1)){
     years <- year
 
     for(i in seq_along(years)){
-      for(j in months){
+      for(j in month){
         ag5_request(variable = variable,
-                       statistic = statistic,
-                       day = days,
-                       month = j,
-                       year = years[i],
-                       path = paste0(path,
-                                    years[i]))
+                    statistic = statistic,
+                    day = day,
+                    month = j,
+                    time = time,
+                    year = years[i],
+                    path = paste0(path,
+                                  years[i]))
       }
     }
   }
   else{
     ag5_request(variable = variable,
-                   statistic = statistic,
-                   day = days,
-                   month = months,
-                   year = year,
-                   path = paste0(path,
+                statistic = statistic,
+                day = day,
+                month = month,
+                time = time,
+                year = year,
+                path = paste0(path,
                                  year))
 
   }
@@ -135,13 +135,14 @@ ag5_request <- function(variable,
 
   c <- cdsapi$Client()
 
+
   results <- c$retrieve('sis-agrometeorological-indicators',
-                        list("variable" = variable,
-                             "statistic" = statistic,
-                             "year" = as.integer(year),
-                             "month" = month,
-                             "day" = day,
-                             "time" = time))
+                          list("variable" = variable,
+                               "year" = as.integer(year),
+                               "statistic" = statistic,
+                               "month" = month,
+                               "day" = day,
+                               "time" = time))
 
 
   file_name_path <- paste(path,
