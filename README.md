@@ -1,4 +1,4 @@
-# agera5r
+# agera5
 ## An R package for downloading and extracting data from the Copernicus AgERA5 dataset
 
 
