@@ -74,7 +74,7 @@ follow the instructions at: <a href="https://cds.climate.copernicus.eu/api-how-t
     <dl><dt>variable</dt>
 <dd><p>character The variable to be downloaded. See details</p></dd>
 <dt>statistic</dt>
-<dd><p>character only required for variable "2m_temperature". See details for available options.</p></dd>
+<dd><p>character Only required for some variables. See details for options.</p></dd>
 <dt>day</dt>
 <dd><p>character Day of the week for the requested data. <code>day = "all"</code>  will download all days from requested month</p></dd>
 <dt>month</dt>
@@ -84,7 +84,7 @@ follow the instructions at: <a href="https://cds.climate.copernicus.eu/api-how-t
 <dt>time</dt>
 <dd><p>Character Only required for "2m_relative_humidity". See details for available options.</p></dd>
 <dt>path</dt>
-<dd><p>Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the path should be indicated without the ending "/"</p></dd>
+<dd><p>Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the user should have write permission.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="agera-variables-available-for-download-">AgERA5 variables available for download:<a class="anchor" aria-label="anchor" href="#agera-variables-available-for-download-"></a></h2>
@@ -123,10 +123,30 @@ options in <code>time</code>:</p><ul><li><p>06_00</p></li>
 <li><p>15_00</p></li>
 <li><p>18_00</p></li>
 </ul></div>
+    <div class="section level2">
+    <h2 id="variables-that-require-statistic">Variables that require statistic<a class="anchor" aria-label="anchor" href="#variables-that-require-statistic"></a></h2>
+    <p>For the following variables, only "24_hour_mean" statistic is available, but should
+be explicitly indicated.</p><ul><li><p>cloud_cover</p></li>
+<li><p>snow_thickness_lwe</p></li>
+<li><p>2m_dewpoint_temperature</p></li>
+<li><p>snow_thickness</p></li>
+<li><p>vapour_pressure</p></li>
+<li><p>10m_wind_speed</p></li>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="fu">ag5_download</span><span class="op">(</span>variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,</span>
+<span class="r-in">            statistic <span class="op">=</span> <span class="st">"night_time_minimum"</span>,</span>
+<span class="r-in">            day <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span class="r-in">            month <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span class="r-in">            year <span class="op">=</span> <span class="fl">2015</span>,</span>
+<span class="r-in">            path <span class="op">=</span> <span class="st">"C:/custom_target_folder"</span></span>
+<span class="r-in">            <span class="op">)</span></span>
+<span class="r-in">            <span class="op">}</span></span>
+<span class="r-in"></span>
+</code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
