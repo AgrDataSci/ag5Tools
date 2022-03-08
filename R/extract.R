@@ -50,8 +50,7 @@
 #'
 #'@examples
 #'\dontrun{
-#'2m_temp <- ag5_extract(lon = 35.72636,
-#'                       lat = -2.197162,
+#'2m_temp <- ag5_extract(coords = c(lon = 35.72636, lat = -2.197162),
 #'                       dates = "1991-04-22",
 #'                       variable = "Temperature-Air-2m",
 #'                       statistic = "Max-Day-Time",
@@ -59,7 +58,26 @@
 #'}
 #'
 
-#'
+
+valid_variables <- c("Temperature-Air-2m",
+                     "Precipitation-Flux",
+                     "Solar-Radiation-Flux",
+                     "Relative-Humidity-2m")
+
+valid_statistics <- c("Max-24h",
+                      "Mean-24h",
+                      "24_hour_minimum",
+                      "Max-Day-Time",
+                      "Mean-Day-Time",
+                      "Mean-Night-Time",
+                      "Min-Night-Time")
+
+valid_times <- c("06h",
+                 "09h",
+                 "12h",
+                 "15h",
+                 "18h")
+
 #'@importFrom terra extract
 #'@export
 #'
@@ -78,6 +96,8 @@ ag5_extract.numeric <- function(coords, dates, variable, ..., path){
   args <- list(...)
 
   statistic <- args[["statistic"]]
+
+  time <- args[["time"]]
 
   if(!variable %in% valid_variables)
     stop("not valid variable, please check")
@@ -124,8 +144,5 @@ ag5_extract.data.frame <- function(dataset,
   return(x)
 }
 
-valid_variables <- c("Temperature-Air-2m",
-                     "Precipitation-Flux",
-                     "Solar-Radiation-Flux",
-                     "Relative-Humidity-2m")
+
 
