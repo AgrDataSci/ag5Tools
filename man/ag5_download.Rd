@@ -9,7 +9,7 @@ ag5_download(variable, statistic = NULL, day, month, year, time = NULL, path)
 \arguments{
 \item{variable}{character The variable to be downloaded. See details}
 
-\item{statistic}{character only required for variable "2m_temperature". See details for available options.}
+\item{statistic}{character Only required for some variables. See details for options.}
 
 \item{day}{character Day of the week for the requested data. \code{day = "all"}  will download all days from requested month}
 
@@ -19,7 +19,7 @@ ag5_download(variable, statistic = NULL, day, month, year, time = NULL, path)
 
 \item{time}{Character Only required for "2m_relative_humidity". See details for available options.}
 
-\item{path}{Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the path should be indicated without the ending "/"}
+\item{path}{Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the user should have write permission.}
 }
 \description{
 The data is downloaded from Copernicus Climate Change Service (C3) using the
@@ -77,14 +77,27 @@ options in \code{time}:
 }
 }
 
+\section{Variables that require statistic}{
+For the following variables, only "24_hour_mean" statistic is available, but should
+be explicitly indicated.
+\itemize{
+\item cloud_cover
+\item snow_thickness_lwe
+\item 2m_dewpoint_temperature
+\item snow_thickness
+\item vapour_pressure
+\item 10m_wind_speed
+}
+}
+
 \examples{
 \dontrun{
 ag5_download(variable = "2m_temperature",
             statistic = "night_time_minimum",
-            'day = "all",
-            'month = "all",
-            'year = 2015,
-            'path = "C:/custom_target_folder"
+            day = "all",
+            month = "all",
+            year = 2015,
+            path = "C:/custom_target_folder"
             )
             }
 
