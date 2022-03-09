@@ -66,7 +66,7 @@ follow the instructions at: <a href="https://cds.climate.copernicus.eu/api-how-t
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ag5_download</span><span class="op">(</span><span class="va">variable</span>, statistic <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">day</span>, <span class="va">month</span>, <span class="va">year</span>, time <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">path</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ag5_download</span><span class="op">(</span><span class="va">variable</span>, statistic <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, time <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">path</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -75,12 +75,12 @@ follow the instructions at: <a href="https://cds.climate.copernicus.eu/api-how-t
 <dd><p>character The variable to be downloaded. See details</p></dd>
 <dt>statistic</dt>
 <dd><p>character Only required for some variables. See details for options.</p></dd>
-<dt>day</dt>
-<dd><p>character Day of the week for the requested data. <code>day = "all"</code>  will download all days from requested month</p></dd>
-<dt>month</dt>
-<dd><p>character Month to be requested. <code>month = "all"</code> will download all the months for the requested year.</p></dd>
 <dt>year</dt>
 <dd><p>numeric (Integer) Year to download. Should be between 1979 - 2022</p></dd>
+<dt>month</dt>
+<dd><p>character Month to be requested. <code>month = "all"</code> will download all the months for the requested year.</p></dd>
+<dt>day</dt>
+<dd><p>character Day of the week for the requested data. <code>day = "all"</code>  will download all days from requested month</p></dd>
 <dt>time</dt>
 <dd><p>Character Only required for "2m_relative_humidity". See details for available options.</p></dd>
 <dt>path</dt>

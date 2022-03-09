@@ -60,19 +60,21 @@ dates value is the start date and the second the end date.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ag5_extract</span><span class="op">(</span><span class="va">variable</span>, <span class="va">...</span>, <span class="va">path</span><span class="op">)</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ag5_extract</span><span class="op">(</span><span class="va">coords</span>, <span class="va">...</span>, <span class="va">path</span><span class="op">)</span>
 
-<span class="co"># S3 method for default</span>
-<span class="fu">ag5_extract</span><span class="op">(</span><span class="va">coords</span>, <span class="va">dates</span>, <span class="va">variable</span>, <span class="va">...</span>, <span class="va">path</span><span class="op">)</span>
+<span class="co"># S3 method for numeric</span>
+<span class="fu">ag5_extract</span><span class="op">(</span><span class="va">coords</span>, <span class="va">dates</span>, <span class="va">variable</span>, statistic <span class="op">=</span> <span class="cn">NULL</span>, time <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">path</span><span class="op">)</span>
 
 <span class="co"># S3 method for data.frame</span>
 <span class="fu">ag5_extract</span><span class="op">(</span>
-  <span class="va">dataset</span>,
+  <span class="va">coords</span>,
   lon <span class="op">=</span> <span class="st">"lon"</span>,
   lat <span class="op">=</span> <span class="st">"lat"</span>,
   start_date <span class="op">=</span> <span class="st">"start_date"</span>,
   end_date <span class="op">=</span> <span class="st">"end_date"</span>,
   <span class="va">variable</span>,
+  statistic <span class="op">=</span> <span class="cn">NULL</span>,
+  time <span class="op">=</span> <span class="cn">NULL</span>,
   <span class="va">...</span>,
   <span class="va">path</span>
 <span class="op">)</span></code></pre></div>
@@ -80,19 +82,21 @@ dates value is the start date and the second the end date.</p>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>variable</dt>
-<dd><p>The AgERA5 variable to extract, see details for available options</p></dd>
+    <dl><dt>coords</dt>
+<dd><p>numeric Vector of length = 2 of the form (lon, lat), or a data.fram with required columns</p></dd>
 <dt>...</dt>
 <dd><p>Other parameters</p></dd>
 <dt>path</dt>
 <dd><p>The path for the folder containing the AgERA5 files</p></dd>
-<dt>coords</dt>
-<dd><p>numeric Vector of length = 2 of the form (lon, lat)</p></dd>
 <dt>dates</dt>
 <dd><p>The dates for extracting the specified variable, either single character or a vector of length 2
 or the column name in the case of <code>data.frame</code></p></dd>
-<dt>dataset</dt>
-<dd><p>data.frame with columns lon, lat, start_date and end_date</p></dd>
+<dt>variable</dt>
+<dd><p>The AgERA5 variable to extract, see details for available options</p></dd>
+<dt>statistic</dt>
+<dd><p>character Only for some variables, see details for valid options</p></dd>
+<dt>time</dt>
+<dd><p>Only for variable Relative-Humidity-2m, see details for valid options</p></dd>
 <dt>lon</dt>
 <dd><p>character Column name of longitude values in the case of <code>data.frame</code></p></dd>
 <dt>lat</dt>
@@ -101,18 +105,22 @@ or the column name in the case of <code>data.frame</code></p></dd>
 <dd><p>Column name of start_date values in the case of <code>data.frame</code></p></dd>
 <dt>end_date</dt>
 <dd><p>Column name of end_date values in the case of <code>data.frame</code></p></dd>
-<dt>statistic</dt>
-<dd><p>character Only for variable Temperature-Air-2m, see details for valid options</p></dd>
-<dt>time</dt>
-<dd><p>Only for variable Relative-Humidity-2m, see details for valid options</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="valid-variable-values">Valid variable values<a class="anchor" aria-label="anchor" href="#valid-variable-values"></a></h2>
     
-<ul><li><p>Temperature-Air-2m</p></li>
-<li><p>Precipitation-Flux</p></li>
-<li><p>Solar-Radiation-Flux</p></li>
-<li><p>Relative-Humidity-2m</p></li>
+<ul><li><p>"cloud_cover"</p></li>
+<li><p>"liquid_precipitation_duration_fraction"</p></li>
+<li><p>"snow_thickness_lwe"</p></li>
+<li><p>"Solar-Radiation-Flux"</p></li>
+<li><p>"Temperature-Air-2m"</p></li>
+<li><p>"2m_dewpoint_temperature"</p></li>
+<li><p>"Precipitation-Flux"</p></li>
+<li><p>"solid_precipitation_duration_fraction"</p></li>
+<li><p>"snow_thickness"</p></li>
+<li><p>"vapour_pressure"</p></li>
+<li><p>"10m_wind_speed"</p></li>
+<li><p>"Relative-Humidity-2m"</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="valid-statistics-for-variable-temperature-air-m-">Valid statistics for variable "Temperature-Air-2m"<a class="anchor" aria-label="anchor" href="#valid-statistics-for-variable-temperature-air-m-"></a></h2>
@@ -124,6 +132,16 @@ or the column name in the case of <code>data.frame</code></p></dd>
 <li><p>Mean-Day-Time</p></li>
 <li><p>Mean-Night-Time</p></li>
 <li><p>Min-Night-Time</p></li>
+</ul></div>
+    <div class="section level2">
+    <h2 id="variables-that-require-statistic">Variables that require statistic<a class="anchor" aria-label="anchor" href="#variables-that-require-statistic"></a></h2>
+    <p>For the following variables, only "24_hour_mean" statistic is available, but should
+be explicitly indicated.</p><ul><li><p>cloud_cover</p></li>
+<li><p>snow_thickness_lwe</p></li>
+<li><p>2m_dewpoint_temperature</p></li>
+<li><p>snow_thickness</p></li>
+<li><p>vapour_pressure</p></li>
+<li><p>10m_wind_speed</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="valid-time-values-for-variable-relative-humidity-m-">Valid time values for variable "Relative-Humidity-2m"<a class="anchor" aria-label="anchor" href="#valid-time-values-for-variable-relative-humidity-m-"></a></h2>
