@@ -4,18 +4,18 @@
 \alias{ag5_download}
 \title{Downloads AgERA5 data from the Copernicus Climate Change Service - Copernicus Climate Data Store}
 \usage{
-ag5_download(variable, statistic = NULL, day, month, year, time = NULL, path)
+ag5_download(variable, statistic = NULL, year, month, day, time = NULL, path)
 }
 \arguments{
 \item{variable}{character The variable to be downloaded. See details}
 
 \item{statistic}{character Only required for some variables. See details for options.}
 
-\item{day}{character Day of the week for the requested data. \code{day = "all"}  will download all days from requested month}
+\item{year}{numeric (Integer) Year to download. Should be between 1979 - 2022}
 
 \item{month}{character Month to be requested. \code{month = "all"} will download all the months for the requested year.}
 
-\item{year}{numeric (Integer) Year to download. Should be between 1979 - 2022}
+\item{day}{character Day of the week for the requested data. \code{day = "all"}  will download all days from requested month}
 
 \item{time}{Character Only required for "2m_relative_humidity". See details for available options.}
 
