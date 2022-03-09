@@ -1,5 +1,5 @@
 Package: agera5
-Title: Toolbox for Downloading and Extracting Copernicus AgERA5 Data
+Title: Toolbox for Downloading and Extracting Copernicus AgERA5 Data 
 Version: 0.0.0.9007
 Authors@R:
           c(person(given = "David",
@@ -10,7 +10,9 @@ Authors@R:
           person("Kaue", "de Sousa", 
           email = "kaue.desousa@inn.no", role = c("aut"),
           comment = c(ORCID = "0000-0002-7571-7845")))
-Description: Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators from 1979 to present derived from reanalysis" (AgERA5).
+Description: Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators 
+  from 1979 to present derived from reanalysis"
+  <https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview> (AgERA5).
 Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
