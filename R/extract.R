@@ -13,12 +13,14 @@
 #'@param coords numeric Vector of length = 2 of the form (lon, lat)
 #'@param dates The dates for extracting the specified variable, either single character or a vector of length 2
 #'or the column name in the case of \code{data.frame}
+#'@param dataset data.frame with columns lon, lat, start_date and end_date
 #'@param lon character Column name of longitude values in the case of \code{data.frame}
 #'@param lat character Column name of latitude values in the case of \code{data.frame}
 #'@param start_date Column name of start_date values in the case of \code{data.frame}
 #'@param end_date Column name of end_date values in the case of \code{data.frame}
 #'@param time Only for variable Relative-Humidity-2m, see details for valid options
 #'@param path The path for the folder containing the AgERA5 files
+#'@param ... Other parameters
 #'
 #'@details # Valid variable values
 #'\itemize{
@@ -58,25 +60,6 @@
 #'}
 #'
 
-
-valid_variables <- c("Temperature-Air-2m",
-                     "Precipitation-Flux",
-                     "Solar-Radiation-Flux",
-                     "Relative-Humidity-2m")
-
-valid_statistics <- c("Max-24h",
-                      "Mean-24h",
-                      "24_hour_minimum",
-                      "Max-Day-Time",
-                      "Mean-Day-Time",
-                      "Mean-Night-Time",
-                      "Min-Night-Time")
-
-valid_times <- c("06h",
-                 "09h",
-                 "12h",
-                 "15h",
-                 "18h")
 
 #'@importFrom terra extract
 #'@export
@@ -146,7 +129,7 @@ ag5_extract.default <- function(coords, dates, variable, ..., path){
 
     ag5_data <- terra::extract(nc_stack, cbind(coords[1], coords[2]))
 
-    names(ag5_data) <- date_to_search
+    names(ag5_data) <- dates
 
   }
 
@@ -201,5 +184,22 @@ ag5_extract.data.frame <- function(dataset,
 
 }
 
+valid_variables <- c("Temperature-Air-2m",
+                     "Precipitation-Flux",
+                     "Solar-Radiation-Flux",
+                     "Relative-Humidity-2m")
 
+valid_statistics <- c("Max-24h",
+                      "Mean-24h",
+                      "24_hour_minimum",
+                      "Max-Day-Time",
+                      "Mean-Day-Time",
+                      "Mean-Night-Time",
+                      "Min-Night-Time")
+
+valid_times <- c("06h",
+                 "09h",
+                 "12h",
+                 "15h",
+                 "18h")
 
