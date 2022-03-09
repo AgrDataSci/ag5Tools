@@ -8,12 +8,11 @@
 #'dates value is the start date and the second the end date.
 
 #'@name ag5_extract
+#'@param coords numeric Vector of length = 2 of the form (lon, lat), or a data.fram with required columns
 #'@param variable The AgERA5 variable to extract, see details for available options
-#'@param statistic character Only for variable Temperature-Air-2m, see details for valid options
-#'@param coords numeric Vector of length = 2 of the form (lon, lat)
+#'@param statistic character Only for some variables, see details for valid options
 #'@param dates The dates for extracting the specified variable, either single character or a vector of length 2
 #'or the column name in the case of \code{data.frame}
-#'@param dataset data.frame with columns lon, lat, start_date and end_date
 #'@param lon character Column name of longitude values in the case of \code{data.frame}
 #'@param lat character Column name of latitude values in the case of \code{data.frame}
 #'@param start_date Column name of start_date values in the case of \code{data.frame}
@@ -22,12 +21,21 @@
 #'@param path The path for the folder containing the AgERA5 files
 #'@param ... Other parameters
 #'
-#'@details # Valid variable values
+#'@details
+#'# Valid variable values
 #'\itemize{
-#'\item Temperature-Air-2m
-#'\item Precipitation-Flux
-#'\item Solar-Radiation-Flux
-#'\item Relative-Humidity-2m
+#'\item "cloud_cover"
+#'\item "liquid_precipitation_duration_fraction"
+#'\item "snow_thickness_lwe"
+#'\item "Solar-Radiation-Flux"
+#'\item "Temperature-Air-2m"
+#'\item "2m_dewpoint_temperature"
+#'\item "Precipitation-Flux"
+#'\item "solid_precipitation_duration_fraction"
+#'\item "snow_thickness"
+#'\item "vapour_pressure"
+#'\item "10m_wind_speed"
+#'\item "Relative-Humidity-2m"
 #'}
 #'
 #'# Valid statistics for variable "Temperature-Air-2m"
@@ -39,6 +47,19 @@
 #'\item Mean-Day-Time
 #'\item Mean-Night-Time
 #'\item Min-Night-Time}
+#'
+#'# Variables that require statistic
+#'For the following variables, only "24_hour_mean" statistic is available, but should
+#'be explicitly indicated.
+#'\itemize{
+#'\item cloud_cover
+#'\item snow_thickness_lwe
+#'\item 2m_dewpoint_temperature
+#'\item snow_thickness
+#'\item vapour_pressure
+#'\item 10m_wind_speed
+
+#'}
 #'
 #'#  Valid time values for variable "Relative-Humidity-2m"
 #'\itemize{
@@ -64,7 +85,7 @@
 #'@importFrom terra extract
 #'@export
 #'
-ag5_extract <- function(variable, ..., path){
+ag5_extract <- function(coords, ..., path){
 
   UseMethod("ag5_extract")
 
@@ -74,13 +95,14 @@ ag5_extract <- function(variable, ..., path){
 #'@rdname ag5_extract
 #'@export
 
-ag5_extract.default <- function(coords, dates, variable, ..., path){
+ag5_extract.numeric <- function(coords,
+                                dates,
+                                variable,
+                                statistic = NULL,
+                                time = NULL,
+                                ...,
+                                path){
 
-  args <- list(...)
-
-  statistic <- args[["statistic"]]
-
-  time <- args[["time"]]
 
   if(!variable %in% valid_variables)
     stop("not valid variable, please check")
@@ -141,20 +163,18 @@ ag5_extract.default <- function(coords, dates, variable, ..., path){
 #'@method ag5_extract data.frame
 #'@export
 
-ag5_extract.data.frame <- function(dataset,
+ag5_extract.data.frame <- function(coords,
                                    lon = "lon",
                                    lat = "lat",
                                    start_date = "start_date",
                                    end_date = "end_date",
                                    variable,
+                                   statistic = NULL,
+                                   time = NULL,
                                    ...,
                                    path){
 
-  args <- list(...)
-
-  statistic <- args[["statistic"]]
-
-  time <- args[["time"]]
+  dataset <- coords
 
   if(!variable %in% valid_variables)
     stop("not valid variable, please check")
@@ -184,9 +204,17 @@ ag5_extract.data.frame <- function(dataset,
 
 }
 
-valid_variables <- c("Temperature-Air-2m",
-                     "Precipitation-Flux",
+valid_variables <- c("cloud_cover",
+                     "liquid_precipitation_duration_fraction",
+                     "snow_thickness_lwe",
                      "Solar-Radiation-Flux",
+                     "Temperature-Air-2m",
+                     "2m_dewpoint_temperature",
+                     "Precipitation-Flux",
+                     "solid_precipitation_duration_fraction",
+                     "snow_thickness",
+                     "vapour_pressure",
+                     "10m_wind_speed",
                      "Relative-Humidity-2m")
 
 valid_statistics <- c("Max-24h",
