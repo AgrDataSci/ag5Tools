@@ -91,7 +91,7 @@ ag5_extract <- function(variable, ..., path){
 #'@rdname ag5_extract
 #'@export
 
-ag5_extract.numeric <- function(coords, dates, variable, ..., path){
+ag5_extract.default <- function(coords, dates, variable, ..., path){
 
   args <- list(...)
 
@@ -102,27 +102,55 @@ ag5_extract.numeric <- function(coords, dates, variable, ..., path){
   if(!variable %in% valid_variables)
     stop("not valid variable, please check")
 
-  if(variable == "Temperature-Air-2m"){
-    if(is.null(statistic))
-      stop("statistic not provided for variable Temperature-Air-2m")
-      else{
-        message("temperature")
+  if(variable == "Temperature-Air-2m" && is.null(statistic)){
 
-      }
-  }
-  if(variable == "Relative-Humidity-2m"){
-    if(is.null(time))
-      stop("time is required for variable Relative-Humidity-2m")
-    else
-      message("humidity")
+    stop("statistic not provided for variable Temperature-Air-2m")
+
   }
 
-  x <- paste0(lon, lat, variable, list(...), path)
+  if(variable == "Relative-Humidity-2m" && is.null(time)){
+    stop("time is required for variable Relative-Humidity-2m")
+  }
 
+  if(length(dates) == 2){
 
+    time_span <- seq.Date(from = dates[1], to = dates[2], by = "days")
 
+    data_out_period <- vector(mode = "numeric", length = length(time_span))
 
-   return(x)
+    nc_files_list <- vapply(X = time_span,
+                            FUN.VALUE = vector(mode = "character", length = 1),
+                            function(X) get_file_path(date_to_search = X,
+                                                      variable,
+                                                      statistic,
+                                                      time,
+                                                      path))
+
+    nc_stack <- terra::rast(nc_files_list)
+
+    ag5_data <- terra::extract(nc_stack, cbind(coords[1], coords[2]))
+
+    names(ag5_data) <- time_span
+
+  }
+
+  if(length(dates) == 1){
+
+    nc_files_list <-  get_file_path(date_to_search = dates,
+                                    variable,
+                                    statistic,
+                                    time,
+                                    path)
+
+    nc_stack <- terra::rast(nc_files_list)
+
+    ag5_data <- terra::extract(nc_stack, cbind(coords[1], coords[2]))
+
+    names(ag5_data) <- date_to_search
+
+  }
+
+   return(ag5_data)
 }
 
 
@@ -139,9 +167,38 @@ ag5_extract.data.frame <- function(dataset,
                                    ...,
                                    path){
 
-  x <- dataset$lon
+  args <- list(...)
 
-  return(x)
+  statistic <- args[["statistic"]]
+
+  time <- args[["time"]]
+
+  if(!variable %in% valid_variables)
+    stop("not valid variable, please check")
+
+  if(variable == "Temperature-Air-2m" && is.null(statistic)){
+
+    stop("statistic not provided for variable Temperature-Air-2m")
+
+  }
+
+  if(variable == "Relative-Humidity-2m" && is.null(time)){
+    stop("time is required for variable Relative-Humidity-2m")
+  }
+
+  ag5_data_list <- vector(mode = "list", length = nrow(dataset))
+
+
+  ag5_data_list<- lapply(1:nrow(dataset), FUN = function(X){
+    ag5_extract(coords =  c(dataset[X, "lon"], dataset[X, "lat"]),
+                                 dates = c(dataset[X, "start_date"], dataset[X, "end_date"]),
+                                 variable = variable,
+                                 statistic = statistic,
+                                 time = time,
+                                 path = path)})
+
+  return(ag5_data_list)
+
 }
 
 

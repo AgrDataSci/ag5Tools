@@ -99,11 +99,11 @@ ag5_download <- function(variable,
                          time = NULL,
                          path){
 
-  if(day == "all"){
-    day <-     formatC(x = seq(1:31), width = 2, flag = 0)
+  if(length(day) == 1 && day == "all"){
+    day <- formatC(x = seq(1:31), width = 2, flag = 0)
   }
 
- if(month == "all"){
+ if(length(month) == 1 && month == "all"){
    month <- formatC(x = seq(1:12), width = 2, flag = 0)
  }
 

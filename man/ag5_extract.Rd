@@ -4,7 +4,7 @@
 \name{ag5_extract}
 \alias{ag5_extract}
 \alias{valid_variables}
-\alias{ag5_extract.numeric}
+\alias{ag5_extract.default}
 \alias{ag5_extract.data.frame}
 \title{Extract AgERA5 data stored in a local hardrive}
 \format{
@@ -13,7 +13,7 @@ An object of class \code{character} of length 4.
 \usage{
 valid_variables
 
-\method{ag5_extract}{numeric}(coords, dates, variable, ..., path)
+\method{ag5_extract}{default}(coords, dates, variable, ..., path)
 
 \method{ag5_extract}{data.frame}(
   dataset,
