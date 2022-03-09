@@ -2,38 +2,42 @@
 % Please edit documentation in R/extract.R
 \name{ag5_extract}
 \alias{ag5_extract}
-\alias{ag5_extract.default}
+\alias{ag5_extract.numeric}
 \alias{ag5_extract.data.frame}
 \title{Extract AgERA5 data stored in a local hardrive}
 \usage{
-ag5_extract(variable, ..., path)
+ag5_extract(coords, ..., path)
 
-\method{ag5_extract}{default}(coords, dates, variable, ..., path)
+\method{ag5_extract}{numeric}(coords, dates, variable, statistic = NULL, time = NULL, ..., path)
 
 \method{ag5_extract}{data.frame}(
-  dataset,
+  coords,
   lon = "lon",
   lat = "lat",
   start_date = "start_date",
   end_date = "end_date",
   variable,
+  statistic = NULL,
+  time = NULL,
   ...,
   path
 )
 }
 \arguments{
-\item{variable}{The AgERA5 variable to extract, see details for available options}
+\item{coords}{numeric Vector of length = 2 of the form (lon, lat), or a data.fram with required columns}
 
 \item{...}{Other parameters}
 
 \item{path}{The path for the folder containing the AgERA5 files}
 
-\item{coords}{numeric Vector of length = 2 of the form (lon, lat)}
-
 \item{dates}{The dates for extracting the specified variable, either single character or a vector of length 2
 or the column name in the case of \code{data.frame}}
 
-\item{dataset}{data.frame with columns lon, lat, start_date and end_date}
+\item{variable}{The AgERA5 variable to extract, see details for available options}
+
+\item{statistic}{character Only for some variables, see details for valid options}
+
+\item{time}{Only for variable Relative-Humidity-2m, see details for valid options}
 
 \item{lon}{character Column name of longitude values in the case of \code{data.frame}}
 
@@ -42,10 +46,6 @@ or the column name in the case of \code{data.frame}}
 \item{start_date}{Column name of start_date values in the case of \code{data.frame}}
 
 \item{end_date}{Column name of end_date values in the case of \code{data.frame}}
-
-\item{statistic}{character Only for variable Temperature-Air-2m, see details for valid options}
-
-\item{time}{Only for variable Relative-Humidity-2m, see details for valid options}
 }
 \description{
 ag5_extract is a family of wrapper functions to extract data from AgERA5 data files
@@ -57,10 +57,18 @@ dates value is the start date and the second the end date.
 }
 \section{Valid variable values}{
 \itemize{
-\item Temperature-Air-2m
-\item Precipitation-Flux
-\item Solar-Radiation-Flux
-\item Relative-Humidity-2m
+\item "cloud_cover"
+\item "liquid_precipitation_duration_fraction"
+\item "snow_thickness_lwe"
+\item "Solar-Radiation-Flux"
+\item "Temperature-Air-2m"
+\item "2m_dewpoint_temperature"
+\item "Precipitation-Flux"
+\item "solid_precipitation_duration_fraction"
+\item "snow_thickness"
+\item "vapour_pressure"
+\item "10m_wind_speed"
+\item "Relative-Humidity-2m"
 }
 }
 
@@ -73,6 +81,19 @@ dates value is the start date and the second the end date.
 \item Mean-Day-Time
 \item Mean-Night-Time
 \item Min-Night-Time}
+}
+
+\section{Variables that require statistic}{
+For the following variables, only "24_hour_mean" statistic is available, but should
+be explicitly indicated.
+\itemize{
+\item cloud_cover
+\item snow_thickness_lwe
+\item 2m_dewpoint_temperature
+\item snow_thickness
+\item vapour_pressure
+\item 10m_wind_speed
+}
 }
 
 \section{Valid time values for variable "Relative-Humidity-2m"}{
