@@ -14,9 +14,9 @@
 #'@name ag5_download
 #'@param variable character The variable to be downloaded. See details
 #'@param statistic character Only required for some variables. See details for options.
-#'@param day character Day of the week for the requested data. \code{day = "all"}  will download all days from requested month
-#'@param month character Month to be requested. \code{month = "all"} will download all the months for the requested year.
 #'@param year numeric (Integer) Year to download. Should be between 1979 - 2022
+#'@param month character Month to be requested. \code{month = "all"} will download all the months for the requested year.
+#'@param day character Day of the week for the requested data. \code{day = "all"}  will download all days from requested month
 #'@param time Character Only required for "2m_relative_humidity". See details for available options.
 #'@param path Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the user should have write permission.
 #'
@@ -93,19 +93,22 @@
 #'@export
 ag5_download <- function(variable,
                          statistic = NULL,
-                         day,
-                         month,
                          year,
+                         month,
+                         day,
                          time = NULL,
                          path){
+
+  if(length(month) == 1 && month == "all"){
+    month <- formatC(x = seq(1:12), width = 2, flag = 0)
+  }
+
 
   if(length(day) == 1 && day == "all"){
     day <- formatC(x = seq(1:31), width = 2, flag = 0)
   }
 
- if(length(month) == 1 && month == "all"){
-   month <- formatC(x = seq(1:12), width = 2, flag = 0)
- }
+
 
 
   if(length(year) > 1 | length(month > 1)){
