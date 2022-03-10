@@ -108,17 +108,12 @@ ag5_extract.numeric <- function(coords,
                                 variable,
                                 statistic = NULL,
                                 time = NULL,
+                                celsius = FALSE,
                                 ...,
                                 path){
 
 
-  args <- list(...)
 
-  celsius <- args[["celsius"]]
-
-  if(is.null(celsius)){
-    celsius <- FALSE
-  }
 
 
 
@@ -196,16 +191,11 @@ ag5_extract.data.frame <- function(coords,
                                    variable,
                                    statistic = NULL,
                                    time = NULL,
+                                   celsius = FALSE,
                                    ...,
                                    path){
 
-  args <- list(...)
 
-  celsius <- args[["celsius"]]
-
-  if(is.null(celsius)){
-    celsius <- FALSE
-  }
 
   if(!variable %in% valid_variables)
     stop("not valid variable, please check")
