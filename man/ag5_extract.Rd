@@ -46,6 +46,9 @@ or the column name in the case of \code{data.frame}}
 \item{start_date}{Column name of start_date values in the case of \code{data.frame}}
 
 \item{end_date}{Column name of end_date values in the case of \code{data.frame}}
+
+\item{celsius}{logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
+If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}}
 }
 \description{
 Extract data from AgERA5 data files previously downloaded from the Copernicus Climate Data Store.
@@ -114,4 +117,9 @@ be explicitly indicated.
                       path "C:/temperature_data/")
 }
 
+}
+\references{
+Temperature conversion is made accordingly to:
+Preston-Thomas, H. (1990). The International Temperature Scale of 1990 (ITS-90).
+Metrologia, 27(1), 3-10. doi:10.1088/0026-1394/27/1/002
 }

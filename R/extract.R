@@ -18,6 +18,8 @@
 #'@param end_date Column name of end_date values in the case of \code{data.frame}
 #'@param time Only for variable Relative-Humidity-2m, see details for valid options
 #'@param path The path for the folder containing the AgERA5 files
+#'@param celsius logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
+#'If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}
 #'@param ... Other parameters
 #'
 #'@details
@@ -48,8 +50,8 @@
 #'\item Min-Night-Time}
 #'
 #'# Variables that require statistic
-#'For the following variables, only "24_hour_mean" statistic is available, but should
-#'be explicitly indicated.
+#'For the following variables, only "24_hour_mean" statistic is available,
+#'but should be explicitly indicated.
 #'\itemize{
 #'\item cloud_cover
 #'\item snow_thickness_lwe
@@ -79,6 +81,12 @@
 #'                       path "C:/temperature_data/")
 #'}
 #'
+#'@references
+#'Temperature conversion is made accordingly to:
+#'Preston-Thomas, H. (1990). The International Temperature Scale of 1990 (ITS-90).
+#' Metrologia, 27(1), 3-10. doi:10.1088/0026-1394/27/1/002
+
+
 
 
 #'@importFrom terra extract
@@ -104,12 +112,22 @@ ag5_extract.numeric <- function(coords,
                                 path){
 
 
+  args <- list(...)
+
+  celsius <- args[["celsius"]]
+
+  if(is.null(celsius)){
+    celsius <- FALSE
+  }
+
+
+
   if(!variable %in% valid_variables)
     stop("not valid variable, please check")
 
-  if(variable == "Temperature-Air-2m" && is.null(statistic)){
+  if(variable %in% vars_with_stat && is.null(statistic)){
 
-    stop("statistic not provided for variable Temperature-Air-2m")
+    stop("statistic is requried and not provided for requested variable")
 
   }
 
@@ -119,9 +137,12 @@ ag5_extract.numeric <- function(coords,
 
   if(length(dates) == 2){
 
-    time_span <- seq.Date(from = as.Date(dates[1]), to = as.Date(dates[2]), by = "days")
+    time_span <- seq.Date(from = as.Date(dates[1]),
+                          to = as.Date(dates[2]),
+                          by = "days")
 
-    data_out_period <- vector(mode = "numeric", length = length(time_span))
+    data_out_period <- vector(mode = "numeric",
+                              length = length(time_span))
 
     nc_files_list <- vapply(X = time_span,
                             FUN.VALUE = vector(mode = "character", length = 1),
@@ -155,6 +176,10 @@ ag5_extract.numeric <- function(coords,
 
   }
 
+  if(variable == "Temperature-Air-2m" && isTRUE(celsius)){
+    ag5_data <- ag5_data - 273.15
+  }
+
    return(ag5_data)
 }
 
@@ -174,6 +199,14 @@ ag5_extract.data.frame <- function(coords,
                                    ...,
                                    path){
 
+  args <- list(...)
+
+  celsius <- args[["celsius"]]
+
+  if(is.null(celsius)){
+    celsius <- FALSE
+  }
+
   if(!variable %in% valid_variables)
     stop("not valid variable, please check")
 
@@ -190,20 +223,24 @@ ag5_extract.data.frame <- function(coords,
   ag5_data_list <- vector(mode = "list", length = nrow(coords))
 
   #set progress bar
-  progress_bar <- txtProgressBar(min = 0, max = length(ag5_data_list), style = 3)
+  progress_bar <- txtProgressBar(min = 0,
+                                 max = length(ag5_data_list),
+                                 style = 3)
 
   for(i in seq_along(ag5_data_list)){
 
-    ag5_data_list [[i]] <- ag5_extract(coords = c(coords[i, lon], coords[i, lat]),
-                dates = c(coords[i, start_date], coords[i, end_date]),
-                variable = variable,
-                statistic = statistic,
-                time = time,
-                path = path)
+    ag5_data_list [[i]] <- ag5_extract(coords = c(coords[i, lon],
+                                                  coords[i, lat]),
+                                       dates = c(coords[i, start_date],
+                                                 coords[i, end_date]),
+                                       variable = variable,
+                                       statistic = statistic,
+                                       time = time,
+                                       celsius = celsius,
+                                       path = path)
+    Sys.sleep(0.1)
 
-  Sys.sleep(0.1)
-
-  setTxtProgressBar(progress_bar, i)
+    setTxtProgressBar(progress_bar, i)
   }
 
 close(progress_bar)
@@ -238,4 +275,15 @@ valid_times <- c("06h",
                  "12h",
                  "15h",
                  "18h")
+
+vars_with_stat <- c("Temperature-Air-2m",
+                    "cloud_cover",
+                    "snow_thickness_lwe",
+                    "2m_dewpoint_temperature",
+                    "snow_thickness",
+                    "vapour_pressure",
+                    "10m_wind_speed")
+
+temperature_vars <- c("Temperature-Air-2m",
+                      "2m_dewpoint_temperature")
 
