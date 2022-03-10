@@ -66,9 +66,37 @@
 
     
     
+<div class="section level2">
+<h2 id="cdsapi-installation">CDSAPI Installation<a class="anchor" aria-label="anchor" href="#cdsapi-installation"></a>
+</h2>
+<p>To download AgERA5 data from the Copernicus Climate Data Store (CDS) you should first follow the steps described on the <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link">CDS API Guide</a> to install the Python CDSAPI.</p>
+</div>
+<div class="section level2">
+<h2 id="downloading-agera5-data">Downloading AgERA5 data<a class="anchor" aria-label="anchor" href="#downloading-agera5-data"></a>
+</h2>
+<p>The following example downloads varaible “2m_temperature”. For this variable there seven statistics available:</p>
+<ul>
+<li><p>24_hour_maximum</p></li>
+<li><p>24_hour_mean</p></li>
+<li><p>24_hour_minimum</p></li>
+<li><p>day_time_maximum</p></li>
+<li><p>day_time_mean</p></li>
+<li><p>night_time_mean</p></li>
+<li><p>night_time_minimum</p></li>
+</ul>
+<p>In this case, we will download “night_time_minimum”. You should replace the target path to a location in your own computer where you want to store the downloaded data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://agrdatasci.github.io/agera5/">agera5</a></span><span class="op">)</span></code></pre></div>
-  </main>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://agrdatasci.github.io/agera5/">agera5</a></span><span class="op">)</span>
+
+<span class="fu"><a href="../reference/ag5_download.html">ag5_download</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,
+            statistic <span class="op">=</span> <span class="st">"night_time_minimum"</span>,
+            day <span class="op">=</span> <span class="st">"all"</span>,
+            month <span class="op">=</span> <span class="st">"all"</span>,
+            year <span class="op">=</span> <span class="fl">2015</span>,
+            path <span class="op">=</span> <span class="st">"C:/custom_target_folder"</span><span class="op">)</span></code></pre></div>
+</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
