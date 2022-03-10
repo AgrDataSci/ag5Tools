@@ -86,8 +86,8 @@ and location, where the first dates value is the start date and the second the e
 }
 
 \section{Variables that require statistic}{
-For the following variables, only "24_hour_mean" statistic is available, but should
-be explicitly indicated.
+For the following variables, only "24_hour_mean" statistic is available,
+but should be explicitly indicated.
 \itemize{
 \item cloud_cover
 \item snow_thickness_lwe
