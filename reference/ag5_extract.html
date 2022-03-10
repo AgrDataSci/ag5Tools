@@ -102,6 +102,9 @@ or the column name in the case of <code>data.frame</code></p></dd>
 <dd><p>Column name of start_date values in the case of <code>data.frame</code></p></dd>
 <dt>end_date</dt>
 <dd><p>Column name of end_date values in the case of <code>data.frame</code></p></dd>
+<dt>celsius</dt>
+<dd><p>logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
+If <code>TRUE</code> the values are converted from Kelvin to Celsius. Default is <code>FALSE</code></p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="valid-variable-values">Valid variable values<a class="anchor" aria-label="anchor" href="#valid-variable-values"></a></h2>
@@ -149,6 +152,12 @@ be explicitly indicated.</p><ul><li><p>cloud_cover</p></li>
 <li><p>15h</p></li>
 <li><p>18h</p></li>
 </ul></div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p>Temperature conversion is made accordingly to:
+Preston-Thomas, H. (1990). The International Temperature Scale of 1990 (ITS-90).
+Metrologia, 27(1), 3-10. doi:10.1088/0026-1394/27/1/002</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
