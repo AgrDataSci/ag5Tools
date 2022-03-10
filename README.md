@@ -66,3 +66,7 @@ The *agera5* package relies on the functionality available from other open sourc
 ### Disclaimer
 Please be aware that is still a development version of the package. You are free to use it for your own purposes with no warranty.
 
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/AgrDataSci/agera5/workflows/R-CMD-check/badge.svg)](https://github.com/AgrDataSci/agera5/actions)
+  <!-- badges: end -->
+
