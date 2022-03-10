@@ -2,8 +2,6 @@
 
 get_file_path <- function(date_to_search, variable, statistic, time, path){
 
-  vars_with_stat <- c("Temperature-Air-2m")
-
   if(variable %in% vars_with_stat){
     prefix <- paste(variable, statistic, sep = "-")
 
@@ -15,9 +13,9 @@ get_file_path <- function(date_to_search, variable, statistic, time, path){
 
     prefix <- paste0(prefix, "_C3S-glob-agric_AgERA5_")
   }
-  else{
-    prefix <- paste0(variable, "_C3S-glob-agric_AgERA5_")
 
+  if(!variable %in% vars_with_stat && variable != "Relative-Humidity-2m"){
+    prefix <- paste0(variable, "_C3S-glob-agric_AgERA5_")
   }
 
   date_pattern <- gsub("-", "", date_to_search)
