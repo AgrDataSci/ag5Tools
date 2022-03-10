@@ -91,9 +91,13 @@
 <p>To download AgERA5 data you should first install the Climate Data Store API. Please follow the instructions in: <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link uri">https://cds.climate.copernicus.eu/api-how-to</a></p>
 </div>
 <div class="section level4">
-<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h4>
-<p>The following example downloads daily 2m_temperature data for year 2015</p>
+</div>
+<div class="section level4">
+<h4 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
+</h4>
+<p>The following example downloads daily ‘2m_temperature’ data for year 2015</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/ag5_download.html">ag5_download</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,
              statistic <span class="op">=</span> <span class="st">"night_time_minimum"</span>,
@@ -102,6 +106,16 @@
              year <span class="op">=</span> <span class="fl">2015</span>,
              path <span class="op">=</span> <span class="st">"C:/custom_target_folder"</span>
              <span class="op">)</span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="extracting-data">Extracting data<a class="anchor" aria-label="anchor" href="#extracting-data"></a>
+</h4>
+<p>To extract maximum day temperature (“Max-Day-Time”) of “2m_temperature”</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">ag5_extract</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="fl">35.726364</span>, <span class="fl">-2.197162</span>), </span>
+<span id="cb3-2"><a href="#cb3-2"></a>            <span class="dt">dates =</span> <span class="st">"1995-01-23"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3"></a>            <span class="dt">variable =</span> <span class="st">"2m_temperature"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>            <span class="dt">statistic =</span> <span class="st">"Max-Day-Time"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5"></a>            C<span class="op">:</span><span class="er">/</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
