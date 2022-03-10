@@ -11,6 +11,8 @@ https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=ove
 The download function provides programmatic access to the Copernicus Climate Data Store to download
 AgERA5 data.
 
+
+
 ## Data license
 The agera5 package does not distribute data, it only provides access to Climate Data Store through the 
 python cdsapi.
@@ -27,8 +29,9 @@ devtools::install_github("agrdatasci/agera5", build_vignettes = TRUE)
 To download AgERA5 data you should first install the Climate Data Store API. Please follow the instructions
 in: https://cds.climate.copernicus.eu/api-how-to
 
-#### Example
-The following example downloads daily 2m_temperature data for year 2015
+#### Examples
+#### Downloading data
+The following example downloads daily '2m_temperature' data for year 2015
 ``` r
 ag5_download(variable = "2m_temperature",
              statistic = "night_time_minimum",
@@ -38,6 +41,16 @@ ag5_download(variable = "2m_temperature",
              path = "C:/custom_target_folder"
              )
 ``` 
+#### Extracting data
+To extract maximum day temperature ("Max-Day-Time") of "2m_temperature"
+``` r
+ag5_extract(coords = c(35.726364, -2.197162), 
+            dates = "1995-01-23", 
+            variable = "2m_temperature",
+            statistic = "Max-Day-Time", 
+            C:/)
+``` 
+
 ## Acknowledgements
 The *agera5* package relies on the functionality available from other open source packages.
 

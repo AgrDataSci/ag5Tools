@@ -1,11 +1,10 @@
 #'Extract AgERA5 data stored in a local hardrive
 #'
-#'@description ag5_extract is a family of wrapper functions to extract data from AgERA5 data files
-#'previously downloaded from the Copernicus Climate Data Store. These functions use package 'terra' to
-#'read *.nc files and extract the requested data for a given location and dates. If dates is one value
-#'it extracts a single observation for the specified variable and location. If dates is a character vector
-#'of \code{length == 2}, it will extract a time series of the specified variable and location, where the first
-#'dates value is the start date and the second the end date.
+#'@description Extract data from AgERA5 data files previously downloaded from the Copernicus Climate Data Store.
+#' These functions use package 'terra' to read *.nc files and extract the requested data for a given location
+#' and dates. If dates is one value it extracts a single observation for the specified variable and location.
+#' If dates is a character vector of \code{length == 2}, it will extract a time series of the specified variable
+#' and location, where the first dates value is the start date and the second the end date.
 
 #'@name ag5_extract
 #'@param coords numeric Vector of length = 2 of the form (lon, lat), or a data.fram with required columns
@@ -83,6 +82,7 @@
 
 
 #'@importFrom terra extract
+#'@importFrom utils txtProgressBar setTxtProgressBar
 #'@export
 #'
 ag5_extract <- function(coords, ..., path){
@@ -119,7 +119,7 @@ ag5_extract.numeric <- function(coords,
 
   if(length(dates) == 2){
 
-    time_span <- seq.Date(from = dates[1], to = dates[2], by = "days")
+    time_span <- seq.Date(from = as.Date(dates[1]), to = as.Date(dates[2]), by = "days")
 
     data_out_period <- vector(mode = "numeric", length = length(time_span))
 
@@ -174,8 +174,6 @@ ag5_extract.data.frame <- function(coords,
                                    ...,
                                    path){
 
-  dataset <- coords
-
   if(!variable %in% valid_variables)
     stop("not valid variable, please check")
 
@@ -189,18 +187,28 @@ ag5_extract.data.frame <- function(coords,
     stop("time is required for variable Relative-Humidity-2m")
   }
 
-  ag5_data_list <- vector(mode = "list", length = nrow(dataset))
+  ag5_data_list <- vector(mode = "list", length = nrow(coords))
 
+  #set progress bar
+  progress_bar <- txtProgressBar(min = 0, max = length(ag5_data_list), style = 3)
 
-  ag5_data_list<- lapply(1:nrow(dataset), FUN = function(X){
-    ag5_extract(coords =  c(dataset[X, "lon"], dataset[X, "lat"]),
-                                 dates = c(dataset[X, "start_date"], dataset[X, "end_date"]),
-                                 variable = variable,
-                                 statistic = statistic,
-                                 time = time,
-                                 path = path)})
+  for(i in seq_along(ag5_data_list)){
 
-  return(ag5_data_list)
+    ag5_data_list [[i]] <- ag5_extract(coords = c(coords[i, lon], coords[i, lat]),
+                dates = c(coords[i, start_date], coords[i, end_date]),
+                variable = variable,
+                statistic = statistic,
+                time = time,
+                path = path)
+
+  Sys.sleep(0.1)
+
+  setTxtProgressBar(progress_bar, i)
+  }
+
+close(progress_bar)
+
+return(ag5_data_list)
 
 }
 

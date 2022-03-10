@@ -15,6 +15,10 @@ get_file_path <- function(date_to_search, variable, statistic, time, path){
 
     prefix <- paste0(prefix, "_C3S-glob-agric_AgERA5_")
   }
+  else{
+    prefix <- paste0(variable, "_C3S-glob-agric_AgERA5_")
+
+  }
 
   date_pattern <- gsub("-", "", date_to_search)
 
@@ -24,9 +28,8 @@ get_file_path <- function(date_to_search, variable, statistic, time, path){
                                  regexp = file_pattern,
                                  recurse = TRUE)
 
-  if(target_file_path == "character(0)")
-    message("File not found")
-
+  if(length(target_file_path) == 0)
+    stop("File not found")
 
 
   return(target_file_path)

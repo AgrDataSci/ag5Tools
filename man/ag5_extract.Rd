@@ -48,12 +48,11 @@ or the column name in the case of \code{data.frame}}
 \item{end_date}{Column name of end_date values in the case of \code{data.frame}}
 }
 \description{
-ag5_extract is a family of wrapper functions to extract data from AgERA5 data files
-previously downloaded from the Copernicus Climate Data Store. These functions use package 'terra' to
-read *.nc files and extract the requested data for a given location and dates. If dates is one value
-it extracts a single observation for the specified variable and location. If dates is a character vector
-of \code{length == 2}, it will extract a time series of the specified variable and location, where the first
-dates value is the start date and the second the end date.
+Extract data from AgERA5 data files previously downloaded from the Copernicus Climate Data Store.
+These functions use package 'terra' to read *.nc files and extract the requested data for a given location
+and dates. If dates is one value it extracts a single observation for the specified variable and location.
+If dates is a character vector of \code{length == 2}, it will extract a time series of the specified variable
+and location, where the first dates value is the start date and the second the end date.
 }
 \section{Valid variable values}{
 \itemize{
