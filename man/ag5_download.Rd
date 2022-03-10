@@ -22,11 +22,11 @@ ag5_download(variable, statistic = NULL, year, month, day, time = NULL, path)
 \item{path}{Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the user should have write permission.}
 }
 \description{
-The data is downloaded from Copernicus Climate Change Service (C3) using the
+The data is downloaded from Copernicus Climate Change Service (C3S) using the
 Copernicus Climate Data Store (CDSAPI) Python library
 \url{https://github.com/ecmwf/cdsapi}
 
-This function  provides programmatic access to the dataset
+This function  provides programmatic access to the AgERA5 dataset.
 For more information about the data license, please visit:
 \url{https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf}
 
@@ -58,7 +58,6 @@ options in \code{statistic}:
 \item 24_hour_mean
 \item 24_hour_minimum
 \item day_time_maximum
-\item 2m_temperature
 \item day_time_mean
 \item night_time_mean
 \item night_time_minimum
