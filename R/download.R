@@ -8,17 +8,22 @@
 #'For more information about the data license, please visit:
 #'<https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf>
 #'
-#'To download the data you should have a valid CDS account, an CDS API key and install the Python CDSAPI. Please
+#'To download the data you should have a valid CDS account,
+#'an CDS API key and install the Python CDSAPI. Please
 #'follow the instructions at: <https://cds.climate.copernicus.eu/api-how-to>
 
 #'@name ag5_download
 #'@param variable character The variable to be downloaded. See details
 #'@param statistic character Only required for some variables. See details for options.
 #'@param year numeric (Integer) Year to download. Should be between 1979 - 2022
-#'@param month character Month to be requested. \code{month = "all"} will download all the months for the requested year.
-#'@param day character Day of the week for the requested data. \code{day = "all"}  will download all days from requested month
-#'@param time Character Only required for "2m_relative_humidity". See details for available options.
-#'@param path Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the user should have write permission.
+#'@param month numeric Month to be requested. Use \code{month = "all"}  download
+#' all the months for the requested year.
+#'@param day numeric Days of the month for the requested data.
+#' Use \code{day = "all"}  to download all days from requested month
+#'@param time Character Only required for "2m_relative_humidity".
+#'See details for available options.
+#'@param path Character Target folder in an local hardrive e.g. "C:/agera5".
+#' The folder should exist and the user should have write permission.
 #'
 #'@details
 #'# AgERA5 variables available for download:
@@ -102,11 +107,20 @@ ag5_download <- function(variable,
     month <- formatC(x = seq(1:12), width = 2, flag = 0)
   }
 
+  if(is.numeric(month)){
+
+    month <- formatC(x = month, width = 2, flag = 0)
+  }
+
 
   if(length(day) == 1 && day == "all"){
     day <- formatC(x = seq(1:31), width = 2, flag = 0)
   }
 
+
+  if(is.numeric(day) ){
+    day <- formatC(x = day, width = 2, flag = 0)
+  }
 
 
 

@@ -13,13 +13,17 @@ ag5_download(variable, statistic = NULL, year, month, day, time = NULL, path)
 
 \item{year}{numeric (Integer) Year to download. Should be between 1979 - 2022}
 
-\item{month}{character Month to be requested. \code{month = "all"} will download all the months for the requested year.}
+\item{month}{numeric Month to be requested. Use \code{month = "all"}  download
+all the months for the requested year.}
 
-\item{day}{character Day of the week for the requested data. \code{day = "all"}  will download all days from requested month}
+\item{day}{numeric Days of the month for the requested data.
+Use \code{day = "all"}  to download all days from requested month}
 
-\item{time}{Character Only required for "2m_relative_humidity". See details for available options.}
+\item{time}{Character Only required for "2m_relative_humidity".
+See details for available options.}
 
-\item{path}{Character Target folder in an local hardrive e.g. "C:/agera5". The folder should exist and the user should have write permission.}
+\item{path}{Character Target folder in an local hardrive e.g. "C:/agera5".
+The folder should exist and the user should have write permission.}
 }
 \description{
 The data is downloaded from Copernicus Climate Change Service (C3S) using the
@@ -30,7 +34,8 @@ This function  provides programmatic access to the AgERA5 dataset.
 For more information about the data license, please visit:
 \url{https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf}
 
-To download the data you should have a valid CDS account, an CDS API key and install the Python CDSAPI. Please
+To download the data you should have a valid CDS account,
+an CDS API key and install the Python CDSAPI. Please
 follow the instructions at: \url{https://cds.climate.copernicus.eu/api-how-to}
 }
 \section{AgERA5 variables available for download:}{
