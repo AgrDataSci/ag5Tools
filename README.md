@@ -48,7 +48,7 @@ ag5_extract(coords = c(35.726364, -2.197162),
             dates = "1995-01-23", 
             variable = "2m_temperature",
             statistic = "Max-Day-Time", 
-            C:/)
+            path = "C:/agera5_data")
 ``` 
 
 ## Acknowledgements

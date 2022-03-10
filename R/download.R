@@ -1,10 +1,10 @@
 #'Downloads AgERA5 data from the Copernicus Climate Change Service - Copernicus Climate Data Store
 #'
-#'@description The data is downloaded from Copernicus Climate Change Service (C3) using the
+#'@description The data is downloaded from Copernicus Climate Change Service (C3S) using the
 #'Copernicus Climate Data Store (CDSAPI) Python library
 #'<https://github.com/ecmwf/cdsapi>
 #'
-#'This function  provides programmatic access to the dataset
+#'This function  provides programmatic access to the AgERA5 dataset.
 #'For more information about the data license, please visit:
 #'<https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf>
 #'
@@ -46,7 +46,6 @@
 #'\item 24_hour_mean
 #'\item 24_hour_minimum
 #'\item day_time_maximum
-#'\item 2m_temperature
 #'\item day_time_mean
 #'\item night_time_mean
 #'\item night_time_minimum
