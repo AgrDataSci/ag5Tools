@@ -8,7 +8,16 @@
 \usage{
 ag5_extract(coords, ..., path)
 
-\method{ag5_extract}{numeric}(coords, dates, variable, statistic = NULL, time = NULL, ..., path)
+\method{ag5_extract}{numeric}(
+  coords,
+  dates,
+  variable,
+  statistic = NULL,
+  time = NULL,
+  celsius = FALSE,
+  ...,
+  path
+)
 
 \method{ag5_extract}{data.frame}(
   coords,
@@ -19,6 +28,7 @@ ag5_extract(coords, ..., path)
   variable,
   statistic = NULL,
   time = NULL,
+  celsius = FALSE,
   ...,
   path
 )
@@ -39,6 +49,9 @@ or the column name in the case of \code{data.frame}}
 
 \item{time}{Only for variable Relative-Humidity-2m, see details for valid options}
 
+\item{celsius}{logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
+If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}}
+
 \item{lon}{character Column name of longitude values in the case of \code{data.frame}}
 
 \item{lat}{character Column name of latitude values in the case of \code{data.frame}}
@@ -46,9 +59,6 @@ or the column name in the case of \code{data.frame}}
 \item{start_date}{Column name of start_date values in the case of \code{data.frame}}
 
 \item{end_date}{Column name of end_date values in the case of \code{data.frame}}
-
-\item{celsius}{logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
-If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}}
 }
 \description{
 Extract data from AgERA5 data files previously downloaded from the Copernicus Climate Data Store.
