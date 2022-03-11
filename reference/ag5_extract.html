@@ -60,7 +60,16 @@ and location, where the first dates value is the start date and the second the e
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ag5_extract</span><span class="op">(</span><span class="va">coords</span>, <span class="va">...</span>, <span class="va">path</span><span class="op">)</span>
 
 <span class="co"># S3 method for numeric</span>
-<span class="fu">ag5_extract</span><span class="op">(</span><span class="va">coords</span>, <span class="va">dates</span>, <span class="va">variable</span>, statistic <span class="op">=</span> <span class="cn">NULL</span>, time <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">path</span><span class="op">)</span>
+<span class="fu">ag5_extract</span><span class="op">(</span>
+  <span class="va">coords</span>,
+  <span class="va">dates</span>,
+  <span class="va">variable</span>,
+  statistic <span class="op">=</span> <span class="cn">NULL</span>,
+  time <span class="op">=</span> <span class="cn">NULL</span>,
+  celsius <span class="op">=</span> <span class="cn">FALSE</span>,
+  <span class="va">...</span>,
+  <span class="va">path</span>
+<span class="op">)</span>
 
 <span class="co"># S3 method for data.frame</span>
 <span class="fu">ag5_extract</span><span class="op">(</span>
@@ -72,6 +81,7 @@ and location, where the first dates value is the start date and the second the e
   <span class="va">variable</span>,
   statistic <span class="op">=</span> <span class="cn">NULL</span>,
   time <span class="op">=</span> <span class="cn">NULL</span>,
+  celsius <span class="op">=</span> <span class="cn">FALSE</span>,
   <span class="va">...</span>,
   <span class="va">path</span>
 <span class="op">)</span></code></pre></div>
@@ -94,6 +104,9 @@ or the column name in the case of <code>data.frame</code></p></dd>
 <dd><p>character Only for some variables, see details for valid options</p></dd>
 <dt>time</dt>
 <dd><p>Only for variable Relative-Humidity-2m, see details for valid options</p></dd>
+<dt>celsius</dt>
+<dd><p>logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
+If <code>TRUE</code> the values are converted from Kelvin to Celsius. Default is <code>FALSE</code></p></dd>
 <dt>lon</dt>
 <dd><p>character Column name of longitude values in the case of <code>data.frame</code></p></dd>
 <dt>lat</dt>
@@ -102,9 +115,6 @@ or the column name in the case of <code>data.frame</code></p></dd>
 <dd><p>Column name of start_date values in the case of <code>data.frame</code></p></dd>
 <dt>end_date</dt>
 <dd><p>Column name of end_date values in the case of <code>data.frame</code></p></dd>
-<dt>celsius</dt>
-<dd><p>logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
-If <code>TRUE</code> the values are converted from Kelvin to Celsius. Default is <code>FALSE</code></p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="valid-variable-values">Valid variable values<a class="anchor" aria-label="anchor" href="#valid-variable-values"></a></h2>
