@@ -13,6 +13,12 @@ Authors@R:
 Description: Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators 
   from 1979 to present derived from reanalysis"
   <https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview> (AgERA5).
+Config/reticulate:
+  list(
+    packages = list(
+      list(package = "cdsapi",  pip = TRUE)
+    )
+  )
 Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
 Encoding: UTF-8

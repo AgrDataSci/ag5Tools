@@ -1,5 +1,4 @@
 
-
 check_var <- function(x){
   valid_variables <- c("cloud_cover",
                        "liquid_precipitation_duration_fraction",
