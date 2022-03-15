@@ -1,7 +1,7 @@
 <!-- badges: start -->
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) 
-
-[![R-CMD-check](https://github.com/AgrDataSci/agera5/workflows/R-CMD-check/badge.svg)](https://github.com/AgrDataSci/agera5/actions) <!-- badges: end -->
+[![R-CMD-check](https://github.com/AgrDataSci/agera5/workflows/R-CMD-check/badge.svg)](https://github.com/AgrDataSci/agera5/actions)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+ <!-- badges: end -->
 
 # agera5
 
