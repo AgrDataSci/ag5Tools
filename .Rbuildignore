@@ -7,3 +7,4 @@
 ^\.github$
 ^dev_data$
 ^cran-comments\.md$
+^vignettes/articles$

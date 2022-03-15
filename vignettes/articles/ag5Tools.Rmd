@@ -1,6 +1,6 @@
 ---
-title: "agera5"  
-description: agera5 is an R package to download and extract data from the \\'Agrometeorological indicators from 1979 to present derived from reanalysis\\' dataset (aka AgERA5)."
+title: "ag5Tools"  
+description: ag5Tools is an R package to download and extract data from the Copernicus \\'Agrometeorological indicators from 1979 to present derived from reanalysis\\' dataset (AgERA5)."
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{agera5}
@@ -39,7 +39,7 @@ In this case, we will download "night_time_minimum". You should replace the targ
 a location in your own computer where you want to store the downloaded data.
 
 ```{r eval = FALSE}
-library(agera5)
+library(ag5Tools)
 
 ag5_download(variable = "2m_temperature",
             statistic = "night_time_minimum",
