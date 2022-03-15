@@ -77,7 +77,7 @@ The ag5Tools package relies on the functionality available from other open sourc
 
 ## License
 
-Please be aware that ag5Tools is released under MIT license, please find details in the [MIT license document]((https://agrdatasci.github.io/ag5Tools/LICENSE.html)
+Please be aware that ag5Tools is released under MIT license, please find details in the [MIT license document](https://agrdatasci.github.io/ag5Tools/LICENSE.html)
 
 ## Code of Conduct
 
