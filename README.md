@@ -31,7 +31,9 @@ devtools::install_github("agrdatasci/ag5Tools", build_vignettes = TRUE)
 
 #### csdapi setup
 
-To download AgERA5 data you should first install the Climate Data Store API. Please follow the instructions in: <https://cds.climate.copernicus.eu/api-how-to>
+To download AgERA5 data you should first register at the Climate Data Store and get your API key. Please follow the instructions in: <https://cds.climate.copernicus.eu/api-how-to>
+
+You only need to create your \code{.cdsapirc} file to store the API key. Ag5Tools internally handles all the environment setup, including the Python requirements (i.e., install Python and cdsapi).
 
 #### Examples
 
