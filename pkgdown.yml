@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   ag5Tools: ag5Tools.html
-last_built: 2022-03-15T22:11Z
+last_built: 2022-03-15T22:37Z
 urls:
   reference: https://agrdatasci.github.io/ag5Tools/reference
   article: https://agrdatasci.github.io/ag5Tools/articles
