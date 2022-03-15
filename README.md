@@ -24,7 +24,7 @@ For specific details about the license agreenment on downloading and using the d
 ### Installation
 
 ``` r
-devtools::install_github("agrdatasci/agera5", build_vignettes = TRUE)
+devtools::install_github("agrdatasci/ag5Tools", build_vignettes = TRUE)
 ```
 
 ### Downloading AgERA5 data
@@ -63,7 +63,7 @@ ag5_extract(coords = c(35.726364, -2.197162),
 
 ## Acknowledgements
 
-The *agera5* package relies on the functionality available from other open source packages.
+The *ag5Tools* package relies on the functionality available from other open source packages.
 
 -   The Python [*cdsapi*](https://pypi.org/project/cdsapi/)
 
