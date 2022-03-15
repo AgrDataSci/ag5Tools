@@ -8,7 +8,7 @@
 <meta name="description" content='Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators 
   from 1979 to present derived from reanalysis"
   &lt;https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview&gt; (AgERA5).'>
-<title>Toolbox for Downloading and Extracting Copernicus AgERA5 Data  • agera5</title>
+<title>Toolbox for Downloading and Extracting Copernicus AgERA5 Data  • ag5Tools</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -28,7 +28,7 @@
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
-    <a class="navbar-brand me-2" href="index.html">agera5</a>
+    <a class="navbar-brand me-2" href="index.html">ag5Tools</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9007</small>
 
@@ -40,10 +40,13 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
-  <a class="nav-link" href="articles/agera5.html">Get started</a>
-</li>
-<li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/agera5.html">agera5</a>
+  </div>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -59,7 +62,7 @@
 <div class="row">
   <main id="main" class="col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="agera5">agera5<a class="anchor" aria-label="anchor" href="#agera5"></a>
+<div class="page-header"><h1 id="ag5tools">ag5Tools<a class="anchor" aria-label="anchor" href="#ag5tools"></a>
 </h1></div>
 <div class="section level2">
 <h2 id="toolbox-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset">Toolbox for downloading and extracting data from the Copernicus AgERA5 dataset<a class="anchor" aria-label="anchor" href="#toolbox-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset"></a>
@@ -68,14 +71,14 @@
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
-<p>The R package <em>agera5</em> is a toolbox to download and extract data from the “Agrometeorological indicators from 1979 to present derived from reanalysis” dataset (AgERA5).</p>
+<p>The R package <em>ag5Tools</em> is a toolbox to download and extract data from the “Agrometeorological indicators from 1979 to present derived from reanalysis” dataset (AgERA5).</p>
 <p><a href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview" class="external-link uri">https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview</a></p>
 <p>The download function provides programmatic access to the Copernicus Climate Data Store to download AgERA5 data.</p>
 </div>
 <div class="section level2">
 <h2 id="data-license">Data license<a class="anchor" aria-label="anchor" href="#data-license"></a>
 </h2>
-<p>The agera5 package does not distribute data, it only provides access to Climate Data Store through the python cdsapi.</p>
+<p>The ag5Tools package does not distribute data, it only provides access to Climate Data Store through the python cdsapi.</p>
 <p>For specific details about the license agreenment on downloading and using the data please check the license at: <a href="https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf" class="external-link uri">https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf</a></p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -157,7 +160,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing agera5</a></li>
+<li><a href="authors.html#citation">Citing ag5Tools</a></li>
 </ul>
 </div>
 
