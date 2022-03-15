@@ -2,8 +2,8 @@ pandoc: 2.7.3
 pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
-  agera5: agera5.html
-last_built: 2022-03-15T16:29Z
+  ag5Tools: ag5Tools.html
+last_built: 2022-03-15T16:59Z
 urls:
   reference: https://agrdatasci.github.io/agera5/reference
   article: https://agrdatasci.github.io/agera5/articles
