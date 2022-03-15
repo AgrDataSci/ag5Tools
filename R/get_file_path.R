@@ -2,7 +2,7 @@
 
 get_file_path <- function(date_to_search, variable, statistic, time, path){
 
-  if(variable %in% vars_with_stat){
+  if(check_vars_with_stat(variable)){
     prefix <- paste(variable, statistic, sep = "-")
 
     prefix <- paste0(prefix, "_C3S-glob-agric_AgERA5_")
@@ -14,7 +14,7 @@ get_file_path <- function(date_to_search, variable, statistic, time, path){
     prefix <- paste0(prefix, "_C3S-glob-agric_AgERA5_")
   }
 
-  if(!variable %in% vars_with_stat && variable != "Relative-Humidity-2m"){
+  if(isFALSE(check_vars_with_stat(variable)) && variable != "Relative-Humidity-2m"){
     prefix <- paste0(variable, "_C3S-glob-agric_AgERA5_")
   }
 
