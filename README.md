@@ -1,5 +1,5 @@
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/AgrDataSci/agera5/workflows/R-CMD-check/badge.svg)](https://github.com/AgrDataSci/agera5/actions)
+[![R-CMD-check](https://github.com/AgrDataSci/ag5Tools/workflows/R-CMD-check/badge.svg)](https://github.com/AgrDataSci/ag5Tools/actions)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
  <!-- badges: end -->
 
@@ -63,18 +63,21 @@ ag5_extract(coords = c(35.726364, -2.197162),
 
 ## Acknowledgements
 
-The *ag5Tools* package relies on the functionality available from other open source packages.
+The ag5Tools package relies on the functionality available from other open source packages.
 
 -   The Python [*cdsapi*](https://pypi.org/project/cdsapi/)
 
--   The R package [*reticulate*](https://cran.r-project.org/web/packages/reticulate/index.html) is used to access the Python cdsapi functions from R.
+-   The R package [*reticulate*](https://cran.r-project.org/package=reticulate) is used to access the Python cdsapi functions from R.
 
--   The R package [*terra*](https://cran.r-project.org/web/packages/terra/index.html) is used to extract data from nc files.
+-   The R package [*terra*](https://cran.r-project.org/package=terra) is used to extract data from nc files.
 
--   The R package [*fs*](https://cran.r-project.org/web/packages/fs/index.html) is used for efficiently search and list files.
+-   The R package [*fs*](https://cran.r-project.org/package=fs) is used for efficiently search and list files.
 
-### Disclaimer
+## License
 
-Please be aware that is still a development version of the package. You are free to use it for your own purposes with no warranty.
+Please be aware that ag5Tools is released under MIT license, please find details in the [MIT license document]((https://agrdatasci.github.io/ag5Tools/LICENSE.html)
 
+## Code of Conduct
+
+Please note that the ag5Tools project is released with a [Contributor Code of Conduct](https://agrdatasci.github.io/ag5Tools/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 

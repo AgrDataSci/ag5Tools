@@ -8,3 +8,4 @@
 ^dev_data$
 ^cran-comments\.md$
 ^vignettes/articles$
+^CODE_OF_CONDUCT\.md$

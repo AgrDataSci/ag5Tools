@@ -30,4 +30,4 @@ Suggests:
     rmarkdown,
     knitr
 VignetteBuilder: knitr
-URL: https://agrdatasci.github.io/agera5/
+URL: https://agrdatasci.github.io/ag5Tools/
