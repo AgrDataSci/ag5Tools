@@ -29,7 +29,7 @@ devtools::install_github("agrdatasci/ag5Tools", build_vignettes = TRUE)
 
 ### Downloading AgERA5 data
 
-#### csdapi setup
+#### Get your CDS API-Key
 
 To download AgERA5 data you should first register at the Climate Data Store and get your API key. Please follow the instructions in: <https://cds.climate.copernicus.eu/api-how-to>
 

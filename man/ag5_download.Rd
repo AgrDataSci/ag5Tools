@@ -35,8 +35,9 @@ For more information about the data license, please visit:
 \url{https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf}
 
 To download the data you should have a valid CDS account,
-an CDS API key and install the Python CDSAPI. Please
-follow the instructions at: \url{https://cds.climate.copernicus.eu/api-how-to}
+an CDS API key. Please follow the instructions at: \url{https://cds.climate.copernicus.eu/api-how-to}
+to create a file to store your API key. You do not need to install Python or the cdsapi, Ag5Tools
+will do it if required.
 }
 \section{AgERA5 variables available for download:}{
 \itemize{

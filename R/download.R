@@ -9,8 +9,9 @@
 #'<https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf>
 #'
 #'To download the data you should have a valid CDS account,
-#'an CDS API key and install the Python CDSAPI. Please
-#'follow the instructions at: <https://cds.climate.copernicus.eu/api-how-to>
+#'an CDS API key. Please follow the instructions at: <https://cds.climate.copernicus.eu/api-how-to>
+#'to create a file to store your API key. You do not need to install Python or the cdsapi, Ag5Tools
+#'will do it if required.
 
 #'@name ag5_download
 #'@param variable character The variable to be downloaded. See details
