@@ -1,0 +1,65 @@
+---
+title: "Extracing AgERA5 data with ag5Tools"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{extracing_data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+### Why a extracting function for agERA5 data?  
+
+The agERA5 data is downloaded from the Copernicus Climate Data Store as NetCDF files format, with a file extension `.nc`.
+
+The data is provided as daily observations and each file correspond to a given day. For instance, if you want precipitation data for year 2010, you will have 365 files or 366 in the case of a leap year.
+
+In case you want to use the precipitation data as model covariates, you have to seek for the specific dates and extract the data corresponding to the locations where the trial was established. Instead, you can use the ag5_extract function as demostrated in the next section.  
+
+Let's say you have observations from field trials of a trait of interest (e.g., yield) and want to link that with rainfall data to explore the effect of rainfall on that trait. You know the the plating and harvest dates for each trial plot. Then you can extract the time series of daily rainfall starting at plating date and finishing at harvest date.  
+
+Our synthetic example data shows the dates for random locations in Arusha, Tanzania.
+
+```{r}
+
+data("arusha_df", package = "ag5Tools")
+
+head(arusha_df)
+
+
+
+```
+With `ag5_extract()` function you can extract the required data, as long as you have downloaded it already.
+```{r eval = FALSE}
+
+library(ag5Tools)
+
+arusha_rainfall <- ag5_extract(coords = arusha_df,
+                               variable = "Precipitation-Flux",
+                               path = "D:/agera5_data/")
+
+```
+Notice that the `data.frame arusha_df` already has column names that match the default arguments in the function. If they do not match, you should indicate the column names as arguments of the function `ag5_download()`.  
+
+For example, if your `data.frame` has location columns named `x` and `y` and dates named as `planting_date` and `harvest_date`, the call to function `ag5_extract()` will look like:
+
+```{r eval = FALSE}
+arusha_rainfall <- ag5_extract(coords = example_df,
+                               lon = "x",
+                               lat = "y",
+                               start_date = "planting_date",
+                               end_date = "harvest_date",
+                               variable = "Precipitation-Flux",
+                               path = "D:/agera5_data/")
+
+```
+
+
+
+
+

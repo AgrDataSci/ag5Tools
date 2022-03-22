@@ -34,31 +34,32 @@ ag5_extract(coords, ..., path)
 )
 }
 \arguments{
-\item{coords}{numeric Vector of length = 2 of the form (lon, lat), or a data.fram with required columns}
+\item{coords}{numeric vector of length = 2 of the form (lon, lat), or a \code{data.frame} with required columns}
 
 \item{...}{Other parameters}
 
-\item{path}{The path for the folder containing the AgERA5 files}
+\item{path}{\code{character} The path for the folder containing the AgERA5 files}
 
-\item{dates}{The dates for extracting the specified variable, either single character or a vector of length 2
+\item{dates}{\code{character} The dates for extracting the specified variable, a vector of length 1 extracts a single date, while
+a vector of length 2 indicates the start and end dates.
 or the column name in the case of \code{data.frame}}
 
-\item{variable}{The AgERA5 variable to extract, see details for available options}
+\item{variable}{\code{character} The AgERA5 variable to extract, see details for available options}
 
-\item{statistic}{character Only for some variables, see details for valid options}
+\item{statistic}{\code{character} Only for some variables, see details for valid options}
 
 \item{time}{Only for variable Relative-Humidity-2m, see details for valid options}
 
 \item{celsius}{logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
 If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}}
 
-\item{lon}{character Column name of longitude values in the case of \code{data.frame}}
+\item{lon}{\code{character} Column name of longitude values in the case of \code{data.frame}}
 
-\item{lat}{character Column name of latitude values in the case of \code{data.frame}}
+\item{lat}{\code{character} Column name of latitude values in the case of \code{data.frame}}
 
-\item{start_date}{Column name of start_date values in the case of \code{data.frame}}
+\item{start_date}{\code{character} Column name of start_date values in the case that coords is a \code{data.frame}}
 
-\item{end_date}{Column name of end_date values in the case of \code{data.frame}}
+\item{end_date}{\code{character} Column name of end_date values in the case that coords is a \code{data.frame}}
 }
 \description{
 Extract data from AgERA5 data files previously downloaded from the Copernicus Climate Data Store.
@@ -124,7 +125,7 @@ but should be explicitly indicated.
                       dates = "1991-04-22",
                       variable = "Temperature-Air-2m",
                       statistic = "Max-Day-Time",
-                      path "C:/temperature_data/")
+                      path = "C:/temperature_data/")
 }
 
 }

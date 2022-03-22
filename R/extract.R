@@ -7,17 +7,18 @@
 #' and location, where the first dates value is the start date and the second the end date.
 
 #'@name ag5_extract
-#'@param coords numeric Vector of length = 2 of the form (lon, lat), or a data.fram with required columns
-#'@param variable The AgERA5 variable to extract, see details for available options
-#'@param statistic character Only for some variables, see details for valid options
-#'@param dates The dates for extracting the specified variable, either single character or a vector of length 2
+#'@param coords numeric vector of length = 2 of the form (lon, lat), or a \code{data.frame} with required columns
+#'@param variable \code{character} The AgERA5 variable to extract, see details for available options
+#'@param statistic \code{character} Only for some variables, see details for valid options
+#'@param dates \code{character} The dates for extracting the specified variable, a vector of length 1 extracts a single date, while
+#'a vector of length 2 indicates the start and end dates.
 #'or the column name in the case of \code{data.frame}
-#'@param lon character Column name of longitude values in the case of \code{data.frame}
-#'@param lat character Column name of latitude values in the case of \code{data.frame}
-#'@param start_date Column name of start_date values in the case of \code{data.frame}
-#'@param end_date Column name of end_date values in the case of \code{data.frame}
+#'@param lon \code{character} Column name of longitude values in the case of \code{data.frame}
+#'@param lat \code{character} Column name of latitude values in the case of \code{data.frame}
+#'@param start_date \code{character} Column name of start_date values in the case that coords is a \code{data.frame}
+#'@param end_date \code{character} Column name of end_date values in the case that coords is a \code{data.frame}
 #'@param time Only for variable Relative-Humidity-2m, see details for valid options
-#'@param path The path for the folder containing the AgERA5 files
+#'@param path \code{character} The path for the folder containing the AgERA5 files
 #'@param celsius logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
 #'If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}
 #'@param ... Other parameters
@@ -78,7 +79,7 @@
 #'                       dates = "1991-04-22",
 #'                       variable = "Temperature-Air-2m",
 #'                       statistic = "Max-Day-Time",
-#'                       path "C:/temperature_data/")
+#'                       path = "C:/temperature_data/")
 #'}
 #'
 #'@references
