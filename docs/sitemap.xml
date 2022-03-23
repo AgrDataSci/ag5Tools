@@ -1,51 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/404.html</loc>
   </url>
   <url>
-    <loc>/articles/agera5.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/articles/ag5Tools.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/articles/extracing_data.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/articles/index.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/authors.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/index.html</loc>
   </url>
   <url>
-    <loc>/reference/arusha_df.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/reference/download_agera5.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/reference/extract_period.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/extract_single_date.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/reference/ag5_download.html</loc>
   </url>
   <url>
-    <loc>/reference/get_prec.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/reference/ag5_extract.html</loc>
   </url>
   <url>
-    <loc>/reference/get_rhum.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/reference/arusha_df.html</loc>
   </url>
   <url>
-    <loc>/reference/get_srf.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_temp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://agrdatasci.github.io/ag5Tools/reference/index.html</loc>
   </url>
 </urlset>

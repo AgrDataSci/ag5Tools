@@ -121,7 +121,7 @@ but should be explicitly indicated.
 
 \examples{
 \dontrun{
-2m_temp <- ag5_extract(coords = c(lon = 35.72636, lat = -2.197162),
+temp <- ag5_extract(coords = c(lon = 35.72636, lat = -2.197162),
                       dates = "1991-04-22",
                       variable = "Temperature-Air-2m",
                       statistic = "Max-Day-Time",

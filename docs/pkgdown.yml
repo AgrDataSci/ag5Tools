@@ -2,6 +2,10 @@ pandoc: 2.17.1.1
 pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
-  agera5: agera5.html
-last_built: 2022-03-04T19:21Z
+  ag5Tools: ag5Tools.html
+  extracing_data: extracing_data.html
+last_built: 2022-03-23T17:27Z
+urls:
+  reference: https://agrdatasci.github.io/ag5Tools/reference
+  article: https://agrdatasci.github.io/ag5Tools/articles
 
