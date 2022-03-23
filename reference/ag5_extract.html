@@ -18,7 +18,7 @@ and location, where the first dates value is the start date and the second the e
     
     <a class="navbar-brand me-2" href="../index.html">ag5Tools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9007</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +31,15 @@ and location, where the first dates value is the start date and the second the e
 </li>
 <li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/extracing_data.html">Extracing AgERA5 data with ag5Tools</a>
+  </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
@@ -90,31 +99,32 @@ and location, where the first dates value is the start date and the second the e
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>coords</dt>
-<dd><p>numeric Vector of length = 2 of the form (lon, lat), or a data.fram with required columns</p></dd>
+<dd><p>numeric vector of length = 2 of the form (lon, lat), or a <code>data.frame</code> with required columns</p></dd>
 <dt>...</dt>
 <dd><p>Other parameters</p></dd>
 <dt>path</dt>
-<dd><p>The path for the folder containing the AgERA5 files</p></dd>
+<dd><p><code>character</code> The path for the folder containing the AgERA5 files</p></dd>
 <dt>dates</dt>
-<dd><p>The dates for extracting the specified variable, either single character or a vector of length 2
+<dd><p><code>character</code> The dates for extracting the specified variable, a vector of length 1 extracts a single date, while
+a vector of length 2 indicates the start and end dates.
 or the column name in the case of <code>data.frame</code></p></dd>
 <dt>variable</dt>
-<dd><p>The AgERA5 variable to extract, see details for available options</p></dd>
+<dd><p><code>character</code> The AgERA5 variable to extract, see details for available options</p></dd>
 <dt>statistic</dt>
-<dd><p>character Only for some variables, see details for valid options</p></dd>
+<dd><p><code>character</code> Only for some variables, see details for valid options</p></dd>
 <dt>time</dt>
 <dd><p>Only for variable Relative-Humidity-2m, see details for valid options</p></dd>
 <dt>celsius</dt>
 <dd><p>logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
 If <code>TRUE</code> the values are converted from Kelvin to Celsius. Default is <code>FALSE</code></p></dd>
 <dt>lon</dt>
-<dd><p>character Column name of longitude values in the case of <code>data.frame</code></p></dd>
+<dd><p><code>character</code> Column name of longitude values in the case of <code>data.frame</code></p></dd>
 <dt>lat</dt>
-<dd><p>character Column name of latitude values in the case of <code>data.frame</code></p></dd>
+<dd><p><code>character</code> Column name of latitude values in the case of <code>data.frame</code></p></dd>
 <dt>start_date</dt>
-<dd><p>Column name of start_date values in the case of <code>data.frame</code></p></dd>
+<dd><p><code>character</code> Column name of start_date values in the case that coords is a <code>data.frame</code></p></dd>
 <dt>end_date</dt>
-<dd><p>Column name of end_date values in the case of <code>data.frame</code></p></dd>
+<dd><p><code>character</code> Column name of end_date values in the case that coords is a <code>data.frame</code></p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="valid-variable-values">Valid variable values<a class="anchor" aria-label="anchor" href="#valid-variable-values"></a></h2>
@@ -171,7 +181,15 @@ Metrologia, 27(1), 3-10. doi:10.1088/0026-1394/27/1/002</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu">ag5_extract</span><span class="op">(</span>coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>lon <span class="op">=</span> <span class="fl">35.72636</span>, lat <span class="op">=</span> <span class="op">-</span><span class="fl">2.197162</span><span class="op">)</span>,</span>
+<span class="r-in">                      dates <span class="op">=</span> <span class="st">"1991-04-22"</span>,</span>
+<span class="r-in">                      variable <span class="op">=</span> <span class="st">"Temperature-Air-2m"</span>,</span>
+<span class="r-in">                      statistic <span class="op">=</span> <span class="st">"Max-Day-Time"</span>,</span>
+<span class="r-in">                      path <span class="op">=</span> <span class="st">"C:/temperature_data/"</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"></span>
+</code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
