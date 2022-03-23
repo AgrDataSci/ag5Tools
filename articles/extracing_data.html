@@ -79,7 +79,7 @@
 <h3 id="why-a-extracting-function-for-agera5-data">Why a extracting function for agERA5 data?<a class="anchor" aria-label="anchor" href="#why-a-extracting-function-for-agera5-data"></a>
 </h3>
 <p>The agERA5 data is downloaded from the Copernicus Climate Data Store as NetCDF files format, with a file extension <code>.nc</code>.</p>
-<p>The data is provided as daily observations and each file correspond to a given day. For instance, if you want precipitation data for year 2010, you will have 365 files or 366 in the case of a leap year.</p>
+<p>The data is provided as daily observations and each file correspond to a day. For instance, if you want precipitation data for year 2010, you will have 365 files (or 366 in the case of a leap year).</p>
 <p>In case you want to use the precipitation data as model covariates, you have to seek for the specific dates and extract the data corresponding to the locations where the trial was established. Instead, you can use the ag5_extract function as demostrated in the next section.</p>
 <p>Let’s say you have observations from field trials of a trait of interest (e.g., yield) and want to link that with rainfall data to explore the effect of rainfall on that trait. You know the the plating and harvest dates for each trial plot. Then you can extract the time series of daily rainfall starting at plating date and finishing at harvest date.</p>
 <p>Our synthetic example data shows the dates for random locations in Arusha, Tanzania.</p>
@@ -113,6 +113,7 @@
                                end_date <span class="op">=</span> <span class="st">"harvest_date"</span>,
                                variable <span class="op">=</span> <span class="st">"Precipitation-Flux"</span>,
                                path <span class="op">=</span> <span class="st">"D:/agera5_data/"</span><span class="op">)</span></code></pre></div>
+<p>Notice that you do not need to worry about providing the specific folder where the files are located, but only the root folder where you know the files are. For instance, if you stored all the AgERA5 data files in folder <code>D:/agera5_data/</code>, but you also have sub-folders for precipiation and temperature data, it is not required to specify that in the <code>path</code> argument. In this case, only providing the path <code>D:/agera5_data/</code> will suffice.</p>
 </div>
   </main>
 </div>
