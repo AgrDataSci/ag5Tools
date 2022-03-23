@@ -19,7 +19,7 @@ The download function provides programmatic access to the Copernicus Climate Dat
 
 The ag5Tools package does not distribute data, it only provides access to Climate Data Store through the python cdsapi.
 
-For specific details about the license agreenment on downloading and using the data please check the license at: <https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf>
+For specific details about the license agreement on downloading and using the data please check the license at: <https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf>
 
 ### Installation
 

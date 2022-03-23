@@ -58,7 +58,7 @@ arusha_rainfall <- ag5_extract(coords = example_df,
                                path = "D:/agera5_data/")
 
 ```
-Notice that you do not need to worry about providing the specific folder where the files are located, but only the root folder where you know the files are. For instance, if you stored all the AgERA5 data files in folder `D:/agera5_data/`, but you also have sub-folders for precipiation and temperature data, it is not required to specify that in the `path` argument. In this case, only providing the path `D:/agera5_data/` will suffice.
+Notice that you do not need to worry about providing the specific folder where the files are located, but only the root folder where you know the files are. For instance, if you stored all the AgERA5 data files in folder `D:/agera5_data/`, but you also have sub-folders for precipitation and temperature data, it is not required to specify that in the `path` argument. In this case, only providing the path `D:/agera5_data/` will suffice.
 
 
 

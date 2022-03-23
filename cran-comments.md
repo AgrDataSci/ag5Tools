@@ -9,63 +9,13 @@ This is a new submission
 
 0 errors v | 0 warnings v | 0 notes v
 
-### devtools::check_rhub()
+### rhub::check_for_cran()
+https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-a75e734ac5cb43a096aaa31b186d5f23
+https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-9269a59d24624e7aa7e5caed04a011df
+https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-05e183bb4b56439e8469011da32348f1
 
-  Build ID:   ag5Tools_0.0.1.tar.gz-1df65e0f34c8404ebbf474e363c516f8
-  Platform:   Windows Server 2022, R-devel, 64 bit
-  Submitted:  1h 8m 22.7s ago
-  Build time: 1h 8m 12.8s
-
-> checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'David Brown <d.brown@cgiar.org>'
-  
-  New submission
-  
-  Possibly misspelled words in DESCRIPTION:
-    AgERA (2:58, 19:104)
-    Agrometeorological (17:77)
-
-> checking for detritus in the temp directory ... NOTE
-  Found the following files/directories:
-    'lastMiKTeXException'
-
-0 errors √ | 0 warnings √ | 2 notes x
-
--- ag5Tools 0.0.1: NOTE
-
-  Build ID:   ag5Tools_0.0.1.tar.gz-2fdda85cf1104c9da37d680d1fdabdf5
-  Platform:   Ubuntu Linux 20.04.1 LTS, R-release, GCC
-  Submitted:  1h 8m 22.8s ago
-  Build time: 17m 4.1s
-
-> checking CRAN incoming feasibility ... NOTE
-  Maintainer: ‘David Brown <d.brown@cgiar.org>’
-  
-  New submission
-  
-  Possibly mis-spelled words in DESCRIPTION:
-    AgERA (2:58, 19:104)
-    Agrometeorological (17:77)
-
-0 errors √ | 0 warnings √ | 1 note x
-
--- ag5Tools 0.0.1: NOTE
-
-  Build ID:   ag5Tools_0.0.1.tar.gz-de76921caf374fc199158faf8c1fe06a
-  Platform:   Fedora Linux, R-devel, clang, gfortran
-  Submitted:  1h 8m 22.8s ago
-  Build time: 17m 7.1s
-
-> checking CRAN incoming feasibility ... NOTE
-  Maintainer: ‘David Brown <d.brown@cgiar.org>’
-  
-  New submission
-  
-  Possibly misspelled words in DESCRIPTION:
-    AgERA (2:58, 19:104)
-    Agrometeorological (17:77)
-
-0 errors √ | 0 warnings √ | 1 note x
+Note
+https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-a75e734ac5cb43a096aaa31b186d5f23#L510
 
 
 
