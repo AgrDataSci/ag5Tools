@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 The agERA5 data is downloaded from the Copernicus Climate Data Store as NetCDF files format, with a file extension `.nc`.
 
-The data is provided as daily observations and each file correspond to a given day. For instance, if you want precipitation data for year 2010, you will have 365 files or 366 in the case of a leap year.
+The data is provided as daily observations and each file correspond to a day. For instance, if you want precipitation data for year 2010, you will have 365 files (or 366 in the case of a leap year).
 
 In case you want to use the precipitation data as model covariates, you have to seek for the specific dates and extract the data corresponding to the locations where the trial was established. Instead, you can use the ag5_extract function as demostrated in the next section.  
 
@@ -58,7 +58,7 @@ arusha_rainfall <- ag5_extract(coords = example_df,
                                path = "D:/agera5_data/")
 
 ```
-
+Notice that you do not need to worry about providing the specific folder where the files are located, but only the root folder where you know the files are. For instance, if you stored all the AgERA5 data files in folder `D:/agera5_data/`, but you also have sub-folders for precipiation and temperature data, it is not required to specify that in the `path` argument. In this case, only providing the path `D:/agera5_data/` will suffice.
 
 
 

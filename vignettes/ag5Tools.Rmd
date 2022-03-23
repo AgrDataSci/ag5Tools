@@ -21,7 +21,7 @@ API Key from the [CDS API Guide](https://cds.climate.copernicus.eu/api-how-to).
 Once you have your API Key, you should create a file named ".cdsapirc". See more details at the
 [CDS API Guide](https://cds.climate.copernicus.eu/api-how-to)
 
-You do not need to install Python or the cdsapi client, Ag5Tools will do it if required.
+You do not need to install Python or the cdsapi client, ag5Tools will do it if required.
 
 ## Downloading AgERA5 data
 The following example downloads varaible "2m_temperature". For this variable there seven statistics available:  
