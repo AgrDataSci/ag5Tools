@@ -1,6 +1,6 @@
 Package: ag5Tools
 Title: Toolbox for Downloading and Extracting Copernicus AgERA5 Data 
-Version: 0.0.0.9007
+Version: 0.0.1
 Authors@R:
           c(person(given = "David",
           family = "Brown",
@@ -9,7 +9,11 @@ Authors@R:
           comment = c(ORCID = "0000-0003-2859-1618")),
           person("Kaue", "de Sousa", 
           email = "kaue.desousa@inn.no", role = c("aut"),
-          comment = c(ORCID = "0000-0002-7571-7845")))
+          comment = c(ORCID = "0000-0002-7571-7845")),
+          person("Jacob", "van Etten", role = c("ths"),
+          comment = c(ORCID = "0000-0001-7554-2558")),
+          person("Sytze", "de Bruin", role = c("ths"),
+          comment = c(ORCID = "0000-0002-6884-2832")))
 Description: Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators 
   from 1979 to present derived from reanalysis"
   <https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview> (AgERA5).

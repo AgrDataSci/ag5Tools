@@ -3,7 +3,7 @@ title: "ag5Tools"
 description: ag5Tools is an R package to download and extract data from the Copernicus \\'Agrometeorological indicators from 1979 to present derived from reanalysis\\' dataset (AgERA5)."
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{agera5}
+  %\VignetteIndexEntry{ag5Tools}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
