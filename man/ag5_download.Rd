@@ -25,6 +25,9 @@ See details for available options.}
 \item{path}{Character Target folder in an local hardrive e.g. "C:/agera5".
 The folder should exist and the user should have write permission.}
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 The data is downloaded from Copernicus Climate Change Service (C3S) using the
 Copernicus Climate Data Store (CDSAPI) Python library

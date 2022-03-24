@@ -61,6 +61,14 @@ If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code
 
 \item{end_date}{\code{character} Column name of end_date values in the case that coords is a \code{data.frame}}
 }
+\value{
+\code{numeric} vector with length equal to the number of dates between first and
+second date. The returned vecter is a named vector, with requested dates as names.
+If only one date is provided the function returns a \code{numeric} vector
+with \code{length = 1}.
+If \code{coords} is a \code{data.frame}, the function returns a \code{list} of
+\code{numeric} vectors, each one corresponding to the rows in the input \code{data.frame}
+}
 \description{
 Extract data from AgERA5 data files previously downloaded from the Copernicus Climate Data Store.
 These functions use package 'terra' to read *.nc files and extract the requested data for a given location

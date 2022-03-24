@@ -72,6 +72,13 @@
 #' \item 18h
 #'}
 #'
+#'@return  \code{numeric} vector with length equal to the number of dates between first and
+#'second date. The returned vecter is a named vector, with requested dates as names.
+#'If only one date is provided the function returns a \code{numeric} vector
+#'with \code{length = 1}.
+#' If \code{coords} is a \code{data.frame}, the function returns a \code{list} of
+#'  \code{numeric} vectors, each one corresponding to the rows in the input \code{data.frame}
+#'
 #'
 #'@examples
 #'\dontrun{

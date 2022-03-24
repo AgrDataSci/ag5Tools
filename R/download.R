@@ -80,7 +80,7 @@
 #'\item 10m_wind_speed
 
 #'}
-#'
+#'@return No return value, called for side effects.
 
 
 #'@examples
