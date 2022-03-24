@@ -19,10 +19,8 @@ https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-a75e734ac5cb43a096aaa31b18
 
 
 ## Previous submission problem - Fixed
-Found the following (possibly) invalid file URI:
-     URI: code_of_conduct.md
-       From: README.md
-Changed to https://agrdatasci.github.io/ag5Tools/CODE_OF_CONDUCT.html
+I have  added \value to .Rd files regarding exported methods and explained
+the functions results in the documentation. Thanks.
 
 
 
