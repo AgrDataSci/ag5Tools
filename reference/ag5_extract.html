@@ -127,6 +127,15 @@ If <code>TRUE</code> the values are converted from Kelvin to Celsius. Default is
 <dd><p><code>character</code> Column name of end_date values in the case that coords is a <code>data.frame</code></p></dd>
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p><code>numeric</code> vector with length equal to the number of dates between first and
+second date. The returned vecter is a named vector, with requested dates as names.
+If only one date is provided the function returns a <code>numeric</code> vector
+with <code>length = 1</code>.
+If <code>coords</code> is a <code>data.frame</code>, the function returns a <code>list</code> of
+<code>numeric</code> vectors, each one corresponding to the rows in the input <code>data.frame</code></p>
+    </div>
+    <div class="section level2">
     <h2 id="valid-variable-values">Valid variable values<a class="anchor" aria-label="anchor" href="#valid-variable-values"></a></h2>
     
 <ul><li><p>"cloud_cover"</p></li>
