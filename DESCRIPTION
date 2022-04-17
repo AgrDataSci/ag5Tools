@@ -1,6 +1,6 @@
 Package: ag5Tools
 Title: Toolbox for Downloading and Extracting Copernicus AgERA5 Data 
-Version: 0.0.1
+Version: 0.0.2
 Authors@R:
           c(person(given = "David",
           family = "Brown",
@@ -27,7 +27,7 @@ Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: terra, reticulate, fs
+Imports: terra, reticulate, fs, doSNOW, foreach
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Suggests: 

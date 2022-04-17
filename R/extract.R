@@ -1,4 +1,4 @@
-#'Extract AgERA5 data stored in a local hardrive
+#'Extract AgERA5 data stored in a local hard drive
 #'
 #'@description Extract data from AgERA5 data files previously downloaded from the Copernicus Climate Data Store.
 #' These functions use package 'terra' to read *.nc files and extract the requested data for a given location
@@ -20,6 +20,7 @@
 #'@param time Only for variable Relative-Humidity-2m, see details for valid options
 #'@param path \code{character} The path for the folder containing the AgERA5 files
 #'@param celsius logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
+#'@param ncores Number of cores to use with parallel
 #'If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}
 #'@param ... Other parameters
 #'
@@ -99,6 +100,9 @@
 
 #'@importFrom terra extract
 #'@importFrom utils txtProgressBar setTxtProgressBar
+#'@importFrom doSNOW registerDoSNOW
+#'@importFrom parallel makeCluster stopCluster
+#'@importFrom foreach foreach %dopar%
 #'@export
 #'
 ag5_extract <- function(coords, ..., path){
@@ -200,6 +204,7 @@ ag5_extract.data.frame <- function(coords,
                                    statistic = NULL,
                                    time = NULL,
                                    celsius = FALSE,
+                                   ncores = NULL,
                                    ...,
                                    path){
 
@@ -218,6 +223,9 @@ ag5_extract.data.frame <- function(coords,
     stop("time is required for variable Relative-Humidity-2m")
   }
 
+  #https://blog.revolutionanalytics.com/2015/10/updates-to-the-foreach-package-and-its-friends.html
+
+
   ag5_data_list <- vector(mode = "list", length = nrow(coords))
 
   #set progress bar
@@ -225,21 +233,40 @@ ag5_extract.data.frame <- function(coords,
                                  max = length(ag5_data_list),
                                  style = 3)
 
-  for(i in seq_along(ag5_data_list)){
-
-    ag5_data_list [[i]] <- ag5_extract(coords = c(coords[i, lon],
-                                                  coords[i, lat]),
-                                       dates = c(coords[i, start_date],
-                                                 coords[i, end_date]),
-                                       variable = variable,
-                                       statistic = statistic,
-                                       time = time,
-                                       celsius = celsius,
-                                       path = path)
-    Sys.sleep(0.1)
-
-    setTxtProgressBar(progress_bar, i)
+  if(is.null(ncores)){
+    ncores <- parallel::detectCores()/2
   }
+
+  cl <- parallel::makeCluster(ncores)
+
+  doSNOW::registerDoSNOW(cl)
+
+  progress <- function(X) {setTxtProgressBar(progress_bar, X)}
+
+  opts <- list(progress = progress)
+
+  `%dopar%` <- foreach::"%dopar%"
+
+  i <- seq_along(ag5_data_list)
+
+  ag5_data_list <- foreach::foreach(i,.options.snow = opts)%dopar%{
+
+
+
+    ag5_extract(coords = c(coords[i, lon],
+                           coords[i, lat]),
+                dates = c(coords[i, start_date],
+                          coords[i, end_date]),
+                variable = variable,
+                statistic = statistic,
+                time = time,
+                celsius = celsius,
+                path = path)
+
+
+  }
+
+  parallel::stopCluster(cl)
 
 close(progress_bar)
 
