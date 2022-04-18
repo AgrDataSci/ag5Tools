@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   ag5Tools: ag5Tools.html
   extracing_data: extracing_data.html
-last_built: 2022-04-17T21:44Z
+last_built: 2022-04-18T14:59Z
 urls:
   reference: https://agrdatasci.github.io/ag5Tools/reference
   article: https://agrdatasci.github.io/ag5Tools/articles
