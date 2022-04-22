@@ -95,9 +95,6 @@
 #'Preston-Thomas, H. (1990). The International Temperature Scale of 1990 (ITS-90).
 #' Metrologia, 27(1), 3-10. doi:10.1088/0026-1394/27/1/002
 
-
-
-
 #'@importFrom terra extract
 #'@importFrom utils txtProgressBar setTxtProgressBar
 #'@importFrom doSNOW registerDoSNOW
@@ -123,10 +120,6 @@ ag5_extract.numeric <- function(coords,
                                 celsius = FALSE,
                                 ...,
                                 path){
-
-
-
-
 
 
   if(isFALSE(check_var(variable)))
@@ -208,8 +201,6 @@ ag5_extract.data.frame <- function(coords,
                                    ...,
                                    path){
 
-
-
   if(isFALSE(check_var(variable)))
     stop("not valid variable, please check")
 
@@ -247,13 +238,10 @@ ag5_extract.data.frame <- function(coords,
 
   `%dopar%` <- foreach::"%dopar%"
 
-  i <- seq_along(ag5_data_list)
+  ag5_data_list <- foreach::foreach(i = seq_along(ag5_data_list),
+                                    .options.snow = opts) %dopar% {
 
-  ag5_data_list <- foreach::foreach(i,.options.snow = opts)%dopar%{
-
-
-
-    ag5_extract(coords = c(coords[i, lon],
+    ag5Tools::ag5_extract(coords = c(coords[i, lon],
                            coords[i, lat]),
                 dates = c(coords[i, start_date],
                           coords[i, end_date]),
@@ -262,7 +250,6 @@ ag5_extract.data.frame <- function(coords,
                 time = time,
                 celsius = celsius,
                 path = path)
-
 
   }
 
