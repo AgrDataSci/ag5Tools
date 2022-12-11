@@ -17,6 +17,8 @@ The R package *ag5Tools* is a toolbox to download and extract data from the "Agr
 
 The download function provides programmatic access to the Copernicus Climate Data Store to download AgERA5 data.
 
+A detailed description can be found in the companion paper: https://doi.org/10.1016/j.softx.2022.101267
+
 ## Data license
 
 The ag5Tools package does not distribute data, it only provides access to Climate Data Store through the python cdsapi.
