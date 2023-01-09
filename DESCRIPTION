@@ -1,14 +1,13 @@
 Package: ag5Tools
 Title: Toolbox for Downloading and Extracting Copernicus AgERA5 Data 
-Version: 0.0.2
-Authors@R:
-          c(person(given = "David",
+Version: 0.1
+Authors@R:c(person(given = "David",
           family = "Brown",
           role = c("aut", "cre"),
           email = "d.brown@cgiar.org",
           comment = c(ORCID = "0000-0003-2859-1618")),
           person("Kaue", "de Sousa", 
-          email = "kaue.desousa@inn.no", role = c("aut"),
+          email = "desousa.kaue@gmail.com", role = c("ctb"),
           comment = c(ORCID = "0000-0002-7571-7845")),
           person("Jacob", "van Etten", role = c("ths"),
           comment = c(ORCID = "0000-0001-7554-2558")),

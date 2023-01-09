@@ -1,0 +1,14 @@
+citHeader("To cite package ‘ag5Tools’ in publications, please use:")
+
+citEntry(entry = "Article",
+    title = "{ag5Tools: An R package for downloading and extracting agrometeorological data from the AgERA5 database}",
+    author = c(person("David", "Brown"), person("Kauê","de Sousa"),person("Jacob","van Etten")),
+    year = "2023",
+    doi = "10.1016/j.softx.2022.101267",
+    journal = "SoftwareX",
+    publisher = "Elsevier BV",
+    volume = 21,
+    number = 2023,
+    pages = 101267,
+    url = "https://doi.org/10.1016/j.softx.2022.101267",
+    textVersion = "Brown, D., de Sousa, K., & van Etten, J. (2023). ag5Tools: An R package for downloading and extracting agrometeorological data from the AgERA5 database. SoftwareX (Vol. 21, p. 101267). https://doi.org/10.1016/j.softx.2022.101267")
