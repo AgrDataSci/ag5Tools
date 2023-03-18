@@ -1,10 +1,10 @@
-pandoc: 2.7.3
-pkgdown: 2.0.2
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   ag5Tools: ag5Tools.html
   extracing_data: extracing_data.html
-last_built: 2022-04-22T18:11Z
+last_built: 2023-03-18T21:11Z
 urls:
   reference: https://agrdatasci.github.io/ag5Tools/reference
   article: https://agrdatasci.github.io/ag5Tools/articles

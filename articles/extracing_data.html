@@ -8,10 +8,10 @@
 <meta name="description" content="ag5Tools">
 <title>Extracing AgERA5 data with ag5Tools • ag5Tools</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Extracing AgERA5 data with ag5Tools">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Extracing AgERA5 data with ag5Tools">
 <meta property="og:description" content="ag5Tools">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ag5Tools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,8 +64,9 @@
 
 
 
-<script src="extracing_data_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Extracing AgERA5 data with ag5Tools</h1>
             
       
@@ -78,42 +79,68 @@
 <div class="section level3">
 <h3 id="why-a-extracting-function-for-agera5-data">Why a extracting function for agERA5 data?<a class="anchor" aria-label="anchor" href="#why-a-extracting-function-for-agera5-data"></a>
 </h3>
-<p>The agERA5 data is downloaded from the Copernicus Climate Data Store as NetCDF files format, with a file extension <code>.nc</code>.</p>
-<p>The data is provided as daily observations and each file correspond to a day. For instance, if you want precipitation data for year 2010, you will have 365 files (or 366 in the case of a leap year).</p>
-<p>In case you want to use the precipitation data as model covariates, you have to seek for the specific dates and extract the data corresponding to the locations where the trial was established. Instead, you can use the ag5_extract function as demostrated in the next section.</p>
-<p>Let’s say you have observations from field trials of a trait of interest (e.g., yield) and want to link that with rainfall data to explore the effect of rainfall on that trait. You know the the plating and harvest dates for each trial plot. Then you can extract the time series of daily rainfall starting at plating date and finishing at harvest date.</p>
-<p>Our synthetic example data shows the dates for random locations in Arusha, Tanzania.</p>
+<p>The agERA5 data is downloaded from the Copernicus Climate Data Store
+as NetCDF files format, with a file extension <code>.nc</code>.</p>
+<p>The data is provided as daily observations and each file correspond
+to a day. For instance, if you want precipitation data for year 2010,
+you will have 365 files (or 366 in the case of a leap year).</p>
+<p>In case you want to use the precipitation data as model covariates,
+you have to seek for the specific dates and extract the data
+corresponding to the locations where the trial was established. Instead,
+you can use the ag5_extract function as demostrated in the next
+section.</p>
+<p>Let’s say you have observations from field trials of a trait of
+interest (e.g., yield) and want to link that with rainfall data to
+explore the effect of rainfall on that trait. You know the the plating
+and harvest dates for each trial plot. Then you can extract the time
+series of daily rainfall starting at plating date and finishing at
+harvest date.</p>
+<p>Our synthetic example data shows the dates for random locations in
+Arusha, Tanzania.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"arusha_df"</span>, package <span class="op">=</span> <span class="st">"ag5Tools"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">arusha_df</span><span class="op">)</span>
-<span class="co">#&gt;        lon       lat start_date   end_date</span>
-<span class="co">#&gt; 1 35.72636 -2.197162 1991-04-22 1991-08-20</span>
-<span class="co">#&gt; 2 36.10249 -2.850983 1990-01-24 1990-05-24</span>
-<span class="co">#&gt; 3 35.46292 -3.602582 1991-03-06 1991-07-04</span>
-<span class="co">#&gt; 4 36.29166 -3.855945 1990-10-10 1991-02-07</span>
-<span class="co">#&gt; 5 35.45254 -3.616361 1990-01-22 1990-05-22</span>
-<span class="co">#&gt; 6 35.40131 -3.216106 1990-10-19 1991-02-16</span></code></pre></div>
-<p>With <code><a href="../reference/ag5_extract.html">ag5_extract()</a></code> function you can extract the required data, as long as you have downloaded it already.</p>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"arusha_df"</span>, package <span class="op">=</span> <span class="st">"ag5Tools"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">arusha_df</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        lon       lat start_date   end_date</span></span>
+<span><span class="co">#&gt; 1 35.72636 -2.197162 1991-04-22 1991-08-20</span></span>
+<span><span class="co">#&gt; 2 36.10249 -2.850983 1990-01-24 1990-05-24</span></span>
+<span><span class="co">#&gt; 3 35.46292 -3.602582 1991-03-06 1991-07-04</span></span>
+<span><span class="co">#&gt; 4 36.29166 -3.855945 1990-10-10 1991-02-07</span></span>
+<span><span class="co">#&gt; 5 35.45254 -3.616361 1990-01-22 1990-05-22</span></span>
+<span><span class="co">#&gt; 6 35.40131 -3.216106 1990-10-19 1991-02-16</span></span></code></pre></div>
+<p>With <code><a href="../reference/ag5_extract.html">ag5_extract()</a></code> function you can extract the required
+data, as long as you have downloaded it already.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://agrdatasci.github.io/ag5Tools/">ag5Tools</a></span><span class="op">)</span>
-
-<span class="va">arusha_rainfall</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ag5_extract.html">ag5_extract</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="va">arusha_df</span>,
-                               variable <span class="op">=</span> <span class="st">"Precipitation-Flux"</span>,
-                               path <span class="op">=</span> <span class="st">"D:/agera5_data/"</span><span class="op">)</span></code></pre></div>
-<p>Notice that the <code>data.frame arusha_df</code> already has column names that match the default arguments in the function. If they do not match, you should indicate the column names as arguments of the function <code><a href="../reference/ag5_download.html">ag5_download()</a></code>.</p>
-<p>For example, if your <code>data.frame</code> has location columns named <code>x</code> and <code>y</code> and dates named as <code>planting_date</code> and <code>harvest_date</code>, the call to function <code><a href="../reference/ag5_extract.html">ag5_extract()</a></code> will look like:</p>
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://agrdatasci.github.io/ag5Tools/">ag5Tools</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">arusha_rainfall</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ag5_extract.html">ag5_extract</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="va">arusha_df</span>,</span>
+<span>                               variable <span class="op">=</span> <span class="st">"Precipitation-Flux"</span>,</span>
+<span>                               path <span class="op">=</span> <span class="st">"D:/agera5_data/"</span><span class="op">)</span></span></code></pre></div>
+<p>Notice that the <code>data.frame arusha_df</code> already has column
+names that match the default arguments in the function. If they do not
+match, you should indicate the column names as arguments of the function
+<code><a href="../reference/ag5_download.html">ag5_download()</a></code>.</p>
+<p>For example, if your <code>data.frame</code> has location columns
+named <code>x</code> and <code>y</code> and dates named as
+<code>planting_date</code> and <code>harvest_date</code>, the call to
+function <code><a href="../reference/ag5_extract.html">ag5_extract()</a></code> will look like:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">arusha_rainfall</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ag5_extract.html">ag5_extract</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="va">example_df</span>,
-                               lon <span class="op">=</span> <span class="st">"x"</span>,
-                               lat <span class="op">=</span> <span class="st">"y"</span>,
-                               start_date <span class="op">=</span> <span class="st">"planting_date"</span>,
-                               end_date <span class="op">=</span> <span class="st">"harvest_date"</span>,
-                               variable <span class="op">=</span> <span class="st">"Precipitation-Flux"</span>,
-                               path <span class="op">=</span> <span class="st">"D:/agera5_data/"</span><span class="op">)</span></code></pre></div>
-<p>Notice that you do not need to worry about providing the specific folder where the files are located, but only the root folder where you know the files are. For instance, if you stored all the AgERA5 data files in folder <code>D:/agera5_data/</code>, but you also have sub-folders for precipitation and temperature data, it is not required to specify that in the <code>path</code> argument. In this case, only providing the path <code>D:/agera5_data/</code> will suffice.</p>
+<code class="sourceCode R"><span><span class="va">arusha_rainfall</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ag5_extract.html">ag5_extract</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="va">example_df</span>,</span>
+<span>                               lon <span class="op">=</span> <span class="st">"x"</span>,</span>
+<span>                               lat <span class="op">=</span> <span class="st">"y"</span>,</span>
+<span>                               start_date <span class="op">=</span> <span class="st">"planting_date"</span>,</span>
+<span>                               end_date <span class="op">=</span> <span class="st">"harvest_date"</span>,</span>
+<span>                               variable <span class="op">=</span> <span class="st">"Precipitation-Flux"</span>,</span>
+<span>                               path <span class="op">=</span> <span class="st">"D:/agera5_data/"</span><span class="op">)</span></span></code></pre></div>
+<p>Notice that you do not need to worry about providing the specific
+folder where the files are located, but only the root folder where you
+know the files are. For instance, if you stored all the AgERA5 data
+files in folder <code>D:/agera5_data/</code>, but you also have
+sub-folders for precipitation and temperature data, it is not required
+to specify that in the <code>path</code> argument. In this case, only
+providing the path <code>D:/agera5_data/</code> will suffice.</p>
 </div>
   </main>
 </div>
@@ -122,12 +149,12 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by David Brown, Kaue de Sousa.</p>
+<p>Developed by David Brown.</p>
 </div>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
     </footer>
