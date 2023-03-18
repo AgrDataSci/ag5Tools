@@ -34,7 +34,7 @@ devtools::install_github("agrdatasci/ag5Tools", build_vignettes = TRUE)
 ### Downloading AgERA5 data
 
 #### Install Python and the CDS API
-Before useing the *ag5Tools* package, you need to intall Python and the CDS API, please see the details here: https://cds.climate.copernicus.eu/api-how-to.
+Before using the *ag5Tools* package, you need to intall Python and the CDS API, please see the details here: https://cds.climate.copernicus.eu/api-how-to.
 
 #### Get your CDS API-Key
 
