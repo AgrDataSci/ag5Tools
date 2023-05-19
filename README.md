@@ -26,7 +26,11 @@ The *ag5Tools* package does not distribute data, it only provides access to Clim
 For specific details about the license agreement on downloading and using the data please check the license at: <https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf>
 
 ### Installation
-
+The stable version of *ag5Tools* can be installed from **CRAN** using 
+```r
+install.packages("ag5Tools")
+```  
+The development version could be installed using
 ``` r
 devtools::install_github("agrdatasci/ag5Tools", build_vignettes = TRUE)
 ```
