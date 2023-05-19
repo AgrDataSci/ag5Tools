@@ -90,7 +90,11 @@
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
+<p>The stable version of <em>ag5Tools</em> can be installed from <strong>CRAN</strong> using</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ag5Tools"</span><span class="op">)</span></span></code></pre></div>
+<p>The development version could be installed using</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"agrdatasci/ag5Tools"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -115,7 +119,7 @@
 <h4 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
 </h4>
 <p>The following example downloads daily ‘2m_temperature’ data for year 2015</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/ag5_download.html">ag5_download</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,</span>
 <span>             statistic <span class="op">=</span> <span class="st">"night_time_minimum"</span>,</span>
 <span>             day <span class="op">=</span> <span class="st">"all"</span>,</span>
@@ -128,7 +132,7 @@
 <h4 id="extracting-data">Extracting data<a class="anchor" aria-label="anchor" href="#extracting-data"></a>
 </h4>
 <p>To extract maximum day temperature (“Max-Day-Time”) of “2m_temperature”</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/ag5_extract.html">ag5_extract</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">35.726364</span>, <span class="op">-</span><span class="fl">2.197162</span><span class="op">)</span>, </span>
 <span>            dates <span class="op">=</span> <span class="st">"1995-01-23"</span>, </span>
 <span>            variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,</span>
