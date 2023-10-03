@@ -4,7 +4,7 @@ Version: 0.0.3
 Authors@R: c(person(given = "David",
           family = "Brown",
           role = c("aut", "cre"),
-          email = "d.brown@cgiar.org",
+          email = "db877@cornell.edu",
           comment = c(ORCID = "0000-0003-2859-1618")),
           person("Kaue", "de Sousa", 
           email = "desousa.kaue@gmail.com", role = c("ctb"),
