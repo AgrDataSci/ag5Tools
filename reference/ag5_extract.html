@@ -18,7 +18,7 @@ and location, where the first dates value is the start date and the second the e
     
     <a class="navbar-brand me-2" href="../index.html">ag5Tools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -150,8 +150,12 @@ or the column name in the case of <code>data.frame</code></p></dd>
 
 
 <dt>ncores</dt>
-<dd><p>Number of cores to use with parallel
+<dd><p>Number of cores to use with parallel. If NULL and parallel is ON, half the available cores will be used.
 If <code>TRUE</code> the values are converted from Kelvin to Celsius. Default is <code>FALSE</code></p></dd>
+
+
+<dt>parallel</dt>
+<dd><p>logical Use parallel computation to speed-up data processing</p></dd>
 
 </dl></div>
     <div class="section level2">
