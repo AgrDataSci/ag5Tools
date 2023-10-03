@@ -76,6 +76,7 @@ and location, where the first dates value is the start date and the second the e
 <span>  statistic <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  time <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  celsius <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  parallel <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">...</span>,</span>
 <span>  <span class="va">path</span></span>
 <span><span class="op">)</span></span>
@@ -133,6 +134,10 @@ or the column name in the case of <code>data.frame</code></p></dd>
 <dd><p>logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".</p></dd>
 
 
+<dt>parallel</dt>
+<dd><p>logical Use parallel computation to speed-up data processing</p></dd>
+
+
 <dt>lon</dt>
 <dd><p><code>character</code> Column name of longitude values in the case of <code>data.frame</code></p></dd>
 
@@ -152,10 +157,6 @@ or the column name in the case of <code>data.frame</code></p></dd>
 <dt>ncores</dt>
 <dd><p>Number of cores to use with parallel. If NULL and parallel is ON, half the available cores will be used.
 If <code>TRUE</code> the values are converted from Kelvin to Celsius. Default is <code>FALSE</code></p></dd>
-
-
-<dt>parallel</dt>
-<dd><p>logical Use parallel computation to speed-up data processing</p></dd>
 
 </dl></div>
     <div class="section level2">
