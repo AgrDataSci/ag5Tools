@@ -61,8 +61,10 @@ or the column name in the case of \code{data.frame}}
 
 \item{end_date}{\code{character} Column name of end_date values in the case that coords is a \code{data.frame}}
 
-\item{ncores}{Number of cores to use with parallel
+\item{ncores}{Number of cores to use with parallel. If NULL and parallel is ON, half the available cores will be used.
 If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}}
+
+\item{parallel}{logical Use parallel computation to speed-up data processing}
 }
 \value{
 \code{numeric} vector with length equal to the number of dates between first and

@@ -4,7 +4,16 @@
 \alias{ag5_download}
 \title{Downloads AgERA5 data from the Copernicus Climate Change Service - Copernicus Climate Data Store}
 \usage{
-ag5_download(variable, statistic = NULL, year, month, day, time = NULL, path)
+ag5_download(
+  variable,
+  statistic = NULL,
+  year,
+  month,
+  day,
+  time = NULL,
+  version = "1_1",
+  path
+)
 }
 \arguments{
 \item{variable}{character The variable to be downloaded. See details}
@@ -19,7 +28,9 @@ all the months for the requested year.}
 \item{day}{numeric Days of the month for the requested data.
 Use \code{day = "all"}  to download all days from requested month}
 
-\item{time}{Character Only required for "2m_relative_humidity".
+\item{time}{Character Only required for "2m_relative_humidity".}
+
+\item{version}{Character Version 1_1 is currently the default and recommended
 See details for available options.}
 
 \item{path}{Character Target folder in an local hardrive e.g. "C:/agera5".

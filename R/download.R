@@ -22,6 +22,7 @@
 #'@param day numeric Days of the month for the requested data.
 #' Use \code{day = "all"}  to download all days from requested month
 #'@param time Character Only required for "2m_relative_humidity".
+#'@param version Character Version 1_1 is currently the default and recommended
 #'See details for available options.
 #'@param path Character Target folder in an local hardrive e.g. "C:/agera5".
 #' The folder should exist and the user should have write permission.
@@ -103,6 +104,7 @@ ag5_download <- function(variable,
                          month,
                          day,
                          time = NULL,
+                         version = "1_1",
                          path){
 
   if(length(month) == 1 && month == "all"){
@@ -137,6 +139,7 @@ ag5_download <- function(variable,
                     month = j,
                     time = time,
                     year = years[i],
+                    version = version,
                     path = paste0(path,
                                   years[i]))
       }
@@ -149,6 +152,7 @@ ag5_download <- function(variable,
                 month = month,
                 time = time,
                 year = year,
+                version = version,
                 path = paste0(path,
                                  year))
 
@@ -162,6 +166,7 @@ ag5_request <- function(variable,
                         month,
                         year,
                         time = NULL,
+                        version = version,
                         path){
 
   c <- cdsapi$Client()
@@ -173,7 +178,8 @@ ag5_request <- function(variable,
                                "statistic" = statistic,
                                "month" = month,
                                "day" = day,
-                               "time" = time))
+                               "time" = time,
+                               "version" = version))
 
 
   file_name_path <- paste(path,

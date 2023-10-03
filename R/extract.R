@@ -20,7 +20,8 @@
 #'@param time Only for variable Relative-Humidity-2m, see details for valid options
 #'@param path \code{character} The path for the folder containing the AgERA5 files
 #'@param celsius logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
-#'@param ncores Number of cores to use with parallel
+#'@param parallel logical Use parallel computation to speed-up data processing
+#'@param ncores Number of cores to use with parallel. If NULL and parallel is ON, half the available cores will be used.
 #'If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}
 #'@param ... Other parameters
 #'
@@ -141,7 +142,7 @@ ag5_extract.numeric <- function(coords,
                           to = as.Date(dates[2]),
                           by = "days")
 
-    data_out_period <- vector(mode = "numeric",
+    nc_files_list <- vector(mode = "character",
                               length = length(time_span))
 
     nc_files_list <- vapply(X = time_span,
