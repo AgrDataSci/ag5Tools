@@ -119,6 +119,7 @@ ag5_extract.numeric <- function(coords,
                                 statistic = NULL,
                                 time = NULL,
                                 celsius = FALSE,
+                                parallel = TRUE,
                                 ...,
                                 path){
 
