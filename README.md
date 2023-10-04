@@ -93,7 +93,7 @@ Please be aware that *ag5Tools* is released under MIT license, please find detai
 ## Citation
 To cite the *ag5Tools* in scientific publications please use:  
 
-Brown, D., de Sousa, K., & van Etten, J. (2023). ag5Tools: An R package for downloading and extracting agrometeorological data from the AgERA5 database. SoftwareX, 21, 101267. https://doi.org/https://doi.org/10.1016/j.softx.2022.101267 
+Brown, D., de Sousa, K., & van Etten, J. (2023). ag5Tools: An R package for downloading and extracting agrometeorological data from the AgERA5 database. SoftwareX, 21, 101267. https://doi.org/10.1016/j.softx.2022.101267 
 
 ## Code of Conduct
 
