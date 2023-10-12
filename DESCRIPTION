@@ -1,6 +1,6 @@
 Package: ag5Tools
 Title: Toolbox for Downloading and Extracting Copernicus AgERA5 Data 
-Version: 0.0.3
+Version: 0.0.2
 Authors@R: c(person(given = "David",
           family = "Brown",
           role = c("aut", "cre"),
