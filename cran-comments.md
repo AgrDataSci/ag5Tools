@@ -1,26 +1,32 @@
-This is a re-submission
+This is an update for package ag5tools
 
 
 ## R CMD check results
 
-### local environment - devtools::check()
+### local environment - R CMD check --as-cran
 
-"Windows" - "10 x64" - "build 19044"
+using R version 4.2.2 (2022-10-31)
+* using platform: aarch64-apple-darwin20 (64-bit)
+* using session charset: UTF-8
 
-0 errors v | 0 warnings v | 0 notes v
+Status: 1 NOTE
 
-### rhub::check_for_cran()
-https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-a75e734ac5cb43a096aaa31b186d5f23
-https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-9269a59d24624e7aa7e5caed04a011df
-https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-05e183bb4b56439e8469011da32348f1
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘David Brown <db877@cornell.edu>’
 
-Note
-https://builder.r-hub.io/status/ag5Tools_0.0.1.tar.gz-a75e734ac5cb43a096aaa31b186d5f23#L510
+New maintainer:
+  David Brown <db877@cornell.edu>
+Old maintainer(s):
+  David Brown <d.brown@cgiar.org>
+  
+### Win-builder
+* https://win-builder.r-project.org/QAS2yDGgBqFS/
 
 
-## Previous submission problem - Fixed
-I have  added \value to .Rd files regarding exported methods and explained
-the functions results in the documentation. Thanks.
+
+
+
+
 
 
 

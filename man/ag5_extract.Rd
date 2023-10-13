@@ -103,7 +103,7 @@ and location, where the first dates value is the start date and the second the e
 \itemize{
 \item Max-24h
 \item Mean-24h
-\item 24_hour_minimum
+\item Min-24h
 \item Max-Day-Time
 \item Mean-Day-Time
 \item Mean-Night-Time
