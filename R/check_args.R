@@ -1,7 +1,7 @@
 
 check_var <- function(x){
-  valid_variables <- c("cloud_cover",
-                       "liquid_precipitation_duration_fraction",
+  valid_variables <- c("Cloud-Cover",
+                       "Precipitation-Rain-Duration-Fraction",
                        "snow_thickness_lwe",
                        "Solar-Radiation-Flux",
                        "Temperature-Air-2m",
@@ -69,7 +69,7 @@ check_temp_vars <- function(x){
 check_vars_with_stat <- function(x){
 
   vars_with_stat <- c("Temperature-Air-2m",
-                      "cloud_cover",
+                      #"Cloud_Cover",
                       "snow_thickness_lwe",
                       "2m_dewpoint_temperature",
                       "snow_thickness",

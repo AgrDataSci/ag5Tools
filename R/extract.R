@@ -28,8 +28,8 @@
 #'@details
 #'# Valid variable values
 #'\itemize{
-#'\item "cloud_cover"
-#'\item "liquid_precipitation_duration_fraction"
+#'\item "Cloud-Cover"
+#'\item "Precipitation-Rain-Duration-Fraction"
 #'\item "snow_thickness_lwe"
 #'\item "Solar-Radiation-Flux"
 #'\item "Temperature-Air-2m"
