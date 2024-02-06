@@ -30,15 +30,15 @@
 #'\itemize{
 #'\item "Cloud-Cover"
 #'\item "Precipitation-Rain-Duration-Fraction"
-#'\item "snow_thickness_lwe"
+#'\item "Snow-Thickness-LWE"
 #'\item "Solar-Radiation-Flux"
 #'\item "Temperature-Air-2m"
-#'\item "2m_dewpoint_temperature"
+#'\item "Dew-Point_Temperature-2m"
 #'\item "Precipitation-Flux"
-#'\item "solid_precipitation_duration_fraction"
-#'\item "snow_thickness"
-#'\item "vapour_pressure"
-#'\item "10m_wind_speed"
+#'\item "Precipitation-Solid-Duration-Fraction"
+#'\item "Snow-Thickness"
+#'\item "Vapour-Pressure"
+#'\item "Wind-Speed-10m"
 #'\item "Relative-Humidity-2m"
 #'}
 #'
@@ -53,15 +53,15 @@
 #'\item Min-Night-Time}
 #'
 #'# Variables that require statistic
-#'For the following variables, only "24_hour_mean" statistic is available,
-#'but should be explicitly indicated.
+#'For the following variables, only 24 hour mean statistic is available,
+#'but should be explicitly indicated as "Mean".
 #'\itemize{
-#'\item cloud_cover
-#'\item snow_thickness_lwe
-#'\item 2m_dewpoint_temperature
-#'\item snow_thickness
-#'\item vapour_pressure
-#'\item 10m_wind_speed
+#'\item "Cloud-Cover"
+#'\item "Snow-Thickness-LWE"
+#'\item "Dew-Point_Temperature-2m"
+#'\item "Snow-Thickness"
+#'\item "Vapour-Pressure"
+#'\item "Wind-Speed-10m"
 
 #'}
 #'
