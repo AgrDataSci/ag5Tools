@@ -44,13 +44,13 @@
 #'
 #'# Valid statistics for variable "Temperature-Air-2m"
 #'\itemize{
-#'\item Max-24h
-#'\item Mean-24h
-#'\item Min-24h
-#'\item Max-Day-Time
-#'\item Mean-Day-Time
-#'\item Mean-Night-Time
-#'\item Min-Night-Time}
+#'\item "Max-24h"
+#'\item "Mean-24h"
+#'\item "Min-24h"
+#'\item "Max-Day-Time"
+#'\item "Mean-Day-Time"
+#'\item "Mean-Night-Time"
+#'\item "Min-Night-Time"}
 #'
 #'# Variables that require statistic
 #'For the following variables, only 24 hour mean statistic is available,
@@ -67,11 +67,11 @@
 #'
 #'#  Valid time values for variable "Relative-Humidity-2m"
 #'\itemize{
-#' \item 06h
-#' \item 09h
-#' \item 12h
-#' \item 15h
-#' \item 18h
+#' \item "06h"
+#' \item "09h"
+#' \item "12h"
+#' \item "15h"
+#' \item "18h"
 #'}
 #'
 #'@return  \code{numeric} vector with length equal to the number of dates between first and
