@@ -24,7 +24,7 @@ Once you have your API Key, you should create a file named ".cdsapirc". See more
 You do not need to install Python or the 'CDASPI' client, ag5Tools will do it if required.
 
 ## Downloading AgERA5 data
-The following example downloads variable "2m_temperature". For this variable there seven statistics available:  
+The following example downloads variable "2m_temperature". For this variable there are seven statistics available:  
 
 * 24_hour_maximum
 
