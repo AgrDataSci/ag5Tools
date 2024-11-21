@@ -8,8 +8,8 @@
 <title>Toolbox for Downloading and Extracting Copernicus AgERA5 Data • ag5Tools</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Toolbox for Downloading and Extracting Copernicus AgERA5 Data">
 <meta name="description" content='Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators from 1979 to present derived from reanalysis" &lt;https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview&gt; (AgERA5).'>
 <meta property="og:description" content='Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators from 1979 to present derived from reanalysis" &lt;https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview&gt; (AgERA5).'>
@@ -64,15 +64,15 @@
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
 <p>The R package <em>ag5Tools</em> is a toolbox to download and extract data from the “Agrometeorological indicators from 1979 to present derived from reanalysis” dataset (AgERA5).</p>
-<p><a href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview" class="external-link uri">https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview</a></p>
+<p>A description of the dataset can found <a href="https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview" class="external-link">here</a></p>
 <p>The download function provides programmatic access to the Copernicus Climate Data Store to download AgERA5 data.</p>
-<p>A detailed description can be found in the companion paper: <a href="https://doi.org/10.1016/j.softx.2022.101267" class="external-link uri">https://doi.org/10.1016/j.softx.2022.101267</a></p>
+<p>A detailed description of the ag5Tools package can be found in the companion paper: <a href="https://doi.org/10.1016/j.softx.2022.101267" class="external-link uri">https://doi.org/10.1016/j.softx.2022.101267</a></p>
 </div>
 <div class="section level2">
 <h2 id="data-license">Data license<a class="anchor" aria-label="anchor" href="#data-license"></a>
 </h2>
-<p>The <em>ag5Tools</em> package does not distribute data, it only provides access to Climate Data Store through the python cdsapi.</p>
-<p>For specific details about the license agreement on downloading and using the data please check the license at: <a href="https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf" class="external-link uri">https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf</a></p>
+<p>The <em>ag5Tools</em> package does not distribute data, it only provides access to the Climate Data Store through the Python cdsapi.</p>
+<p>For specific details about the license agreement on downloading and using Copernicus Products, please check the license <a href="https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview" class="external-link">here</a></p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
@@ -89,13 +89,13 @@
 <div class="section level4">
 <h4 id="install-python-and-the-cds-api">Install Python and the CDS API<a class="anchor" aria-label="anchor" href="#install-python-and-the-cds-api"></a>
 </h4>
-<p>Before using the <em>ag5Tools</em> package, you need to intall Python and the CDS API, please see the details here: <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link uri">https://cds.climate.copernicus.eu/api-how-to</a>.</p>
+<p>Before using the <em>ag5Tools</em> package, you need to intall Python and the CDS API, please see the detailsin the <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link">CDSAPI guide</a></p>
 </div>
 <div class="section level4">
 <h4 id="get-your-cds-api-key">Get your CDS API-Key<a class="anchor" aria-label="anchor" href="#get-your-cds-api-key"></a>
 </h4>
-<p>To download AgERA5 data you should first register at the Climate Data Store and get your API key. Please follow the instructions in: <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link uri">https://cds.climate.copernicus.eu/api-how-to</a></p>
-<p>You need to create a file to store the API key, following the instructions from: <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link uri">https://cds.climate.copernicus.eu/api-how-to</a>.</p>
+<p>To download AgERA5 data you should first register at the Climate Data Store and get your API key. Please follow the instructions detailed in the <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link">CDSAPI guide</a></p>
+<p>You need to create a file to store the API key. Please follow the instructions detailed <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link">here</a></p>
 </div>
 <div class="section level4">
 <h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
@@ -212,7 +212,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
