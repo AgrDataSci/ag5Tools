@@ -1,3 +1,6 @@
+# ag5Tools 0.0.3
+- Add "area" parameter to ag5_download
+
 # ag5Tools 0.0.2
 
 ## Major changes
