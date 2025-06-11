@@ -26,6 +26,9 @@
 #'See details for available options.
 #'@param path Character Target folder in an local hardrive e.g. "C:/agera5".
 #' The folder should exist and the user should have write permission.
+#'@param area A numeric vector of length = 4
+#' Values represent geographic coordinates for the area of interest
+#' in this order (north, west, south, east). If NULL it will download the whole available region.
 #'
 #'@details
 #'# AgERA5 variables available for download:
@@ -105,7 +108,8 @@ ag5_download <- function(variable,
                          day,
                          time = NULL,
                          version = "1_1",
-                         path){
+                         path,
+                         area = NULL){
 
   if(length(month) == 1 && month == "all"){
     month <- formatC(x = seq(1:12), width = 2, flag = 0)
@@ -121,12 +125,9 @@ ag5_download <- function(variable,
     day <- formatC(x = seq(1:31), width = 2, flag = 0)
   }
 
-
   if(is.numeric(day) ){
     day <- formatC(x = day, width = 2, flag = 0)
   }
-
-
 
   if(length(year) > 1 | length(month > 1)){
     years <- year
@@ -140,6 +141,7 @@ ag5_download <- function(variable,
                     time = time,
                     year = years[i],
                     version = version,
+                    area = area,
                     path = paste0(path,
                                   years[i]))
       }
@@ -153,6 +155,7 @@ ag5_download <- function(variable,
                 time = time,
                 year = year,
                 version = version,
+                area = area,
                 path = paste0(path,
                                  year))
 
@@ -167,6 +170,7 @@ ag5_request <- function(variable,
                         year,
                         time = NULL,
                         version = version,
+                        area = area,
                         path){
 
   c <- cdsapi$Client()
@@ -179,7 +183,8 @@ ag5_request <- function(variable,
                                "month" = month,
                                "day" = day,
                                "time" = time,
-                               "version" = version))
+                               "version" = version,
+                               "area" = area))
 
 
   file_name_path <- paste(path,

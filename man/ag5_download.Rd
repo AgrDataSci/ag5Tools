@@ -12,7 +12,8 @@ ag5_download(
   day,
   time = NULL,
   version = "1_1",
-  path
+  path,
+  area = NULL
 )
 }
 \arguments{
@@ -35,6 +36,10 @@ See details for available options.}
 
 \item{path}{Character Target folder in an local hardrive e.g. "C:/agera5".
 The folder should exist and the user should have write permission.}
+
+\item{area}{A numeric vector of length = 4
+Values represent geographic coordinates for the area of interest
+in this order (north, west, south, east). If NULL it will download the whole available region.}
 }
 \value{
 No return value, called for side effects.
