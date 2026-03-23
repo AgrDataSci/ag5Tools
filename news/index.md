@@ -1,0 +1,30 @@
+# Changelog
+
+## ag5Tools 0.0.3
+
+- Add “area” parameter to ag5_download
+- Fix problem with variable names and statistics
+
+## ag5Tools 0.0.2
+
+CRAN release: 2023-10-12
+
+### Major changes
+
+- Add version parameter to function *ag5_download*, now required by
+  AgERA5 database.
+
+### Enhancements
+
+- Use parallelization to function *ag5_extract* to speed up files search
+
+### Bug fixes
+
+Correct parameter in help of function *ag5_extract* from 24_hour_minimum
+to Min-24h
+
+## ag5Tools 0.0.1
+
+CRAN release: 2022-03-24
+
+- First version on CRAN
