@@ -6,11 +6,11 @@ using the Copernicus Climate Data Store (CDSAPI) Python library
 
 This function provides programmatic access to the AgERA5 dataset. For
 more information about the data license, please visit:
-<https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf>
+<https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview>
 
 To download the data you should have a valid CDS account, an CDS API
 key. Please follow the instructions at:
-<https://cds.climate.copernicus.eu/api-how-to> to create a file to store
+<https://cds.climate.copernicus.eu/how-to-api> to create a file to store
 your API key. You do not need to install Python or the cdsapi, Ag5Tools
 will do it if required.
 
