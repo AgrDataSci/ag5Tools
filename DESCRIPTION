@@ -15,7 +15,7 @@ Authors@R: c(person(given = "David",
           comment = c(ORCID = "0000-0002-6884-2832")))
 Description: Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators 
   from 1979 to present derived from reanalysis"
-  <https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview> (AgERA5).
+  <https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview> (AgERA5).
 Config/reticulate/autoconfigure:
   list(
     packages = list(
