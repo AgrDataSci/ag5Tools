@@ -2,6 +2,8 @@
 
 ## ag5Tools 0.0.3
 
+CRAN release: 2026-03-25
+
 - Add “area” parameter to ag5_download
 - Fix problem with variable names and statistics
 
