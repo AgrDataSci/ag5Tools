@@ -1,26 +1,22 @@
 This is an update for package ag5tools
 
 
-## R CMD check results
+── R CMD check ────────────────────────────────────────────────────────────  
+─  using R version 4.5.2 (2025-10-31)
+─  using platform: aarch64-apple-darwin20
+─  R was compiled by
+       Apple clang version 16.0.0 (clang-1600.0.26.6)
+       GNU Fortran (GCC) 14.2.0
 
-### local environment - R CMD check --as-cran
+── R CMD check results ──────────────────────────────── ag5Tools 0.0.3 ────   
+Duration: 53.6s
 
-using R version 4.2.2 (2022-10-31)
-* using platform: aarch64-apple-darwin20 (64-bit)
-* using session charset: UTF-8
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-Status: 1 NOTE
+R CMD check succeeded
 
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: ‘David Brown <db877@cornell.edu>’
 
-New maintainer:
-  David Brown <db877@cornell.edu>
-Old maintainer(s):
-  David Brown <d.brown@cgiar.org>
-  
-### Win-builder
-* https://win-builder.r-project.org/QAS2yDGgBqFS/
+
 
 
 

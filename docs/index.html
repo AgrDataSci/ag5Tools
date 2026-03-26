@@ -5,64 +5,50 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content='Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators 
-  from 1979 to present derived from reanalysis"
-  &lt;https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview&gt; (AgERA5).'>
-<title>Toolbox for Downloading and Extracting Copernicus AgERA5 Data  • ag5Tools</title>
+<title>Toolbox for Downloading and Extracting Copernicus AgERA5 Data • ag5Tools</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Toolbox for Downloading and Extracting Copernicus AgERA5 Data ">
-<meta property="og:description" content='Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators 
-  from 1979 to present derived from reanalysis"
-  &lt;https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-agrometeorological-indicators?tab=overview&gt; (AgERA5).'>
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Toolbox for Downloading and Extracting Copernicus AgERA5 Data">
+<meta name="description" content='Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators from 1979 to present derived from reanalysis" &lt;https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview&gt; (AgERA5).'>
+<meta property="og:description" content='Tools for downloading and extracting data from the Copernicus "Agrometeorological indicators from 1979 to present derived from reanalysis" &lt;https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview&gt; (AgERA5).'>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="index.html">ag5Tools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="articles/ag5Tools.html">Get started</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="articles/ag5Tools.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/extracing_data.html">Extracing AgERA5 data with ag5Tools</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/extracing_data.html">Extracing AgERA5 data with ag5Tools</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav"></ul>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+</form></li>
+      </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-home">
 <div class="row">
@@ -71,45 +57,45 @@
 <div class="page-header"><h1 id="ag5tools">ag5Tools<a class="anchor" aria-label="anchor" href="#ag5tools"></a>
 </h1></div>
 <div class="section level2">
-<h2 id="toolbox-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset">Toolbox for downloading and extracting data from the Copernicus
-AgERA5 dataset<a class="anchor" aria-label="anchor" href="#toolbox-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset"></a>
+<h2 id="toolbox-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset">Toolbox for downloading and extracting data from the Copernicus AgERA5 dataset<a class="anchor" aria-label="anchor" href="#toolbox-for-downloading-and-extracting-data-from-the-copernicus-agera5-dataset"></a>
 </h2>
 </div>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
-<p>The R package <em>ag5Tools</em> is a toolbox to download and extract
-data from the “Agrometeorological indicators from 1979 to present
-derived from reanalysis” dataset (AgERA5).</p>
-<p><a href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview" class="external-link uri">https://cds.climate.copernicus.eu/cdsapp#!/dataset/10.24381/cds.6c68c9bb?tab=overview</a></p>
-<p>The download function provides programmatic access to the Copernicus
-Climate Data Store to download AgERA5 data.</p>
+<p>The R package <em>ag5Tools</em> is a toolbox to download and extract data from the “Agrometeorological indicators from 1979 to present derived from reanalysis” dataset (AgERA5).</p>
+<p>A description of the dataset can found <a href="https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview" class="external-link">here</a></p>
+<p>The download function provides programmatic access to the Copernicus Climate Data Store to download AgERA5 data.</p>
+<p>A detailed description of the ag5Tools package can be found in the companion paper: <a href="https://doi.org/10.1016/j.softx.2022.101267" class="external-link uri">https://doi.org/10.1016/j.softx.2022.101267</a></p>
 </div>
 <div class="section level2">
 <h2 id="data-license">Data license<a class="anchor" aria-label="anchor" href="#data-license"></a>
 </h2>
-<p>The ag5Tools package does not distribute data, it only provides
-access to Climate Data Store through the python cdsapi.</p>
-<p>For specific details about the license agreenment on downloading and
-using the data please check the license at: <a href="https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf" class="external-link uri">https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf</a></p>
+<p>The <em>ag5Tools</em> package does not distribute data, it only provides access to the Climate Data Store through the Python cdsapi.</p>
+<p>For specific details about the license agreement on downloading and using Copernicus Products, please check the license <a href="https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview" class="external-link">here</a></p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
+<p>The stable version of <em>ag5Tools</em> can be installed from <strong>CRAN</strong> using</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"agrdatasci/ag5Tools"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ag5Tools"</span><span class="op">)</span></span></code></pre></div>
+<p>The development version could be installed using</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"agrdatasci/ag5Tools"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="downloading-agera5-data">Downloading AgERA5 data<a class="anchor" aria-label="anchor" href="#downloading-agera5-data"></a>
 </h3>
 <div class="section level4">
+<h4 id="install-python-and-the-cds-api">Install Python and the CDS API<a class="anchor" aria-label="anchor" href="#install-python-and-the-cds-api"></a>
+</h4>
+<p>Before using the <em>ag5Tools</em> package, you need to intall Python and the CDS API, please see the detailsin the <a href="https://cds.climate.copernicus.eu/how-to-api" class="external-link">CDSAPI guide</a></p>
+</div>
+<div class="section level4">
 <h4 id="get-your-cds-api-key">Get your CDS API-Key<a class="anchor" aria-label="anchor" href="#get-your-cds-api-key"></a>
 </h4>
-<p>To download AgERA5 data you should first register at the Climate Data
-Store and get your API key. Please follow the instructions in: <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link uri">https://cds.climate.copernicus.eu/api-how-to</a></p>
-<p>You only need to create a file to store the API key, following the
-instructions from: <a href="https://cds.climate.copernicus.eu/api-how-to" class="external-link uri">https://cds.climate.copernicus.eu/api-how-to</a>. Ag5Tools
-internally handles all the environment setup, including the Python
-requirements (i.e., install Python and cdsapi).</p>
+<p>To download AgERA5 data you should first register at the Climate Data Store and get your API key. Please follow the instructions detailed in the <a href="https://cds.climate.copernicus.eu/how-to-api" class="external-link">CDSAPI guide</a></p>
+<p>You need to create a file to store the API key. Please follow the instructions detailed <a href="https://cds.climate.copernicus.eu/how-to-api" class="external-link">here</a></p>
 </div>
 <div class="section level4">
 <h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
@@ -118,63 +104,66 @@ requirements (i.e., install Python and cdsapi).</p>
 <div class="section level4">
 <h4 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
 </h4>
-<p>The following example downloads daily ‘2m_temperature’ data for year
-2015</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/ag5_download.html">ag5_download</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,
-             statistic <span class="op">=</span> <span class="st">"night_time_minimum"</span>,
-             day <span class="op">=</span> <span class="st">"all"</span>,
-             month <span class="op">=</span> <span class="st">"all"</span>,
-             year <span class="op">=</span> <span class="fl">2015</span>,
-             path <span class="op">=</span> <span class="st">"C:/custom_target_folder"</span>
-             <span class="op">)</span></code></pre></div>
+<p>The following example downloads daily ‘2m_temperature’ data for year 2015</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/ag5_download.html">ag5_download</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,</span>
+<span>             statistic <span class="op">=</span> <span class="st">"night_time_minimum"</span>,</span>
+<span>             day <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span>             month <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span>             year <span class="op">=</span> <span class="fl">2015</span>,</span>
+<span>             path <span class="op">=</span> <span class="st">"C:/custom_target_folder"</span></span>
+<span>             <span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="extracting-data">Extracting data<a class="anchor" aria-label="anchor" href="#extracting-data"></a>
 </h4>
-<p>To extract maximum day temperature (“Max-Day-Time”) of
-“2m_temperature”</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/ag5_extract.html">ag5_extract</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">35.726364</span>, <span class="op">-</span><span class="fl">2.197162</span><span class="op">)</span>, 
-            dates <span class="op">=</span> <span class="st">"1995-01-23"</span>, 
-            variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,
-            statistic <span class="op">=</span> <span class="st">"Max-Day-Time"</span>, 
-            path <span class="op">=</span> <span class="st">"C:/agera5_data"</span><span class="op">)</span></code></pre></div>
+<p>To extract maximum day temperature (“Max-Day-Time”) of “2m_temperature”</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/ag5_extract.html">ag5_extract</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">35.726364</span>, <span class="op">-</span><span class="fl">2.197162</span><span class="op">)</span>, </span>
+<span>            dates <span class="op">=</span> <span class="st">"1995-01-23"</span>, </span>
+<span>            variable <span class="op">=</span> <span class="st">"2m_temperature"</span>,</span>
+<span>            statistic <span class="op">=</span> <span class="st">"Max-Day-Time"</span>, </span>
+<span>            path <span class="op">=</span> <span class="st">"C:/agera5_data"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
 </h2>
-<p>The ag5Tools package relies on the functionality available from other
-open source packages.</p>
+<p>The <em>ag5Tools</em> package relies on the functionality available from other open source packages.</p>
 <ul>
 <li><p>The Python <a href="https://pypi.org/project/cdsapi/" class="external-link"><em>cdsapi</em></a></p></li>
-<li><p>The R package <a href="https://cran.r-project.org/package=reticulate" class="external-link"><em>reticulate</em></a>
-is used to access the Python cdsapi functions from R.</p></li>
-<li><p>The R package <a href="https://cran.r-project.org/package=terra" class="external-link"><em>terra</em></a> is
-used to extract data from nc files.</p></li>
-<li><p>The R package <a href="https://cran.r-project.org/package=fs" class="external-link"><em>fs</em></a> is used for
-efficiently search and list files.</p></li>
+<li><p>The R package <a href="https://cran.r-project.org/package=reticulate" class="external-link"><em>reticulate</em></a> is used to access the Python CDS API functions from R.</p></li>
+<li><p>The R package <a href="https://cran.r-project.org/package=terra" class="external-link"><em>terra</em></a> is used to extract data from nc files.</p></li>
+<li><p>The R package <a href="https://cran.r-project.org/package=fs" class="external-link"><em>fs</em></a> is used for efficiently search and list files.</p></li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
 </h2>
-<p>Please be aware that ag5Tools is released under MIT license, please
-find details in the <a href="https://agrdatasci.github.io/ag5Tools/LICENSE.html">MIT license
-document</a></p>
+<p>Please be aware that <em>ag5Tools</em> is released under MIT license, please find details in the <a href="https://agrdatasci.github.io/ag5Tools/LICENSE.html">MIT license document</a></p>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>To cite the <em>ag5Tools</em> in scientific publications please use:</p>
+<p>Brown, D., de Sousa, K., &amp; van Etten, J. (2023). ag5Tools: An R package for downloading and extracting agrometeorological data from the AgERA5 database. SoftwareX, 21, 101267. <a href="https://doi.org/10.1016/j.softx.2022.101267" class="external-link uri">https://doi.org/10.1016/j.softx.2022.101267</a></p>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
-<p>Please note that the ag5Tools project is released with a <a href="https://agrdatasci.github.io/ag5Tools/CODE_OF_CONDUCT.html">Contributor
-Code of Conduct</a>. By contributing to this project, you agree to abide
-by its terms.</p>
+<p>Please note that the <em>ag5Tools</em> project is released with a <a href="https://agrdatasci.github.io/ag5Tools/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
 
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=ag5Tools" class="external-link">View on CRAN</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
@@ -199,8 +188,7 @@ by its terms.</p>
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>David Brown <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2859-1618" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Kaue de Sousa <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-7571-7845" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>David Brown <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2859-1618" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -209,7 +197,9 @@ by its terms.</p>
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/AgrDataSci/ag5Tools/actions" class="external-link"><img src="https://github.com/AgrDataSci/ag5Tools/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="code_of_conduct.html"><img src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg" alt="Contributor Covenant"></a></li>
+<li><a href="https://cran.r-project.org/package=ag5Tools" class="external-link"><img src="https://www.r-pkg.org/badges/version/ag5Tools" alt="CRAN"></a></li>
+<li><a href="https://cran.r-project.org/package=ag5Tools" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/ag5Tools" alt="Downloads"></a></li>
+<li><a href="https://agrdatasci.github.io/ag5Tools/CODE_OF_CONDUCT.html"><img src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg" alt="Contributor Covenant"></a></li>
 </ul>
 </div>
 
@@ -218,22 +208,19 @@ by its terms.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by David Brown, Kaue de Sousa.</p>
+  <p>Developed by David Brown.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>
