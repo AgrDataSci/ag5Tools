@@ -4,11 +4,11 @@
 
 To download AgERA5 data from the Copernicus Climate Data Store (CDS) you
 should first register and get your API Key from the [CDS API
-Guide](https://cds.climate.copernicus.eu/api-how-to).
+Guide](https://cds.climate.copernicus.eu/how-to-api).
 
 Once you have your API Key, you should create a file named “.cdsapirc”.
 See more details at the [CDS API
-Guide](https://cds.climate.copernicus.eu/api-how-to)
+Guide](https://cds.climate.copernicus.eu/how-to-api)
 
 You do not need to install Python or the ‘CDASPI’ client, ag5Tools will
 do it if required.
