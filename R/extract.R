@@ -19,7 +19,7 @@
 #'@param end_date \code{character} Column name of end_date values in the case that coords is a \code{data.frame}
 #'@param time Only for variable Relative-Humidity-2m, see details for valid options
 #'@param path \code{character} The path for the folder containing the AgERA5 files
-#'@param celsius logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".
+#'@param celsius logical Only for variables "Temperature-Air-2m" and "Dew-Point_Temperature-2m".
 #'@param parallel logical Use parallel computation to speed-up data processing
 #'@param ncores Number of cores to use with parallel. If NULL and parallel is ON, half the available cores will be used.
 #'If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}
@@ -178,7 +178,7 @@ ag5_extract.numeric <- function(coords,
 
   }
 
-  if(variable == "Temperature-Air-2m" && isTRUE(celsius)){
+  if(check_temp_vars(variable) && isTRUE(celsius)){
     ag5_data <- ag5_data - 273.15
   }
 

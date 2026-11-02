@@ -52,7 +52,7 @@ or the column name in the case of \code{data.frame}}
 
 \item{time}{Only for variable Relative-Humidity-2m, see details for valid options}
 
-\item{celsius}{logical Only for variables "Temperature-Air-2m" and "2m_dewpoint_temperature".}
+\item{celsius}{logical Only for variables "Temperature-Air-2m" and "Dew-Point_Temperature-2m".}
 
 \item{parallel}{logical Use parallel computation to speed-up data processing}
 
