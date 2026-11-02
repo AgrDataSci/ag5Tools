@@ -56,12 +56,12 @@ check_time <- function(x){
 check_temp_vars <- function(x){
 
   temperature_vars <- c("Temperature-Air-2m",
-                        "2m_dewpoint_temperature")
+                        "Dew-Point_Temperature-2m")
 
   if(x %in% temperature_vars){
     return(TRUE)
   }
-    return(FALSE)
+  return(FALSE)
 
 }
 
