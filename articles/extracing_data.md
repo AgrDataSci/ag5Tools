@@ -25,6 +25,7 @@ Arusha, Tanzania.
 
 ``` r
 
+
 data("arusha_df", package = "ag5Tools")
 
 head(arusha_df)
@@ -43,6 +44,7 @@ function you can extract the required data, as long as you have
 downloaded it already.
 
 ``` r
+
 
 library(ag5Tools)
 
@@ -63,6 +65,7 @@ function
 will look like:
 
 ``` r
+
 arusha_rainfall <- ag5_extract(coords = example_df,
                                lon = "x",
                                lat = "y",

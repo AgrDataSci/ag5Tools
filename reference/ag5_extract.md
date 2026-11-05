@@ -82,7 +82,8 @@ ag5_extract(
 - celsius:
 
   logical Only for variables "Temperature-Air-2m" and
-  "2m_dewpoint_temperature".
+  "Dew-Point_Temperature-2m". If `TRUE` the values are converted from
+  Kelvin to Celsius. Default is `FALSE`
 
 - parallel:
 
@@ -110,8 +111,7 @@ ag5_extract(
 - ncores:
 
   Number of cores to use with parallel. If NULL and parallel is ON, half
-  the available cores will be used. If `TRUE` the values are converted
-  from Kelvin to Celsius. Default is `FALSE`
+  the available cores will be used.
 
 ## Value
 

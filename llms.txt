@@ -31,12 +31,14 @@ using Copernicus Products, please check the license
 The stable version of *ag5Tools* can be installed from **CRAN** using
 
 ``` r
+
 install.packages("ag5Tools")
 ```
 
 The development version could be installed using
 
 ``` r
+
 devtools::install_github("agrdatasci/ag5Tools", build_vignettes = TRUE)
 ```
 
@@ -66,6 +68,7 @@ The following example downloads daily ‘2m_temperature’ data for year
 2015
 
 ``` r
+
 ag5_download(variable = "2m_temperature",
              statistic = "night_time_minimum",
              day = "all",
@@ -80,6 +83,7 @@ ag5_download(variable = "2m_temperature",
 To extract maximum day temperature (“Max-Day-Time”) of “2m_temperature”
 
 ``` r
+
 ag5_extract(coords = c(35.726364, -2.197162), 
             dates = "1995-01-23", 
             variable = "2m_temperature",
