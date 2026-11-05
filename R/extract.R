@@ -20,9 +20,9 @@
 #'@param time Only for variable Relative-Humidity-2m, see details for valid options
 #'@param path \code{character} The path for the folder containing the AgERA5 files
 #'@param celsius logical Only for variables "Temperature-Air-2m" and "Dew-Point_Temperature-2m".
+#'If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}
 #'@param parallel logical Use parallel computation to speed-up data processing
 #'@param ncores Number of cores to use with parallel. If NULL and parallel is ON, half the available cores will be used.
-#'If \code{TRUE} the values are converted from Kelvin to Celsius. Default is \code{FALSE}
 #'@param ... Other parameters
 #'
 #'@details
